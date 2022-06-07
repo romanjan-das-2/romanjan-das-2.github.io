@@ -1,0 +1,42 @@
+.ca_a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30%;
+    box-sizing: border-box;
+}
+
+.ca_b {
+    width: 80vw;
+    line-height: 125%;
+    color: rgb(125, 126, 126);
+    font-size: medium;
+    line-height: 150%;
+    padding: 2vw;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.ca_c {
+    font-weight: bold;
+}
+
+.ca_d{
+    padding-top:50%;padding-left:12%;
+}
+
+.ca_e{
+    display: none;
+}
+
+button{
+    color:black;
+    background-color: white;
+    border: none;
+}
+
+@media only screen and (orientation: landscape) {
+    body {
+      opacity: 0%;
+    }
+  }

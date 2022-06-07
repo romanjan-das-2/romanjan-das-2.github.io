@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper</title>
+    <script>
+        var questions_and_answers = {
+
+            /*
+            question_ : {
+                the_question: "",
+                option_a: "",
+                option_b: "",
+                option_c: "",
+                option_d: "",
+                correct: 
+            },
+            */
+            question_1: {
+                the_question: "ভাৰতৰ সংবিধানত মুঠ _____টা অনুবন্ধ, _____টা অনুসূচী, _____টা অধ্যায় আছে ।",
+                option_a: "৩৯৫,১২,২২",
+                option_b: "৩৯০,১০,২০",
+                option_c: "৩৯০,২০,১০",
+                option_d: "৪০০,১২,২০",
+                correct: 1
+            },
+            question_2: {
+                the_question: "কোনবিধ জন্তুক ১৯৭২চনৰ ১৮ নৱেম্বৰৰ পৰা ভাৰতৰ ৰাষ্ট্ৰীয় পশুৰ স্বীকৃতি দিয়া হৈছে?",
+                option_a: "এছীয় হাতী",
+                option_b: "ঢেকীয়াপতীয়া বাঘ",
+                option_c: "নাহৰফুতুকী বাঘ",
+                option_d: "কৃষ্ণসাৰ মৃগ",
+                correct: 2
+            },
+            question_3: {
+                the_question: "কি খেলক ১৯২৮চনৰ পৰা ভাৰতৰ ৰাষ্ট্ৰীয় ক্ৰীড়া হিচাপে স্বীকৃতি দিয়া হৈছে?",
+                option_a: "খো খো",
+                option_b: "ক্ৰিকেট",
+                option_c: "কাবাডী",
+                option_d: "হকী",
+                correct: 4
+            },
+            question_4: {
+                the_question: "ভাৰতৰ ৰাষ্ট্ৰীয় স্মাৰক কি?",
+                option_a: "ৰেড ফ’ৰ্ট",
+                option_b: "তাজ মহল",
+                option_c: "ইণ্ডিয়া গেট",
+                option_d: "অশোক স্তম্ভ",
+                correct: 3
+            },
+            question_5: {
+                the_question: "২০১০চনৰ ১৫জুলাইত ₹ চিহ্নটো ভাৰতীয় টকাৰ প্ৰতীক হিচাপে গ্ৰহণ কৰা হয়। এই প্ৰতীকটো অংকন কৰা আই আই টিৰ প্ৰাক্তন ছাত্ৰজনৰ নাম ____________। ",
+                option_a: "হিতেশ পদ্মশালী",
+                option_b: "ৰঘুৰাম ৰাজন",
+                option_c: "ডি উদয় কুমাৰ",
+                option_d: "শ্বাহৰুখ জে ইৰাণী",
+                correct: 3
+            },
+            question_6: {
+                the_question: "প্ৰাচীন ভাৰতৰ কোনজন ৰজাৰ দিনত গ্ৰীক পৰিব্ৰাজক মেগেস্থেনিছ আহিছিল?",
+                option_a: "বিক্ৰমাদিত্য",
+                option_b: "অশোক",
+                option_c: "চন্দ্ৰগুপ্ত মৌৰ্য",
+                option_d: "বিম্বিসাৰ",
+                correct: 3
+            },
+            question_7: {
+                the_question: "_________ৰ কালচোৱাক ভাৰতৰ সোণালী যুগ বুলি কোৱা হয়?",
+                option_a: "মৌৰ্য সাম্ৰাজ্য",
+                option_b: "গুপ্ত সাম্ৰাজ্য",
+                option_c: "মোগল সাম্ৰাজ্য",
+                option_d: "কুষাণ সাম্ৰাজ্য",
+                correct: 2
+            },
+            question_8: {
+                the_question: "‘দিন ইলাহী’ নামৰ ধৰ্মৰ প্ৰৱৰ্তক আছিল, ____________ ।",
+                option_a: "হুমায়ুন",
+                option_b: "আকবৰ",
+                option_c: "বাবৰ",
+                option_d: "ঔৰংজেৱ",
+                correct: 2
+            },
+            question_9: {
+                the_question: "গৱৰ্ণৰ জেনেৰেল ________ৰ কাৰ্যকালত পঞ্জাব আৰু ব্ৰহ্মদেশ ব্ৰিটিছৰ অধীনলৈ আহে ।",
+                option_a: "লৰ্ড ডেলহাউচি",
+                option_b: "ৱেলেছলী",
+                option_c: "ৱাৰেন হেষ্টিংচ",
+                option_d: "জন মেকফাৰ্চন",
+                correct: 1
+            },
+            question_10: {
+                the_question: "ভাৰতবৰ্ষৰ প্ৰথম ৰাষ্ট্ৰপতি পদত অধিষ্ঠিত হোৱা ব্যক্তিজন হ’ল ",
+                option_a: "ডঃ ৰাজেন্দ্ৰ প্ৰসাদ",
+                option_b: "চক্ৰৱৰ্তী ৰাজাগোপালচাৰী",
+                option_c: "জৱাহৰলাল নেহৰু",
+                option_d: "সৰ্বেপল্লী ৰাধাকৃষ্ণন",
+                correct: 1
+            }
+
+        };
+
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="ui_script.js"></script>
+</head>
+
+<body onload="load_ui();"></body>
+
+</html>

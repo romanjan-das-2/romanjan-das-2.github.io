@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper</title>
+    <script>
+        var questions_and_answers = {
+
+            /*
+            question_ : {
+                the_question: "",
+                option_a: "",
+                option_b: "",
+                option_c: "",
+                option_d: "",
+                correct: 
+            },
+            */
+
+            question_1: {
+                the_question: "‘থ্ৰি মাস্কেটিয়াৰ্ছ’ গ্ৰন্থৰ লিখকগৰাকীৰ নাম কি?",
+                option_a: "আলেকজেণ্ডাৰ ডুমা",
+                option_b: "আলবেয়াৰ কেমু",
+                option_c: "জুলে ভাৰ্ণ",
+                option_d: "ডমিনিক লেপিয়েৰ",
+                correct: 1
+            },
+            question_2: {
+                the_question: "বিশ্বৰ প্ৰথমগৰাকী মহাকাশচাৰী কোন?",
+                option_a: "ইউৰি গাগাৰিন",
+                option_b: "নীল আৰ্মষ্ট্ৰং",
+                option_c: "বাজ এলড্ৰিন",
+                option_d: "এলেন শ্বেপাৰ্ড",
+                correct: 1
+            },
+            question_3: {
+                the_question: "টাইৱানৰ প্ৰথমগৰাকী ৰাষ্ট্ৰপতি কোন?",
+                option_a: "মাও জে ডোং",
+                option_b: "চৌ এন লাই",
+                option_c: "চিয়াং কাই শ্বেক",
+                option_d: "লী কুৱান য়ু",
+                correct: 3
+            },
+            question_4: {
+                the_question: "‘গ্লাছনস্ত’ আৰু ‘পেৰেষ্ট্ৰইকা’ নীতি প্ৰৱৰ্তন কৰা ছোভিয়েট নেতাজনৰ নাম কি আছিল?",
+                option_a: "ইউৰি এণ্ড্ৰপভ",
+                option_b: "লিয়’নিড ব্ৰেজনেভ",
+                option_c: "মিখাইল গৰ্বাচেভ",
+                option_d: "নিকিটা খ্ৰুচচেভ",
+                correct: 3
+            },
+            question_5: {
+                the_question: "ই-টি,জুৰাছিক পাৰ্ক,ছিণ্ডলাৰছ লিষ্ট,ছেভিং প্ৰাইভেট ৰায়ান আদি বিখ্যাত চলচ্চিত্ৰৰ পৰিচালক গৰাকীৰ নাম হ’ল",
+                option_a: "জেমছ কেমেৰুণ",
+                option_b: "ষ্টিভেন স্পিলবাৰ্গ",
+                option_c: "ৰিডলী স্কট",
+                option_d: "ষ্টেনলী কিউব্ৰিক",
+                correct: 2
+            },
+            question_6: {
+                the_question: "সৌৰজগতৰ কোনটো গ্ৰহ সূৰ্যৰ আটাইতকৈ ওচৰত অৱস্থিত?",
+                option_a: "বৃহস্পতি",
+                option_b: "মংগল",
+                option_c: "শুক্ৰ",
+                option_d: "বুধ",
+                correct: 4
+            },
+            question_7: {
+                the_question: "ভূমিকম্পৰ তীব্ৰতা জুখিবলৈ ব্যৱহাৰ কৰা যন্ত্ৰবিধৰ নাম হ’ল",
+                option_a: "লেক্টোমিটাৰ",
+                option_b: "অল্টিমিটাৰ",
+                option_c: "এনিমোমিটাৰ",
+                option_d: "ছিছমোগ্ৰাফ",
+                correct: 4
+            },
+            question_8: {
+                the_question: "পেট্ৰলচালিত গাড়ীত ইন্ধন আৰু বায়ুৰ মিশ্ৰন প্ৰস্তুত কৰি চিলিণ্ডাৰলৈ পঠিওৱা যন্ত্ৰবিধৰ নাম কি?",
+                option_a: "স্পাৰ্ক প্লাগ",
+                option_b: "কেটেলাইটিক কনভাৰ্টাৰ",
+                option_c: "ৰেডিয়েটৰ",
+                option_d: "কাৰ্বুৰেটৰ",
+                correct: 4
+            },
+            question_9: {
+                the_question: "ৱৰ্ল্ড-ৱাইড-ৱেবৰ উদ্ভাৱকৰূপে কাক জনা যায়?",
+                option_a: "ষ্টিভ জব্চ",
+                option_b: "বিল গেটচ",
+                option_c: "টিম বাৰ্নাৰ্চ লী",
+                option_d: "লেৰী পেজ",
+                correct: 3
+            },
+            question_10: {
+                the_question: "কোৱাণ্টাম তত্ত্বৰ আৱিস্কাৰক বিজ্ঞানীগৰাকীৰ নাম কি?",
+                option_a: "এলবাৰ্ট আইনষ্টাইন",
+                option_b: "মেক্স প্লাংক",
+                option_c: "জেমছ চাডউইক",
+                option_d: "উইলহেল্ম ৰণ্টজেন",
+                correct: 2
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="ui_script.js"></script>
+</head>
+
+<body onload="load_ui();"></body>
+
+</html>

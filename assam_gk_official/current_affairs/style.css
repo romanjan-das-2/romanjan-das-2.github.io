@@ -1,0 +1,286 @@
+body{
+    font-family: 'Varela Round', sans-serif;
+    overscroll-behavior: none;
+    margin: 0px;
+}
+
+.top_panel{
+    position: fixed;
+    z-index: 2;
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 8vh;
+    padding-top: 2vh;
+    box-sizing: border-box;
+    /*
+    color: black;
+    background-color: gainsboro;
+    border-bottom: 1px solid darkgray;
+    box-shadow: 0px 0px 5vw 1vw gainsboro;
+    */
+    color: white;
+    background-color: rgb(0 196 190);
+    box-shadow: 0px 0px 5vw 1vw gainsboro;
+    
+}
+
+.bottom_panel{
+    position: fixed;
+    z-index: 2;
+    left: 0vw;
+    bottom: 0vw;
+    width: 100vw;
+    min-height: 8vh;
+    box-sizing: border-box;
+    padding-top: 0px;
+    background-color: white;
+    /* background-color: white; */
+    /*
+    background-color: rgb(220, 220, 220);
+    border-top: 1px solid darkgray;
+    */
+    box-shadow: 0px 0px 5vw 1vw gainsboro;
+}
+
+.inside_bottom_panel{
+    width: 98vw;
+    height: 5.5vh;
+    margin-top: 1.5vh;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    font-size: 5vw;
+    text-align: center;
+}
+
+.question_section{
+    position: absolute;
+    z-index: 1;
+    left: 4vw;
+    top: 11.1vh;
+    width: 92vw;
+    height: 77.1vh;
+    border: 1px solid darkgray;
+    border-radius: 2vw;
+    box-shadow: 0px 0px 5vw 1vw gainsboro;
+}
+
+
+
+.the_question{
+    font-size: 5vw;
+    margin-left: 5vw;
+    margin-right: 7vw;
+    margin-top: 3vh;
+    height: 30vh;  
+}
+
+.the_options{
+    font-size: 5vw;
+    margin: 3vw;
+}
+
+button{
+    font-size: 4vw;
+    color: white;
+    height: 5vh;
+    width: 22vw;
+    background-color: rgb(0 196 190);
+    border-radius: 2vw;
+    border-color: rgb(0 196 190);
+}
+
+button:disabled{
+    background-color: gainsboro;
+    border-color: gainsboro;
+}
+
+.back_button{
+    float: left;
+    margin-left: 3vw;
+}
+
+.next_button{
+    float: right;
+    margin-right: 3vw;
+    margin-top: 1.5vh;
+}
+
+.submit_button{
+    float: right;
+    margin-right: 3vw;
+    margin-top: 1.5vh;
+}
+
+.home_button{
+    float: left;
+    margin-left: 3vw;
+}
+
+.timer{
+    /* margin-left: 38vw; */
+    /*margin-left: 5.5vw;*/
+    width: 100%;
+    text-align: center;
+    font-size: 5vw;
+}
+
+.results_div{
+    font-size: 5vw;
+    padding: 3vw;
+    padding-top: 20vh;
+    text-align: center;
+}
+
+
+.answers_button{
+    color: green;
+    text-decoration: underline;
+}
+
+.x_question{
+    font-size: 5vw;
+    width: 85vw;
+    padding: 3vw;
+    padding-left: 5vw;
+    padding-bottom: 1vw;
+    margin-bottom: 0px;
+}
+
+.x_answer{
+    font-size: 5vw;
+    color: darkgreen;
+    width: 85vw;
+    padding: 3vw;
+    padding-left: 5vw;
+    padding-top: 1vw;
+    margin-top: 0px;
+}
+
+.x_panel{
+    width: 100vw;
+    height: 8vh;
+}
+.big{
+    font-size: 14vw;
+    font-weight: bolder;
+    color: blue;
+}
+.small{
+    font-size: 3vw;
+}
+.papers{
+    width: 95vw;
+    min-height: 15vh;
+    padding: 4vw;
+    padding-right: 7vw;
+    margin-left: 2.5vw;
+    margin-top: 6vw;
+    border-radius: 1vw;
+    box-sizing: border-box;
+    border: 1px solid darkgray;
+    box-shadow: 0px 0px 5vw 1vw gainsboro;
+    
+}
+.papers:hover{
+    background-color: gainsboro;
+}
+
+.xxy{
+    width: 75vw;
+    height: 7vh;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    color: black;
+    font-size: 5vw;
+    font-weight: normal;   
+}
+
+.author_name{
+    position: absolute;
+    float: left;
+    margin-left: 0.1vw;
+    margin-top: 1vh;
+    color: green;
+    font-size: 3.5vw;
+}
+
+.paper_category{
+    position: absolute;
+    color: blue;
+    font-size: 3.5vw;
+    margin-top: 1vh;
+    right: 7vw;
+}
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+.first_screen{
+    /*
+    z-index: 10;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    */
+    display: none;
+}
+
+.xx_button{
+    font-size: 4vw;
+    color: white;
+    height: 5vh;
+    width: 80vw;
+    margin-top: 10vh;
+    background-color: rgb(45, 45, 255);
+    border-radius: 2vw;
+    border-color: rgb(45, 45, 255); 
+}
+
+.Miscellaneous{
+    background-image: linear-gradient(to right,white,#ffdef8);
+}
+.History{
+    background-image: linear-gradient(to right,white,#defffd);
+}
+.Politics{
+    background-image: linear-gradient(to right,white,#fffede);
+}
+.Geography{
+    background-image: linear-gradient(to right,white,#bdffc1);
+}
+.Science{
+    background-image: linear-gradient(to right,white,#dee3ff);
+}
+
+.alert_dialog{
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.562);
+}
+
+.alert_dialog_div{
+    font-size: 5vw;
+    text-align: center;
+    margin-top: 65vw;
+    margin-left: 18vw;
+    width: 64vw;
+    height: 38vw;
+    padding: 2vw;
+    padding-top: 5vw;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3vw;
+}

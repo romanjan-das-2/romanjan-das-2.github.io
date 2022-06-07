@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper</title>
+    <script>
+        var questions_and_answers = {
+
+            /*
+            question_ : {
+                the_question: "",
+                option_a: "",
+                option_b: "",
+                option_c: "",
+                option_d: "",
+                correct: 
+            },
+            */
+
+            question_1: {
+                the_question: "‘শান্তিস্বৰূপ ভাটনাগৰ বঁটা’ কিহৰ ক্ষেত্ৰত দেখুওৱা পাৰদৰ্শিতাৰ বাবে আগবঢ়োৱা হয়?",
+                option_a: "ভাৰতীয় সাহিত্য",
+                option_b: "সংগীত,নাটক,নৃত্য",
+                option_c: "ক্ৰীড়া",
+                option_d: "বৈজ্ঞানিক গৱেষণা",
+                correct: 4
+            },
+            question_2: {
+                the_question: "প্ৰথম ভাৰতীয় ‘মিছ ৱৰ্ল্ড’ কোন আছিল?",
+                option_a: "লাৰা দত্ত",
+                option_b: "সুস্মিতা সেন",
+                option_c: "ৰীতা ফাৰিয়া",
+                option_d: "ঐশ্বৰ্য্য ৰায়",
+                correct: 3
+            },
+            question_3: {
+                the_question: "ভাৰতবৰ্ষত সৰ্বাধিক প্ৰচলিত ইংৰাজী ভাষাৰ বাতৰি কাকতখন কি?",
+                option_a: "দি টাইম্ছ অব ইণ্ডিয়া",
+                option_b: "দি হিন্দু",
+                option_c: "হিন্দুস্তান টাইম্ছ",
+                option_d: "দি ইণ্ডিয়ান এক্সপ্ৰেছ",
+                correct: 1
+            },
+            question_4: {
+                the_question: "পৃথিৱীৰ বৃহত্তম মহাদেশ কোনখন?",
+                option_a: "আফ্ৰিকা",
+                option_b: "এছিয়া",
+                option_c: "উত্তৰ আমেৰিকা",
+                option_d: "এণ্টাৰ্কটিকা",
+                correct: 2
+            },
+            question_5: {
+                the_question: "পৃথিৱীৰ আটাইতকৈ গভীৰ খাত‘মাৰিয়ানা খাত’,কোনখন মহাসাগৰত অৱস্থিত?",
+                option_a: "প্ৰশান্ত মহাসাগৰ",
+                option_b: "আটলাণ্টিক মহাসাগৰ",
+                option_c: "ভাৰত মহাসাগৰ",
+                option_d: "উত্তৰ মহাসাগৰ",
+                correct: 1
+            },
+            question_6: {
+                the_question: "পৃথিৱীৰ দীৰ্ঘতম নদী কি?",
+                option_a: "কংগো",
+                option_b: "আমাজন ",
+                option_c: "নীল",
+                option_d: "হোৱাংহো",
+                correct: 3
+            },
+            question_7: {
+                the_question: "‘মাউণ্ট এট্না’ ক’ত অৱস্থিত?",
+                option_a: "হাৱাই,আমেৰিকা যুক্তৰাষ্ট্ৰ",
+                option_b: "চিচিলি,ইটালী",
+                option_c: "জাভা,ইণ্ডোনেছিয়া",
+                option_d: "আলাস্কা,আমেৰিকা যুক্তৰাষ্ট্ৰ",
+                correct: 2
+            },
+            question_8: {
+                the_question: "আয়াৰলেণ্ডৰ ৰাজধানীখনৰ নাম কি?",
+                option_a: "মাদ্ৰিদ",
+                option_b: "বাৰ্ন",
+                option_c: "বাৰ্লিন",
+                option_d: "ডাবলিন",
+                correct: 4
+            },
+            question_9: {
+                the_question: "সাংবাদিকতা আৰু ইয়াৰ সম্পৰ্কীয় বিভিন্ন ক্ষেত্ৰ যেনে জনসেৱা,অনুসন্ধানমূলক প্ৰতিবেদন,ৰাষ্ট্ৰীয়-আন্তঃৰাষ্ট্ৰীয় প্ৰতিবেদন আদিৰ বাবে আগবঢ়োৱা বঁটাবিধ হ’ল",
+                option_a: "পুলিৎজাৰ বঁটা",
+                option_b: "অস্কাৰ বঁটা",
+                option_c: "কলিংগ বঁটা",
+                option_d: "ইউনেস্ক পুৰস্কাৰ",
+                correct: 1
+            },
+            question_10: {
+                the_question: "১৯৯৮চনত অৰ্থনীতিৰ বাবে কোনজন ভাৰতীয়লৈ নোবেল বঁটা আগবঢ়োৱা হয়?",
+                option_a: "চন্দ্ৰশেখৰ ভেংকট ৰমণ",
+                option_b: "হৰগোবিন্দ খোৰানা",
+                option_c: "সুব্ৰাহ্মন্যন চন্দ্ৰশেখৰ",
+                option_d: "অমৰ্ত্য সেন",
+                correct: 4
+            }
+
+        };
+
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="ui_script.js"></script>
+</head>
+
+<body onload="load_ui();"></body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="papers/style.css">
+    <script src="index_ui.js"></script>
+    <script>
+        function show_categories_menu(){
+            document.getElementById("proto_selector").innerHTML="";
+            document.getElementById("the_categories").style.display = "block";
+        }
+
+        function select_a_category(id_of_div){
+            document.getElementById("the_categories").style.display = "none";
+            document.getElementById("proto_selector").innerHTML=id_of_div.id;
+            if(id_of_div.id=="papers"){
+                document.getElementById("proto_selector").innerHTML="Showing all papers";
+            }
+            var items_all = document.getElementsByClassName("papers").length;
+            for(i=0;i<items_all;i++){
+            document.getElementsByClassName("papers")[i].style.display = "none";
+            }
+            var items = document.getElementsByClassName(id_of_div.id).length;
+            for(i=0;i<items;i++){
+            document.getElementsByClassName(id_of_div.id)[i].style.display = "block"
+            }
+        }
+    </script>
+</head>
+<body onload="loadIndexData();">
+    <div class="top_panel" id="top_panel"><span style="font-size: 5vw;">&nbsp;&nbsp;&nbsp; Assam GK & Current Affairs</span></div>
+    <div class="x_panel"></div>
+    <div class="screen_one"></div>
+    <div class="x_panel"></div>
+    <div class="x_panel"></div>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5579214418616323"
+    crossorigin="anonymous"></script>
+
+   <div style="position:fixed;bottom:0px;display:flex;width:100%;justify-content:center;margin-top: 6vw; min-height: 15vh;">
+
+   <!-- 360p_wide_ad -->
+   <ins class="adsbygoogle"
+    style="display:inline-block;width:360px;height:90px"
+    data-ad-client="ca-pub-5579214418616323"
+    data-ad-slot="8089205364"></ins>
+
+   </div> 
+
+
+   <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+</body>
+</html>

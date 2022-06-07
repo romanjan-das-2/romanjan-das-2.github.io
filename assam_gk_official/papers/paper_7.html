@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper</title>
+    <script>
+        var questions_and_answers = {
+
+            /*
+            question_ : {
+                the_question: "",
+                option_a: "",
+                option_b: "",
+                option_c: "",
+                option_d: "",
+                correct: 
+            },
+            */
+
+            question_1: {
+                the_question: "________ক অসমত চাহ খেতিৰ জনক হিচাপে জনাজাত ।",
+                option_a: "চাৰ্লছ আলেকজেণ্ডাৰ ব্ৰুছ",
+                option_b: "জন বেৰী হোৱাইট",
+                option_c: "নাথান ব্ৰাউন",
+                option_d: "পিয়লি ফুকন",
+                correct: 1
+            },
+            question_2: {
+                the_question: "‘অসমীয়া সাহিত্যৰ বেকন’ বুলি কাক জনা যায়?",
+                option_a: "শৈলধৰ ৰাজখোৱা",
+                option_b: "সত্যনাথ বৰা",
+                option_c: "সৌৰভ কুমাৰ চলিহা",
+                option_d: "সূৰ্যকুমাৰ ভূঞা",
+                correct: 2
+            },
+            question_3: {
+                the_question: "‘লোকনায়ক’ বুলি কাক জনা যায়?",
+                option_a: "মতিৰাম বৰা",
+                option_b: "আনন্দিৰাম দাস",
+                option_c: "অমিয় কুমাৰ দাস",
+                option_d: "গোপীনাথ বৰদলৈ",
+                correct: 3
+            },
+            question_4: {
+                the_question: "‘ধনবৰ কাই’ নামেৰে পৰিচিত অসমীয়া সাহিত্যিক গৰাকীৰ প্ৰকৃত নাম কি?",
+                option_a: "মহিম বৰা",
+                option_b: "ভবানন্দ দত্ত",
+                option_c: "দীনেশ চন্দ্ৰ গোস্বামী",
+                option_d: "কীৰ্তিনাথ বৰদলৈ",
+                correct: 1
+            },
+            question_5: {
+                the_question: "১৯১৭ চনৰ ২৬ ডিচেম্বৰত _________ৰ সভাপতিত্বত অসম সাহিত্য সভাৰ প্ৰথম অধিবেশন অনুষ্ঠিত হয় ।",
+                option_a: "চন্দ্ৰধৰ বৰুৱা",
+                option_b: "পদ্মনাথ গোহাঞি বৰুৱা",
+                option_c: "কালিৰাম মেধি",
+                option_d: "হেমচন্দ্ৰ গোস্বামী",
+                correct: 2
+            },
+            question_6: {
+                the_question: "‘অসম ৰত্ন’ বঁটা লাভ কৰা দ্বিতীয় গৰাকী ব্যক্তি কোন আছিল?",
+                option_a: "চন্দ্ৰপ্ৰসাদ শইকীয়া",
+                option_b: "ভূপেন হাজৰিকা",
+                option_c: "ৰং বং তেৰাং",
+                option_d: "মামণি ৰয়ছম গোস্বামী",
+                correct: 4
+            },
+            question_7: {
+                the_question: "১৯৭৬ চনত ‘পিতা-পুত্ৰ’ গ্ৰন্থখনৰ বাবে কোনগৰাকী সাহিত্যিকলৈ প্ৰকাশন পৰিষদ বঁটা আগবঢ়োৱা হয়?",
+                option_a: "নৱকান্ত বৰুৱা",
+                option_b: "নীলমণি ফুকন",
+                option_c: "ভবেন বৰুৱা",
+                option_d: "হোমেন বৰগোহাঞি",
+                correct: 4
+            },
+            question_8: {
+                the_question: "২০১৩ চনত ‘ধূলিয়ৰি ভৰিৰ সাঁচ’ গ্ৰন্থখনৰ বাবে কোনগৰাকী সাহিত্যিকলৈ ‘সাহিত্য অকাডেমী বঁটা’ আগবঢ়োৱা হয়?",
+                option_a: "কেশদা মহন্ত",
+                option_b: "চন্দনা গোস্বামী",
+                option_c: "ৰবীন্দ্ৰ সৰকাৰ",
+                option_d: "ৰীতা চৌধুৰী",
+                correct: 3
+            },
+            question_9: {
+                the_question: "১৯৯০ চনত ‘আত্মজীৱন চৰিত’ গ্ৰন্থখনৰ বাবে কোনগৰাকী সাহিত্যিকলৈ প্ৰথমবাৰৰ বাবে ‘সাহিত্য অকাডেমী অনুবাদ বঁটা’ আগবঢ়োৱা হয়?",
+                option_a: "নৰেন্দ্ৰনাথ শৰ্মা",
+                option_b: "ৰাধিকামোহন ভাগৱতী",
+                option_c: "ফণী তালুকদাৰ",
+                option_d: "ভোলানাথ গগৈ",
+                correct: 1
+            },
+            question_10: {
+                the_question: "১৯৫৫ চনত ‘পদ্ম বিভূষণ’ বঁটা লাভ কৰিও বঁটা প্ৰত্যাখান কৰা অসমীয়া ব্যক্তিগৰাকী কোন আছিল?",
+                option_a: "ভূপেন হাজৰিকা",
+                option_b: "বিমলাপ্ৰসাদ চলিহা",
+                option_c: "অমলপ্ৰভা দাস",
+                option_d: "নৱকান্ত বৰুৱা",
+                correct: 3
+            }
+
+
+        };
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="ui_script.js"></script>
+</head>
+
+<body onload="load_ui();"></body>
+
+</html>
