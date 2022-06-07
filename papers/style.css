@@ -318,7 +318,13 @@ label{
 }
 
 @media only screen and (orientation: landscape) {
-    body {
-      opacity: 0.1;
+    .papers{
+        opacity:0;
+    }
+    #quotes{
+        opacity:0;
+    }
+    #top_panel{
+        opacity:0;
     }
   }

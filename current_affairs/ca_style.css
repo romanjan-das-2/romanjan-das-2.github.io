@@ -36,7 +36,13 @@ button{
 }
 
 @media only screen and (orientation: landscape) {
-    body {
-      opacity: 0%;
+    #top_panel{
+        opacity:0;
+    }
+    .question_section{
+        opacity: 0;
+    }
+    .bottom_panel{
+        opacity: 0;
     }
   }
