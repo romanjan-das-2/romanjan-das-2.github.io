@@ -319,6 +319,6 @@ label{
 
 @media only screen and (orientation: landscape) {
     body {
-      opacity: 0%;
+      opacity: 0.1;
     }
   }
