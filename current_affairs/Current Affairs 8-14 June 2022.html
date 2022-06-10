@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ca_style.css">
+    <script src="ca_script.js"></script>
+</head>
+
+<body onload="next(true)">
+
+    <div class="top_panel" id="top_panel"><div class="timer" id="timer"></div><span
+            style="display: none; font-size: 5vw;"
+            id="asg">&nbsp;&nbsp;&nbsp;Assam General Knowledge</span></div>
+    <div class="bottom_panel">
+
+        <button class="next_button" id="next_button" style="width:30%; margin-left: 18%;margin-right:10%;"
+            onclick="next(true);">
+            Next &gt;</button>
+        <button class="next_button" id="previous_button" style="width:30%;margin-left:0px;" onclick="next(false);">
+           &lt; Previous</button>
+    </div>
+    <div class="question_section ca_a">
+        <div class="ca_b">
+            <span class="ca_c" id="ca_title"></span><br><br>
+            <div id="ca_content"></div>
+
+        </div>
+    </div>
+    <div class="question_section ca_a ca_e">
+        <div class="ca_b ca_d">
+            <span class="ca_c" >You have reached<br> THE END.</span>
+        </div>
+    </div>
+
+
+
+
+
+    <!--------------------------------Write current affairs here------------------------->
+
+    <ca_data style="display: none;">
+
+        <ca_date id="ca_date">8-14 June 2022</ca_date>
+
+        <ca_section>
+            <ca_name>NHAI Record</ca_name>
+            <ca_text>India's NHAI (National Highway Authority of India) has set a Guennise World Record for building 75km road in
+                105 hr 33 min in a section of NH53. It is a single lane bituminous concrete road.
+            </ca_text>
+        </ca_section>
+
+        <ca_section>
+            <ca_name>NSIL</ca_name>
+            <ca_text>GoI has transfered ownership of 10 in orbit communication satellites to NSIL (New Space India Ltd).
+                 NSIL is a commercial arm of ISRO. It was formed to provide satellite telecommunication services to business and individuals
+                 and to compete in international market in the field of space comm.
+            </ca_text>
+        </ca_section>
+
+        <ca_section>
+            <ca_name>Thambi the mascot</ca_name>
+            <ca_text>44th Chess Olympiad will be held in Mallapuram in TamilNadu from 28 July to 10 August. A mascot named "Thambi" is
+                chosen for the contest. Thambi means "younger brother" in Tamil language.
+            </ca_text>
+        </ca_section>
+
+        <ca_section>
+            <ca_name>Asia's largest solar carport</ca_name>
+            <ca_text>Maruti Suzuki India has built a solar power based carport at Manesar. It is able to produce upto 20MWh of electricity.
+                It is claimed to be Asia's largest solar carport.
+            </ca_text>
+        </ca_section>
+
+        
+    
+    </ca_data>
+</body>
+
+</html>

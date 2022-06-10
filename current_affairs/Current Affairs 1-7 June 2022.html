@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ca_style.css">
+    <script src="ca_script.js"></script>
+</head>
+
+<body onload="next(true)">
+
+    <div class="top_panel" id="top_panel"><div class="timer" id="timer"></div><span
+            style="display: none; font-size: 5vw;"
+            id="asg">&nbsp;&nbsp;&nbsp;Assam General Knowledge</span></div>
+    <div class="bottom_panel">
+
+        <button class="next_button" id="next_button" style="width:30%; margin-left: 18%;margin-right:10%;"
+            onclick="next(true);">
+            Next &gt;</button>
+        <button class="next_button" id="previous_button" style="width:30%;margin-left:0px;" onclick="next(false);">
+           &lt; Previous</button>
+    </div>
+    <div class="question_section ca_a">
+        <div class="ca_b">
+            <span class="ca_c" id="ca_title"></span><br><br>
+            <div id="ca_content"></div>
+
+        </div>
+    </div>
+    <div class="question_section ca_a ca_e">
+        <div class="ca_b ca_d">
+            <span class="ca_c" >You have reached<br> THE END.</span>
+        </div>
+    </div>
+
+
+
+
+
+    <!--------------------------------Write current affairs here------------------------->
+
+    <ca_data style="display: none;">
+
+        <ca_date id="ca_date">1-7 June 2022</ca_date>
+        
+        <ca_section>
+            <ca_name>World No Tobacco Day</ca_name>
+            <ca_text>WHO choses Jharkhand for World No Tobacco Day Award 2022 in recognition of the state's effort to
+                reduce tobacco usage.
+            </ca_text>
+        </ca_section>
+
+        <ca_section>
+            <ca_name>Free Trade Deal</ca_name>
+            <ca_text>Israel and UAE signed a free trade deal in Dubai. It is Israel's first free trade deal with an Arab
+                country.
+            </ca_text>
+        </ca_section>
+        
+    
+        <ca_section>
+            <ca_name>Har Time Emi on Time</ca_name>
+            <ca_text>"Har Time Emi on Time" is a financial education campaign initiated by "Bajaj Finance" to help
+                customers understand the benefits of good financial practices.
+            </ca_text>
+        </ca_section>
+
+    </ca_data>
+</body>
+
+</html>
