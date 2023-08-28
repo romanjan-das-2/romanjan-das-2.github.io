@@ -313,6 +313,14 @@ body{
     color: #135a9c;
     margin-left: 5%;
 }
+/*-----------------------------GUEST HOUSE CLASS--------------------------------*/
+.guest-house-class>div{
+    margin-bottom: 7%;
+    font-weight: bold; font-size: 23px;
+}
+.guest-house-class>div>a{
+    font-weight: bold; color: red; font-size: 23px; text-decoration: none; text-align: center;
+}
 
 
 @media only screen and (orientation: portrait){
@@ -408,5 +416,12 @@ body{
         padding-bottom: 30px;
         background-color: #135a9c;
         z-index: 4;
+    }
+    .guest-house-class>div{
+        margin-bottom: 3%;
+        font-weight: bold; font-size: 15px; padding: 2%;
+    }
+    .guest-house-class>div>a{
+        font-weight: bold; color: red; font-size: 15px; text-decoration: none; text-align: center;
     }
 }
