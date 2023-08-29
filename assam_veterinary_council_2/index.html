@@ -1,236 +1,224 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assam Veterinary Council</title>
-    <link rel="stylesheet" href="index-style.css">
-
-    <!---------------  BELOW IS THE SCRIPT FOR THE SLIDESHOW  ----------------------------->
-    <script>
-        var checkDimIntv;
-        var slideWidth;
-        var imageSlideshow;
-        var slidesContainer;
-        var numberOfSlides;
-        var slideControls;
-        var slideshowTimer;
-        var slideNumber = 0;
-        var slidePointers = [];
-        var bodyClientWidth;
-        var touchStartX=0;
-        var touchmoveX=0;
-        var touchStatusBool=true;
-        var imgHoverStatus=[];
-        var forSlidePointers="";
-        var forSlidePointers2="";
-
-        function checkDimensionChange(){
-            if(bodyClientWidth != document.body.clientWidth){
+    <title>Document</title>
+        <!---------------  BELOW IS THE SCRIPT FOR THE SLIDESHOW  ----------------------------->
+        <script>
+            var checkDimIntv;
+            var slideWidth;
+            var imageSlideshow;
+            var slidesContainer;
+            var numberOfSlides;
+            var slideControls;
+            var slideshowTimer;
+            var slideNumber = 0;
+            var slidePointers = [];
+            var bodyClientWidth;
+            var touchStartX=0;
+            var touchmoveX=0;
+            var touchStatusBool=true;
+            var imgHoverStatus=[];
+            var forSlidePointers="";
+            var forSlidePointers2="";
+    
+            function checkDimensionChange(){
+                if(bodyClientWidth != document.body.clientWidth){
+                    bodyClientWidth = document.body.clientWidth;
+                    resetTheDimensions();
+                }
+            }
+            function slideshowInitialise(){
+                imageSlideshow = document.getElementsByClassName("image_slideshow")[0];
+                imageSlideshow.style.padding="0px";
                 bodyClientWidth = document.body.clientWidth;
+                checkDimIntv = setInterval(() => {
+                    checkDimensionChange();
+                }, 500);
+                imageSlideshow.style.overflow="hidden";
+                slidesContainer = document.getElementsByClassName("slide_container")[0];
+                numberOfSlides= document.getElementsByClassName("slides").length;
+                for(i=0;i<numberOfSlides;i++){
+                    document.getElementsByClassName("slides")[i].style.margin="0px";
+                    document.getElementsByClassName("slides")[i].style.float="left";
+                }
+                slideControls = document.getElementsByClassName("slide_controls")[0];
+                slideControls.style.padding="0px";
+                slideControls.style.backgroundColor="white";
+                slidesContainer.style.transition = "700ms";
+                document.getElementsByClassName("slide_control_icon")[0].style.float = "left";
+                document.getElementsByClassName("slide_control_icon")[1].style.float = "left";
+                //document.getElementsByClassName("slide_control_pointer_bar")[0].style.float = "left";
+                document.getElementsByClassName("slide_control_icon_img")[0].style.float = "left";
+                document.getElementsByClassName("slide_control_icon_img")[1].style.float = "left";
+    
+                for(i=0;i<numberOfSlides;i++){
+                    slidePointers[i] = document.createElement("div");
+                    slidePointers[i].className = "slide_pointers";
+                    document.getElementsByClassName("slide_control_pointer_container")[0].appendChild(slidePointers[i]); 
+                }
+    
+                for(i=0;i<numberOfSlides;i++){
+                    document.getElementsByClassName("slide_pointers")[i].style.border = "1px solid gainsboro";
+                    //document.getElementsByClassName("slide_pointers")[i].style.borderRadius = "50%";
+                    document.getElementsByClassName("slide_pointers")[i].style.float = "left";
+                    document.getElementsByClassName("slide_pointers")[i].id="slide_pointer_"+i;
+                    document.getElementsByClassName("slide_pointers")[i].setAttribute("onclick","gotoSlide(this);");
+                    forSlidePointers="document.getElementsByClassName(\"slide_pointers\")["+i+"].style.borderColor= \"slategrey\";"
+                    forSlidePointers2="document.getElementsByClassName(\"slide_pointers\")["+i+"].style.borderColor= \"gainsboro\";"
+                    document.getElementsByClassName("slide_pointers")[i].setAttribute("onmouseover",forSlidePointers);
+                    document.getElementsByClassName("slide_pointers")[i].setAttribute("onmouseout",forSlidePointers2);
+                }
+                
+    
+                document.getElementsByClassName("slide_control_pointer_container")[0].style.margin = "auto";
+                document.getElementsByClassName("slide_control_pointer_container")[0].style.boxSizing = "border-box";
+    
+                for(i=0;i<numberOfSlides;i++){
+                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                }
+                document.getElementsByClassName("slide_pointers")[0].style.backgroundColor = "gainsboro";
                 resetTheDimensions();
-            }
-        }
-        function slideshowInitialise(){
-            imageSlideshow = document.getElementsByClassName("image_slideshow")[0];
-            imageSlideshow.style.padding="0px";
-            bodyClientWidth = document.body.clientWidth;
-            checkDimIntv = setInterval(() => {
-                checkDimensionChange();
-            }, 500);
-            imageSlideshow.style.overflow="hidden";
-            slidesContainer = document.getElementsByClassName("slide_container")[0];
-            numberOfSlides= document.getElementsByClassName("slides").length;
-            for(i=0;i<numberOfSlides;i++){
-                document.getElementsByClassName("slides")[i].style.margin="0px";
-                document.getElementsByClassName("slides")[i].style.float="left";
-            }
-            slideControls = document.getElementsByClassName("slide_controls")[0];
-            slideControls.style.padding="0px";
-            slideControls.style.backgroundColor="white";
-            slidesContainer.style.transition = "700ms";
-            document.getElementsByClassName("slide_control_icon")[0].style.float = "left";
-            document.getElementsByClassName("slide_control_icon")[1].style.float = "left";
-            //document.getElementsByClassName("slide_control_pointer_bar")[0].style.float = "left";
-            document.getElementsByClassName("slide_control_icon_img")[0].style.float = "left";
-            document.getElementsByClassName("slide_control_icon_img")[1].style.float = "left";
-
-            for(i=0;i<numberOfSlides;i++){
-                slidePointers[i] = document.createElement("div");
-                slidePointers[i].className = "slide_pointers";
-                document.getElementsByClassName("slide_control_pointer_container")[0].appendChild(slidePointers[i]); 
-            }
-
-            for(i=0;i<numberOfSlides;i++){
-                document.getElementsByClassName("slide_pointers")[i].style.border = "1px solid gainsboro";
-                //document.getElementsByClassName("slide_pointers")[i].style.borderRadius = "50%";
-                document.getElementsByClassName("slide_pointers")[i].style.float = "left";
-                document.getElementsByClassName("slide_pointers")[i].id="slide_pointer_"+i;
-                document.getElementsByClassName("slide_pointers")[i].setAttribute("onclick","gotoSlide(this);");
-                forSlidePointers="document.getElementsByClassName(\"slide_pointers\")["+i+"].style.borderColor= \"slategrey\";"
-                forSlidePointers2="document.getElementsByClassName(\"slide_pointers\")["+i+"].style.borderColor= \"gainsboro\";"
-                document.getElementsByClassName("slide_pointers")[i].setAttribute("onmouseover",forSlidePointers);
-                document.getElementsByClassName("slide_pointers")[i].setAttribute("onmouseout",forSlidePointers2);
-            }
-            
-
-            document.getElementsByClassName("slide_control_pointer_container")[0].style.margin = "auto";
-            document.getElementsByClassName("slide_control_pointer_container")[0].style.boxSizing = "border-box";
-
-            for(i=0;i<numberOfSlides;i++){
-                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
-            }
-            document.getElementsByClassName("slide_pointers")[0].style.backgroundColor = "gainsboro";
-            resetTheDimensions();
-            startsTheInterval();
-            if(window.innerHeight<window.innerWidth){
-                imageSlideshow.addEventListener("mouseover",clearsTheInterval,false);
-                imageSlideshow.addEventListener("mouseout",startsTheInterval,false);
-            }
-            
-            slidesContainer.setAttribute("ontouchstart","ontouchstartEvent(event);");
-            slidesContainer.setAttribute("ontouchmove","ontouchmoveEvent(event);");
-            slidesContainer.setAttribute("ontouchend","touchStatusBool=true;startsTheInterval();");
-            document.getElementsByClassName("slide_control_icon")[0].addEventListener("click",prevSlide,false);
-            document.getElementsByClassName("slide_control_icon")[1].addEventListener("click",nextSlide,false);
-            document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "0.25";
-            document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "0.25";
-            imgHoverStatus[0]=document.getElementsByClassName("slide_control_icon")[0];
-            imgHoverStatus[0].addEventListener("mouseover",function(){document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "1";},false);
-            imgHoverStatus[0].addEventListener("mouseout",function(){document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "0.25";},false);
-            imgHoverStatus[1]=document.getElementsByClassName("slide_control_icon")[1];
-            imgHoverStatus[1].addEventListener("mouseover",function(){document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "1";},false);
-            imgHoverStatus[1].addEventListener("mouseout",function(){document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "0.25";},false);
-            document.getElementsByClassName("css_helper")[0].style.display="none";
-            document.getElementsByClassName("css_loader")[0].style.display="none";
-            document.getElementsByClassName("image_slideshow")[0].style.display="block";
-        }
-        function ontouchstartEvent(event){
-            clearsTheInterval();
-            touchStartX = event.touches[0].clientX;
-        }
-        function ontouchmoveEvent(event){
-            if(touchStartX-event.touches[0].clientX>slideWidth/5 && touchStatusBool){
-                if(slideNumber!=numberOfSlides-1){
-                    nextSlide();
+                startsTheInterval();
+                if(window.innerHeight<window.innerWidth){
+                    imageSlideshow.addEventListener("mouseover",clearsTheInterval,false);
+                    imageSlideshow.addEventListener("mouseout",startsTheInterval,false);
                 }
-                touchStatusBool = false;
+                
+                slidesContainer.setAttribute("ontouchstart","ontouchstartEvent(event);");
+                slidesContainer.setAttribute("ontouchmove","ontouchmoveEvent(event);");
+                slidesContainer.setAttribute("ontouchend","touchStatusBool=true;startsTheInterval();");
+                document.getElementsByClassName("slide_control_icon")[0].addEventListener("click",prevSlide,false);
+                document.getElementsByClassName("slide_control_icon")[1].addEventListener("click",nextSlide,false);
+                document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "0.25";
+                document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "0.25";
+                imgHoverStatus[0]=document.getElementsByClassName("slide_control_icon")[0];
+                imgHoverStatus[0].addEventListener("mouseover",function(){document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "1";},false);
+                imgHoverStatus[0].addEventListener("mouseout",function(){document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "0.25";},false);
+                imgHoverStatus[1]=document.getElementsByClassName("slide_control_icon")[1];
+                imgHoverStatus[1].addEventListener("mouseover",function(){document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "1";},false);
+                imgHoverStatus[1].addEventListener("mouseout",function(){document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "0.25";},false);
+                document.getElementsByClassName("css_helper")[0].style.display="none";
+                document.getElementsByClassName("css_loader")[0].style.display="none";
+                document.getElementsByClassName("image_slideshow")[0].style.display="block";
             }
-            if(event.touches[0].clientX-touchStartX>slideWidth/5 && touchStatusBool){
-                if(slideNumber!=0){
-                    prevSlide();
+            function ontouchstartEvent(event){
+                clearsTheInterval();
+                touchStartX = event.touches[0].clientX;
+            }
+            function ontouchmoveEvent(event){
+                if(touchStartX-event.touches[0].clientX>slideWidth/5 && touchStatusBool){
+                    if(slideNumber!=numberOfSlides-1){
+                        nextSlide();
+                    }
+                    touchStatusBool = false;
                 }
-                touchStatusBool = false;
+                if(event.touches[0].clientX-touchStartX>slideWidth/5 && touchStatusBool){
+                    if(slideNumber!=0){
+                        prevSlide();
+                    }
+                    touchStatusBool = false;
+                }
             }
-        }
-        function clearsTheInterval(){
-            clearInterval(slideshowTimer);
-        }
-        function startsTheInterval(){
-            slideshowTimer = setInterval(() => {
+            function clearsTheInterval(){
+                clearInterval(slideshowTimer);
+            }
+            function startsTheInterval(){
+                slideshowTimer = setInterval(() => {
+                    slideNumber++;
+                    if(slideNumber>numberOfSlides-1){
+                        slideNumber=0;
+                    }
+                    slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
+                    for(i=0;i<numberOfSlides;i++){
+                        document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                    }
+                    document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+                }, 4000);
+            }
+            function nextSlide(){
                 slideNumber++;
-                if(slideNumber>numberOfSlides-1){
-                    slideNumber=0;
-                }
+                    if(slideNumber>numberOfSlides-1){
+                        slideNumber=0;
+                    }
                 slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
-                for(i=0;i<numberOfSlides;i++){
-                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
-                }
-                document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
-            }, 4000);
-        }
-        function nextSlide(){
-            slideNumber++;
-                if(slideNumber>numberOfSlides-1){
-                    slideNumber=0;
-                }
-            slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
-                for(i=0;i<numberOfSlides;i++){
-                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
-                }
-                document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
-        }
-        function prevSlide(){
-            slideNumber=slideNumber-1;
-                if(slideNumber<0){
-                    slideNumber=numberOfSlides-1;
-                }
-            slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
-                for(i=0;i<numberOfSlides;i++){
-                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
-                }
-                document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
-        }
-        function gotoSlide(x){
-            var str = x.id;
-            str = str.slice(14,str.length);
-            slideNumber=parseInt(str);
-            slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
-                for(i=0;i<numberOfSlides;i++){
-                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
-                }
-                document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
-        }
-        function resetTheDimensions(){
-            slideWidth = document.getElementsByClassName("image_slideshow")[0].parentElement.clientWidth;
-            imageSlideshow.style.width=slideWidth+"px";
-            imageSlideshow.style.height = slideWidth*8/10+ "px";
-            slidesContainer.style.height=slideWidth*7.5/10+"px";
-            slidesContainer.style.width=(numberOfSlides*slideWidth+1)+"px";
-            for(i=0;i<numberOfSlides;i++){
-                document.getElementsByClassName("slides")[i].style.width=slideWidth+"px";
-                document.getElementsByClassName("slides")[i].style.height=slideWidth*7.5/10+"px";
+                    for(i=0;i<numberOfSlides;i++){
+                        document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                    }
+                    document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
             }
-            slideControls.style.height=slideWidth/25+"px";
-            slideControls.style.width=slideWidth+"px";
-            document.getElementsByClassName("slide_control_icon")[0].style.width = slideWidth/40+"px";
-            document.getElementsByClassName("slide_control_icon")[0].style.height = slideWidth/40+"px";
-
-            document.getElementsByClassName("slide_control_icon")[1].style.width = slideWidth/40+"px";
-            document.getElementsByClassName("slide_control_icon")[1].style.height = slideWidth/40+"px";
-
-            //document.getElementsByClassName("slide_control_pointer_bar")[0].style.width = (slideWidth - slideWidth/5)+"px";
-            document.getElementsByClassName("slide_control_pointer_bar")[0].style.height = slideWidth/20+"px";
-            
-            document.getElementsByClassName("slide_control_icon_img")[0].style.width = slideWidth/50+"px";
-            document.getElementsByClassName("slide_control_icon_img")[0].style.height = slideWidth/50+"px";
-            document.getElementsByClassName("slide_control_icon_img")[0].style.margin = slideWidth/200+"px";
-            document.getElementsByClassName("slide_control_icon_img")[1].style.width = slideWidth/50+"px";
-            document.getElementsByClassName("slide_control_icon_img")[1].style.height = slideWidth/50+"px";
-            document.getElementsByClassName("slide_control_icon_img")[1].style.margin = slideWidth/200+"px";
-
-            for(i=0;i<numberOfSlides;i++){
-                document.getElementsByClassName("slide_pointers")[i].style.width = slideWidth/20+"px";
-                document.getElementsByClassName("slide_pointers")[i].style.height = slideWidth/60+"px";
-                document.getElementsByClassName("slide_pointers")[i].style.marginLeft = slideWidth/30+"px";
+            function prevSlide(){
+                slideNumber=slideNumber-1;
+                    if(slideNumber<0){
+                        slideNumber=numberOfSlides-1;
+                    }
+                slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
+                    for(i=0;i<numberOfSlides;i++){
+                        document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                    }
+                    document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
             }
-            
-            //document.getElementsByClassName("slide_control_pointer_container")[0].style.width = (slideWidth/16 + slideWidth/50)*numberOfSlides+"px";
-            //document.getElementsByClassName("slide_control_pointer_container")[0].style.marginLeft= (((slideWidth - slideWidth/5)-(slideWidth/25 + slideWidth/50)*numberOfSlides)/2 - slideWidth/50)+"px";
-            document.getElementsByClassName("slide_control_pointer_container")[0].style.height = slideWidth/30+"px";     
-            document.getElementsByClassName("slide_control_pointer_container")[0].style.paddingTop = (slideWidth/11 - slideWidth/25)/4+"px";
-
-            slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
-            //document.getElementsByClassName("slideshow-1")[0].style.height=slideWidth/2+"px";
-        }
-    </script>
-
-    <!---------------  BELOW IS THE SCRIPT FOR HOMEPAGE SPECIFIC FUNCTIONS  --------------->
+            function gotoSlide(x){
+                var str = x.id;
+                str = str.slice(14,str.length);
+                slideNumber=parseInt(str);
+                slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
+                    for(i=0;i<numberOfSlides;i++){
+                        document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                    }
+                    document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+            }
+            function resetTheDimensions(){
+                slideWidth = document.getElementsByClassName("image_slideshow")[0].parentElement.clientWidth;
+                imageSlideshow.style.width=slideWidth+"px";
+                imageSlideshow.style.height = slideWidth*8/10+ "px";
+                slidesContainer.style.height=slideWidth*7.5/10+"px";
+                slidesContainer.style.width=(numberOfSlides*slideWidth+1)+"px";
+                for(i=0;i<numberOfSlides;i++){
+                    document.getElementsByClassName("slides")[i].style.width=slideWidth+"px";
+                    document.getElementsByClassName("slides")[i].style.height=slideWidth*7.5/10+"px";
+                }
+                slideControls.style.height=slideWidth/25+"px";
+                slideControls.style.width=slideWidth+"px";
+                document.getElementsByClassName("slide_control_icon")[0].style.width = slideWidth/40+"px";
+                document.getElementsByClassName("slide_control_icon")[0].style.height = slideWidth/40+"px";
+    
+                document.getElementsByClassName("slide_control_icon")[1].style.width = slideWidth/40+"px";
+                document.getElementsByClassName("slide_control_icon")[1].style.height = slideWidth/40+"px";
+    
+                //document.getElementsByClassName("slide_control_pointer_bar")[0].style.width = (slideWidth - slideWidth/5)+"px";
+                document.getElementsByClassName("slide_control_pointer_bar")[0].style.height = slideWidth/20+"px";
+                
+                document.getElementsByClassName("slide_control_icon_img")[0].style.width = slideWidth/50+"px";
+                document.getElementsByClassName("slide_control_icon_img")[0].style.height = slideWidth/50+"px";
+                document.getElementsByClassName("slide_control_icon_img")[0].style.margin = slideWidth/200+"px";
+                document.getElementsByClassName("slide_control_icon_img")[1].style.width = slideWidth/50+"px";
+                document.getElementsByClassName("slide_control_icon_img")[1].style.height = slideWidth/50+"px";
+                document.getElementsByClassName("slide_control_icon_img")[1].style.margin = slideWidth/200+"px";
+    
+                for(i=0;i<numberOfSlides;i++){
+                    document.getElementsByClassName("slide_pointers")[i].style.width = slideWidth/20+"px";
+                    document.getElementsByClassName("slide_pointers")[i].style.height = slideWidth/60+"px";
+                    document.getElementsByClassName("slide_pointers")[i].style.marginLeft = slideWidth/30+"px";
+                }
+                
+                //document.getElementsByClassName("slide_control_pointer_container")[0].style.width = (slideWidth/16 + slideWidth/50)*numberOfSlides+"px";
+                //document.getElementsByClassName("slide_control_pointer_container")[0].style.marginLeft= (((slideWidth - slideWidth/5)-(slideWidth/25 + slideWidth/50)*numberOfSlides)/2 - slideWidth/50)+"px";
+                document.getElementsByClassName("slide_control_pointer_container")[0].style.height = slideWidth/30+"px";     
+                document.getElementsByClassName("slide_control_pointer_container")[0].style.paddingTop = (slideWidth/11 - slideWidth/25)/4+"px";
+    
+                slidesContainer.style.transform="translateX(-"+slideWidth*slideNumber+"px)";
+                //document.getElementsByClassName("slideshow-1")[0].style.height=slideWidth/2+"px";
+            }
+        </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <script>
-        window.onresize = resize;
-        var ch=0; var cw=0; var cmc=0;
         var more_about_council="<ul><li>The Assam Veterinary Council in its 2nd meeting of the newly reconstituted council held on 10.05.2022, a Disciplinary Committee has been formed under the Section 31 (1) & (2) of VCI Act. 1984, as under to examine complaint received by the council against unethical veterinary practice. The new disciplinary committee already disposed total 10 (ten) complaints till today.<li>Members of Disciplinary Committee: <ul><li>Dr. Sankar Prasad Lahkar - President</li><li>Dr. B. Boral - Convener</li><li>Dr. M. K. Goswami - Member</li><li>Dr. A. Goswami - Member</li><li>Dr. Nurul Islam - Member</li></ul></li><li>Assam Veterinary Council will be able to renew their registration online. For more information visit us at <a href=\"https://assamveterinarycouncil.com\">www.assamveterinarycouncil.com</a></li><li>The State Veterinary Council has its own G+2 RCC building at the Veterinary Directorate campus at Chenikuthi, Guwahati-781003. The Council office and conference hall at the Ground Floor, the first floor and second floor are the Guest House to provide in house facility to a batch of 20 (twenty) nos. of trainees at a time including a VIP suit, Kitchen & dining etc. Other than trainees the veterinarians of the state and outside state are also allowed to accommodate at a minimum rental charges.</li></ul>";
-        function resize()
-        {   
-            cw=document.getElementsByClassName("main-content")[0].clientWidth;
-            document.getElementsByClassName("introduction")[0].style.width=(cw-600)+"px";
-            document.getElementById("main-content-2").style.width=cw+"px";
-            console.log(ch);
-        }    
-        function set_intro_height(){
-            document.getElementsByClassName("introduction")[0].style.height=document.getElementById("slideshow-1-div").clientHeight+"px";
-            document.getElementById("main-content-2").style.top=document.getElementById("slideshow-1-div").clientHeight+200+"px";
-        }
+
         function read_more_about_council(){
             document.getElementById("more_about_council").innerHTML=more_about_council;
             document.getElementById("read_more_about_council").style.display="none";
@@ -238,54 +226,53 @@
             document.getElementsByClassName("main-content")[0].style.height=(cmc+110)+"px";
         }
     </script>
-
-    <!---------------  SCRIPT FOR LOADING HEADER AND FOOTER AND NAV-MENU ACTIONS  ---------->
-    <script src="script.js"></script>
 </head>
-<body onload="slideshowInitialise(); set_intro_height(); resize();">
+<body onload="slideshowInitialise();">
     <div class="left-div"></div>
     <div class="right-div"></div>
     <div class="header"></div>
     <div class="main-content">
-        <div class="slideshow-1">
+        <div class="slideshow-1-holder">        
+            <div class="slideshow-1">
             <div id="slideshow-1-div" style="position: static; width: 100%; padding: 0px; padding-top: 10px; margin: 0px;">
-                
-        <!----------------------------------------------Slideshow------------------------------------------------------------------------->
-        <!---Put the slideshow inside a div with predefined dimensions,slideshows dimensions depend on the parent width only-------------->
-        <!---Only one slideshow can be added,and add the slideshowinitialise function to body onload-------------------------------------->
-        <!---Copy the script to the head and place the icon images to the images folder--------------------------------------------------->
-        <div class="css_helper"></div>
-        <div class="css_loader"></div>
-        <div class="image_slideshow" style="display:none;">
-            <div class="slide_container">
-                <img class="slides" src="images/slides/slide(1).jpg" alt="">
-                <img class="slides" src="images/slides/slide(2).jpg" alt="">
-                <img class="slides" src="images/slides/slide(3).jpg" alt="">
-                <img class="slides" src="images/slides/slide(4).jpg" alt="">
-                <img class="slides" src="images/slides/slide(5).jpg" alt="">
-            </div>
-            <div class="slide_controls">
-                <div class="slide_control_icon" style="display: none;"><img class="slide_control_icon_img" src="images/slide_left_img.svg" alt="" style="display: none;"></div>
-                <div class="slide_control_pointer_bar">
-                    <div class="slide_control_pointer_container">
-                    </div>
+                    
+            <!----------------------------------------------Slideshow------------------------------------------------------------------------->
+            <!---Put the slideshow inside a div with predefined dimensions,slideshows dimensions depend on the parent width only-------------->
+            <!---Only one slideshow can be added,and add the slideshowinitialise function to body onload-------------------------------------->
+            <!---Copy the script to the head and place the icon images to the images folder--------------------------------------------------->
+            <div class="css_helper"></div>
+            <div class="css_loader"></div>
+            <div class="image_slideshow" style="display:none;">
+                <div class="slide_container">
+                    <img class="slides" src="images/slides/slide(1).jpg" alt="">
+                    <img class="slides" src="images/slides/slide(2).jpg" alt="">
+                    <img class="slides" src="images/slides/slide(3).jpg" alt="">
+                    <img class="slides" src="images/slides/slide(4).jpg" alt="">
+                    <img class="slides" src="images/slides/slide(5).jpg" alt="">
                 </div>
-                <div class="slide_control_icon" style="display: none;"><img class="slide_control_icon_img" src="images/slide_right_img.svg" alt="" style="display: none;"></div>
+                <div class="slide_controls">
+                    <div class="slide_control_icon" style="display: none;"><img class="slide_control_icon_img" src="images/slide_left_img.svg" alt="" style="display: none;"></div>
+                    <div class="slide_control_pointer_bar">
+                        <div class="slide_control_pointer_container">
+                        </div>
+                    </div>
+                    <div class="slide_control_icon" style="display: none;"><img class="slide_control_icon_img" src="images/slide_right_img.svg" alt="" style="display: none;"></div>
+                </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------->
+    
+            </div>
+            </div>
+        <!------------------------------------------------------------------------------------------------------------------>
+            <div class="introduction">
+                <h1 style="border-bottom: 2px darkblue solid;">Introduction</h1>
+                <p>The National Commission of Agriculture recommended to give high priority to the formation of Statutory Veterinary 
+                    Council in the state and veterinary council in the centre. In view of the above, the Govt. of India has enacted 
+                    Indian Veterinary Council Act, 1984 in which there is a provision under Section 32 of the said Act for constitution 
+                    of State Veterinary Council.<button class="read_more_about_council">......Read more</button></p>
             </div>
         </div>
-        <!---------------------------------------------------------------------------------------------------->
-
-            </div>
-        </div>
-        <div class="introduction">
-            <h1 style="border-bottom: 2px darkblue solid;">Introduction</h1>
-            <p>The National Commission of Agriculture recommended to give high priority to the formation of Statutory Veterinary Council in the state and veterinary council in the centre. In view of the above, the Govt. of India has enacted Indian Veterinary Council Act, 1984 in which there is a provision under Section 32 of the said Act for constitution of State Veterinary Council.</p>
-            <p>In Assam, the Assam Veterinary Council Act, 1979 and rule thereunder have been enforced with effect from 15th May 1981. The Assam Veterinary Council has formed under the Assam Veterinary Council Act, 1979 (Assam Act I of 1980) to provide for regulation of Veterinary Practitioners in Assam, to control and regulate the conduct of the members of the profession who are veterinary graduate to uphold the status and dignity of profession and also act as an Advisory Body to the State Govt. in the matter of Veterinary Profession, Education and development of animal husbandry in the state.</p>
-            <p>Later on, the Govt. of India enacted an Act “The Indian Veterinary Council Act, 1984” as per provision under Article 252(I) of Constitution of India to regulate by law veterinary training, practice and all matters connected therewith and this act has already been adopted in various states like Haryana, Himachal Pradesh and also Union territories. The Government of India requested the Assam Government to adopt the Central Act, 1984 in our State by adopting a resolution in the State Assembly by virtue of the Power under Clause (I) of Article 252 of the Constitution of India to facilitate having a uniform law throughout India for regulation of veterinary training and practice and for allied matters. As in Central Law, there is a provision for Constitution of State Veterinary Council which would act under the guidance of the Indian Veterinary Council.</p>
-            <p>In exercise of powers conferred by Clause (I) of article 252 of the Constitution of India, the Assam Legislative Assembly adopted a resolution in 1st December 1989 for extension of the Central Act, 1984 in the state of Assam to facilitate conferred enforcement of uniform laws to regulate Veterinary Education, Training, and Veterinary Practices and for allied matters.</p>
-            <div id="expand_intro_text" onclick="document.getElementsByClassName('introduction')[0].style.overflowY='scroll'; this.style.display='none';" style="cursor: pointer; color: #135a9c; position: absolute; bottom: 0px; right: 10px; background-color: white; padding: 2px 2px 2px;">  .....Read More</div>
-        </div>
-        <div id="expand_intro_text_portrait" onclick="document.getElementsByClassName('introduction')[0].style.height='auto'; this.style.display='none';">......Read More</div>
+        <!------------------------------------------------------------------------------------------------------------------>
         <div id="main-content-2">
             <br>
             <span>Doctor's Login</span>
@@ -313,14 +300,15 @@
                     <li>Dr. Apurba Goswami</li>
                     <li>Dr. Utpal Barman</li>
                     <li>Dr. Santanu Kr. Changmai</li>
-                    <li>Dr. Nurul Islam  <button id="read_more_about_council" onclick="read_more_about_council();">......Read more</button></li>
+                    <li>Dr. Nurul Islam  <button class="read_more_about_council" onclick="read_more_about_council();">......Read more</button></li>
                 </ul></li>
             </ul>
             <div id="more_about_council"></div>
-            <div style="width: 100%;height: 70px;"></div>
-            <div class="footer"></div>
         </div>
+
+        
+
     </div>
-    
+    <div class="footer"></div>
 </body>
 </html>

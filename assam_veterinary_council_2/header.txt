@@ -21,7 +21,7 @@
             </div>
             <ul>
                 <li onclick="window.location.href='index.html';">Home</li>
-                <li>Registration Renewal</li>
+                <li onclick="window.location.href='registration_renewal.html'">Registration Renewal</li>
                 <li>Council Activities
                     <ul>
                         <li onclick="window.location.href='trainings_organised.html';">Trainings Organised</li>

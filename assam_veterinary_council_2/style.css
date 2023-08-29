@@ -31,15 +31,6 @@ body{
     min-height: 900px;
     box-shadow: 0px 0px 8px #888888;
 }
-/*
-.footer{
-    grid-area: footer;
-    min-height: 300px;
-    background-color: #2a75bb;
-    color: white;
-    box-shadow: 0px 0px 8px #888888;
-}
-*/
 .footer{
     grid-area: footer;
     min-height: 300px;
@@ -322,6 +313,83 @@ body{
     font-weight: bold; color: red; font-size: 23px; text-decoration: none; text-align: center;
 }
 
+/*----------------------------- INDEX.HTML ------------------------------------*/
+
+.slideshow-1-holder{
+    display: flex;
+    width: 98%;
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+    background-color: white;
+}
+.slideshow-1-holder>div{
+    width: 50%;
+}
+.introduction{
+    box-sizing: border-box;
+    padding: 2px 2px 2px 20px;
+    line-height: 1.5;
+}
+.introduction>h1{
+    margin-top: 0.5%;
+}
+#main-content-2{
+    padding-top: 1%;
+}
+#main-content-2>span{
+    font-size: large;
+    font-weight: bold;
+    border-bottom: 2px darkblue solid;
+}
+.read_more_about_council{
+    background-color: transparent;
+    border: transparent;
+    color: #135a9c;
+}
+#main-content-2>span,ul,ol{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.under_span_text{
+    margin-top: 1%;
+    margin-bottom: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.slide_control_pointer_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slides{
+    border: 1px solid gainsboro;
+}
+.slide_control_pointer_bar{
+    background-color: white;
+}
+@media only screen and (orientation: portrait){
+    .slideshow-1-holder{
+        flex-direction: column;
+    }
+    .slideshow-1-holder>div{
+        width: 100%;
+    }
+    .introduction{
+        padding: 2px 2px 2px 2px;
+    }
+    .introduction>h1{
+        margin-top: 2%;
+    }
+    #main-content-2{
+        line-height: 1.6;
+    }
+    #main-content-2>ul,ol{
+        padding-inline-start: 23px;
+    }
+    .under_span_text{
+        margin-bottom: 5%;
+    }
+}
 
 @media only screen and (orientation: portrait){
     *{
