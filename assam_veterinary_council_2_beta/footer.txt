@@ -1,0 +1,21 @@
+        <div>Sitemap
+            <br><span onclick="window.location.href='index.html';">Home</span>
+            <br><span onclick="window.location.href='registration_renewal.html';">Registration Renewal</span>
+            <br><span onclick="window.location.href='trainings_organised.html';">Trainings Orgainsed</span>
+            <br><span onclick="window.location.href='registration_renewal_transfer.html';">Registration, Renewal, Transfer Data</span>
+            <br><span onclick="window.location.href='snapshots_of_activities.html';">Snapshots of Activities</span>
+            <br><span onclick="window.location.href='council_acts.html';">Council Acts</span>
+            <br><span onclick="window.location.href='download_forms.html';">Download Forms</span>
+            <br><span onclick="window.location.href='guest_house.html';">Guest House</span>
+            <br><span onclick="window.location.href='contact.html';">Contact Us</span>
+        </div>
+
+        <div>Contact:
+            <br>Phone: +91 81349 19017
+            <br>Email: avcassam2016@gmail.com
+            <br><br>Address: 
+            <br>Assam Veterinary Council
+            <br>A.H. & Vety. Deptt. Campus
+            <br>Chenikuthi, Guwahati-03
+            <br>Kamrup Metro, Assam
+        </div>

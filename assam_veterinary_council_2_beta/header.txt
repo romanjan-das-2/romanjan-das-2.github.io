@@ -1,0 +1,37 @@
+        <div class="main-header">
+            <div class="logo" onclick="window.location.href='index.html';"><img src="images/avc_logo.png" alt=""></div>
+            <div class="header-text">
+                <span class="header-text-span-1">ASSAM VETERINARY COUNCIL</span>
+                <span class="header-text-span-2">অসম পশুচিকিৎসা পৰিষদ</span> 
+            </div>
+            <div class="govt_logo"><img src="images/govt_logo.png" alt=""></div>
+        </div>
+        <div class="nav-menu">
+            <div onclick="expand_nav_menu();" class="portrait-nav-menu">MENU &nbsp;<img src="images/ham_menu.png" alt=""></div>
+            <div id="expanded-portrait-nav-menu">
+                <br><span onclick="window.location.href='index.html';">Home</span>
+                <br><span onclick="window.location.href='registration_renewal.html';">Registration Renewal</span>
+                <br><span onclick="window.location.href='trainings_organised.html';">Trainings Orgainsed</span>
+                <br><span onclick="window.location.href='registration_renewal_transfer.html';">Registration, Renewal, Transfer Data</span>
+                <br><span onclick="window.location.href='snapshots_of_activities.html';">Snapshots of Activities</span>
+                <br><span onclick="window.location.href='council_acts.html';">Council Acts</span>
+                <br><span onclick="window.location.href='download_forms.html';">Download Forms</span>
+                <br><span onclick="window.location.href='guest_house.html';">Guest House</span>
+                <br><span onclick="window.location.href='contact.html';">Contact Us</span>
+            </div>
+            <ul>
+                <li onclick="window.location.href='index.html';">Home</li>
+                <li>Registration Renewal</li>
+                <li>Council Activities
+                    <ul>
+                        <li onclick="window.location.href='trainings_organised.html';">Trainings Organised</li>
+                        <li onclick="window.location.href='registration_renewal_transfer.html';">Registration, Renewal & Transfer Data</li>
+                        <li onclick="window.location.href='snapshots_of_activities.html';">Snapshots of Activities</li>
+                    </ul>
+                </li>
+                <li onclick="window.location.href='council_acts.html';">Council Acts</li>
+                <li onclick="window.location.href='download_forms.html';">Download Forms</li>
+                <li onclick="window.location.href='guest_house.html';">Guest House</li>
+                <li onclick="window.location.href='contact.html';">Contact Us</li>
+            </ul>
+        </div>
