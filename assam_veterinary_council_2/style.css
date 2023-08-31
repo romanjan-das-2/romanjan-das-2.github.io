@@ -202,6 +202,9 @@ body{
     .introduction p{
         line-height: 1.6;
     }
+    #main-content-2{
+        line-height: 1.6;
+    }
 }
 @media only screen and (min-width: 1566px) and (orientation: landscape){
     .main-content,.header,.footer{
@@ -214,6 +217,9 @@ body{
         height: 450px;
     }
     .introduction p{
+        line-height: 1.8;
+    }
+    #main-content-2{
         line-height: 1.8;
     }
 }
@@ -230,6 +236,9 @@ body{
     .introduction p{
         line-height: 2.1;
     }
+    #main-content-2{
+        line-height: 2.1;
+    }
 }
 @media only screen and (min-width: 1920px)  and (orientation: landscape){
     .main-content,.header,.footer{
@@ -242,7 +251,10 @@ body{
         height: 490px;
     }
     .introduction p{
-        line-height: 2.2;
+        line-height: 2.1;
+    }
+    #main-content-2{
+        line-height: 2.1;
     }
 }
 .logo{
@@ -307,10 +319,13 @@ body{
     font-weight: bold;
 }
 .council_acts>div{
-    padding: 2% 2% 2% 2%;
-}
-.council_acts>div>span{
+    display: flex;
+    justify-content: space-between;
+    min-width: 60%;
+    padding: 2% 2% 2% 2%;}
+.council_acts>div>span>a{
     color: red;
+    text-decoration: none;
 }
 
 /*--------------------------------DOWNLOAD FORMS----------------------------*/
@@ -327,8 +342,9 @@ body{
     min-width: 60%;
     padding: 2% 2% 2% 2%;
 }
-.download-forms-class>div>span{
+.download-forms-class>div>span>a{
     color: red;
+    text-decoration: none;
 }
 /*-------------------------------CONTACT US--------------------------------*/
 .contact-class{
