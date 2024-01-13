@@ -1,13 +1,13 @@
         <div>Sitemap
-            <br><span onclick="window.location.href='index.html';">Home</span>
-            <br><span onclick="window.location.href='registration_renewal.html';">Registration Renewal</span>
-            <br><span onclick="window.location.href='trainings_organised.html';">Trainings Orgainsed</span>
-            <br><span onclick="window.location.href='registration_renewal_transfer.html';">Registration, Renewal, Transfer Data</span>
-            <br><span onclick="window.location.href='snapshots_of_activities.html';">Snapshots of Activities</span>
-            <br><span onclick="window.location.href='council_acts.html';">Council Acts</span>
-            <br><span onclick="window.location.href='download_forms.html';">Download Forms</span>
-            <br><span onclick="window.location.href='guest_house.html';">Guest House</span>
-            <br><span onclick="window.location.href='contact.html';">Contact Us</span>
+            <br><a href="https://assamveterinarycouncil.com/index.html">Home</a>
+            <br><a href="https://assamveterinarycouncil.com/renewal/">Registration Renewal</a>
+            <br><a href="https://assamveterinarycouncil.com/trainings_organised.html">Trainings Orgainsed</a>
+            <br><a href="https://assamveterinarycouncil.com/registration_renewal_transfer.html">Registration, Renewal, Transfer Data</a>
+            <br><a href="https://assamveterinarycouncil.com/snapshots_of_activities.html">Snapshots of Activities</a>
+            <br><a href="https://assamveterinarycouncil.com/council_acts.html">Council Acts</a>
+            <br><a href="https://assamveterinarycouncil.com/download_forms.html">Download Forms</a>
+            <br><a href="https://assamveterinarycouncil.com/guest_house.html">Guest House</a>
+            <br><a href="https://assamveterinarycouncil.com/contact.html">Contact Us</a>
         </div>
 
         <div>Contact:

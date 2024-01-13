@@ -47,6 +47,10 @@ body{
     color: white;
     cursor: pointer;
 }
+.footer>div>a{
+    color: white;
+    text-decoration: none;
+}
 .logo{
     grid-area: logo;
     height: 100%;
@@ -93,8 +97,15 @@ body{
     float: left;
     padding: 3px 6px 6px 5px;
     font-size: 17px;
+    color: white;
 }
-.nav-menu>ul>li:hover{
+.nav-menu>ul>li>a{
+    padding: 3px 6px 6px 5px;
+    font-size: 17px;
+    color: white;
+    text-decoration: none;
+}
+.nav-menu>ul>li>a:hover{
     background-color: #135a9c;
     cursor: pointer;
 }
@@ -109,8 +120,14 @@ body{
 .nav-menu>ul>li:hover>ul{
     visibility: visible;
 }
-.nav-menu>ul>li>ul>li{
+.nav-menu>ul>li>ul>li>{
     list-style-type: none;
+    padding: 3px 6px 6px 5px;
+    font-size: 17px;
+}
+.nav-menu>ul>li>ul>li>a{
+    color: white;
+    text-decoration: none;
     padding: 3px 6px 6px 5px;
     font-size: 17px;
 }
@@ -518,6 +535,10 @@ body{
         margin-top: 20px;
         margin-bottom: 20px;
     }
+    .footer>div>a{
+        color: white;
+        text-decoration: none;
+    }
     .download-forms-class{
         align-items: stretch;
     }
@@ -556,6 +577,9 @@ body{
         padding-bottom: 30px;
         background-color: #135a9c;
         z-index: 4;
+    }
+    #expanded-portrait-nav-menu>a{
+        text-decoration: none; color: white;
     }
     .guest-house-class>div{
         margin-bottom: 3%;
