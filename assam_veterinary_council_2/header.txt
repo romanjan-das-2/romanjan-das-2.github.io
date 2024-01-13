@@ -1,5 +1,5 @@
         <div class="main-header">
-            <div class="logo" onclick="window.location.href='index.html';"><img src="images/avc_logo.png" alt=""></div>
+            <div class="logo" onclick="window.location.href='index.html';"><img src="images/logo_avc.png" alt=""></div>
             <div class="header-text">
                 <span class="header-text-span-1">ASSAM VETERINARY COUNCIL</span>
                 <span class="header-text-span-2">অসম পশুচিকিৎসা পৰিষদ</span> 
