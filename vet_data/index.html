@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors Data</title>
+    <style>
+        table{
+            border-collapse:collapse;
+            min-width: 50%;
+            max-width: 80%;
+        }
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        word-wrap: break-word;
+        }
+        #vet_2,#vet_3,#vet_4,#vet_5,#vet_6,#vet_7{
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <label for="vet_id">Type your Registration ID here:  </label><input type="text" name="vet_id" id="vet_id" value="ASM-0000">
+    <button onclick="get_vet_id();">Search</button>
+    <div id="data-container">
+        <br>
+        <table>
+            <tr><td>Registration ID:</td><td id="vet_2"></td></tr>
+            <tr><td>Name of Veterinarian</td><td id="vet_3"></td></tr>
+            <tr><td>Father/Husband Name</td><td id="vet_4"></td></tr>
+            <tr><td>Registration Validity</td><td id="vet_5"></td></tr>
+            <tr><td>Phone Number</td><td id="vet_6"></td></tr>
+            <tr><td>Email ID</td><td id="vet_7"></td></tr>
+        </table>
+    </div>
+
+    <script>
+        var doctors_data;
+        var parsed_data;
+        var vet_id;
+        var vetWithRegId;
+        // Function to fetch and process CSV data
+        function fetchCSV() {
+            fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vR4GSwfct3ClelPaea8BKnomL4n4NdQAdOkUb85uqK2pfw6u3CTCah6eu07crdxuA/pub?gid=703181905&single=true&output=csv')
+                .then(response => response.text())
+                .then(data => {
+                    // Split the CSV into rows and columns
+                    const rows = data.split('\n');
+                    const headers = rows[0].split(',');
+
+                    // Create an array of objects representing the data
+                    const dataArray = rows.slice(1).map(row => {
+                        const values = row.split(',');
+                        const entry = {};
+                        headers.forEach((header, index) => {
+                            entry[header.trim()] = values[index].trim();
+                        });
+                        return entry;
+                    });
+
+                    // Update the HTML with the processed data
+                    doctors_data=JSON.stringify(dataArray, null, 2);
+                    parsed_data=JSON.parse(doctors_data);
+
+                })
+                .catch(error => console.error('Error fetching CSV:', error));
+        }
+
+        // Function to find veterinarian by registration ID
+        function findVetByRegId(regId) {
+            return parsed_data.find(function(vet) {
+                return vet.REG_ID === regId;
+            });
+        }
+
+        function get_vet_id(){
+            vet_id=document.getElementById("vet_id").value;
+
+            // Example: Find veterinarian with REG_ID "ASM-0000"
+            vetWithRegId = findVetByRegId(vet_id);
+
+            if (vetWithRegId) {
+                    document.getElementById("vet_2").innerHTML=vetWithRegId.REG_ID;
+                    document.getElementById("vet_3").innerHTML=vetWithRegId.VET_NAME;
+                    document.getElementById("vet_4").innerHTML=vetWithRegId.FH_NAME;
+                    document.getElementById("vet_5").innerHTML=vetWithRegId.VAL_YEAR;
+                    document.getElementById("vet_6").innerHTML=vetWithRegId.PHONE_NUM;
+                    document.getElementById("vet_7").innerHTML=vetWithRegId.EMAIL_ID;
+                } else {
+                    alert("Vet not found with the specified REG_ID.");
+                }
+        }
+        window.onload=fetchCSV();
+    </script>
+
+</body>
+</html>
