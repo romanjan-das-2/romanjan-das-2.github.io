@@ -29,7 +29,7 @@
         var vetPractitioners;
         var desiredRegistrationId;
         var foundPractitioner;
-        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSXrsjkbK8DK1m9RdEERKwamJ97LZ34R08SSzfpsdYXTQEMVWts3Z48EiHrEb0kPQ/pub?gid=703181905&single=true&output=csv')
+        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSXrsjkbK8DK1m9RdEERKwamJ97LZ34R08SSzfpsdYXTQEMVWts3Z48EiHrEb0kPQ/pub?gid=249554905&single=true&output=csv')
         .then(response => response.text())
         .then(csvData => {
             Papa.parse(csvData, {
