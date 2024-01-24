@@ -9,13 +9,16 @@
         table{
             border-collapse:collapse;
             min-width: 50%;
-            max-width: 80%;
+            max-width: 100%;
+        }
+        td{
+            width: 49vw;
         }
         td, th {
-        border: 1px solid #4c4c4c;
-        text-align: left;
-        padding: 8px;
-        word-wrap: break-word;
+            border: 1px solid #4c4c4c;
+            text-align: left;
+            padding: 8px;
+            word-wrap: break-word;
         }
     </style>
 </head>
@@ -59,14 +62,14 @@
             if (foundPractitioner) {
             document.getElementById("vet_1").innerText=foundPractitioner["REGISTERED VETERINARY PRACTITIONER"];
             document.getElementById("vet_2").innerText=foundPractitioner["NAME OF FATHER OR HUSBAND"];
-            document.getElementById("vet_3").innerText=foundPractitioner["DATE OF BIRTH"];
+            //document.getElementById("vet_3").innerText=foundPractitioner["DATE OF BIRTH"];
             document.getElementById("vet_4").innerText=foundPractitioner["REGISTRATION ID"];
-            document.getElementById("vet_5").innerText=foundPractitioner["DATE OF REGISTRATION"];
-            document.getElementById("vet_6").innerText=foundPractitioner["CURRENT ADDRESS"];
-            document.getElementById("vet_7").innerText=foundPractitioner["QUALIFICATION"];
+            //document.getElementById("vet_5").innerText=foundPractitioner["DATE OF REGISTRATION"];
+            //document.getElementById("vet_6").innerText=foundPractitioner["CURRENT ADDRESS"];
+            //document.getElementById("vet_7").innerText=foundPractitioner["QUALIFICATION"];
             document.getElementById("vet_8").innerText=foundPractitioner["REGISTRATION VALIDITY"];
-            document.getElementById("vet_9").innerText=foundPractitioner["PHONE NUMBER"];
-            document.getElementById("vet_10").innerText=foundPractitioner["EMAIL ID"];
+            //document.getElementById("vet_9").innerText=foundPractitioner["PHONE NUMBER"];
+            //document.getElementById("vet_10").innerText=foundPractitioner["EMAIL ID"];
                 if(foundPractitioner["REGISTRATION VALIDITY"]>=2024){
                     document.getElementById("vet_8").style.backgroundColor="#baffad";
                 }
@@ -82,6 +85,7 @@
 
     </script>
     <table>
+        <!--
         <tr><td>Name of Veterinary Practitioner</td><td id="vet_1"></td></tr>
         <tr><td>Father/Husband Name</td><td id="vet_2"></td></tr>
         <tr><td>Date of Birth</td><td id="vet_3"></td></tr>
@@ -92,6 +96,11 @@
         <tr><td>Registration Validity</td><td id="vet_8"></td></tr>
         <tr><td>Phone number</td><td id="vet_9"></td></tr>
         <tr><td>Email ID</td><td id="vet_10"></td></tr>
+        --->
+        <tr><td>Name of Veterinary Practitioner</td><td id="vet_1"></td></tr>
+        <tr><td>Father/Husband Name</td><td id="vet_2"></td></tr>
+        <tr><td>Registration ID</td><td id="vet_4"></td></tr>
+        <tr><td>Registration Validity</td><td id="vet_8"></td></tr>
     </table>
 </body>
 </html>
