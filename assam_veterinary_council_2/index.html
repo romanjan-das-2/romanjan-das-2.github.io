@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assam Veterinary Council</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
         <!---------------  BELOW IS THE SCRIPT FOR THE SLIDESHOW  ----------------------------->
         <script>
@@ -235,6 +236,34 @@
             box-sizing: border-box;
         }
     </style>
+    <style>
+            table{
+                border-collapse:collapse;
+                margin: 2%;
+                margin-bottom: 0px;
+                width: 96%;
+            }
+            td{
+                width: 49vw;
+            }
+            td, th {
+                border: 1px solid #4c4c4c;
+                text-align: left;
+                padding: 0.1em;
+                word-wrap: break-word;
+            }
+            #vet_data_table{
+                display: none;
+            }
+            #after_table_note{
+                display: none;
+                width: 100%;
+                padding-top: 1em;
+                padding-left: 1em;
+                padding-right: 1em;
+                box-sizing: border-box;
+            }
+    </style>
 </head>
 <body onload="slideshowInitialise();">
     <div class="left-div"></div>
@@ -274,19 +303,119 @@
             </div>
         <!------------------------------------------------------------------------------------------------------------------>
             <div class="introduction">
-                <h1 style="border-bottom: 2px darkblue solid;">Latest News and Updates</h1>
-                        <ul style="padding-left: 2%;">
-                            <li><span style="color: red; font-weight: bold;">IMPORTANT: </span>2023 VCI draft electoral roll is published. <a style="text-decoration: none;" href="https://drive.google.com/file/d/1ETTC1m2DldhYVgJf-pEQJ92pDw6NdpgM/view?usp=sharing">&#129034; Click here to view. </a>In case of any discrepancy mail us at <a href="mailto:avcassam2016@gmail.com" style="color: blue; text-decoration: none;">avcassam2016@gmail.com</a> or call us at <a href="tel:+918134919017" style="color: blue; text-decoration: none;">+918134919017</a> during office hours.</li>
-                            <br>
-                            <li><span style="color: red; font-weight: bold;">IMPORTANT: </span>Registration Renewal via online mode is temporarily disabled. For renewal of registration kindly contact Assam Veterinary Council at <a href="mailto:avcassam2016@gmail.com" style="color: blue; text-decoration: none;">avcassam2016@gmail.com</a> or <a href="tel:+918134919017" style="color: blue; text-decoration: none;">+918134919017</a> during office hours.</li>
-                        </ul>
             </div>
+            <script>
+                // Function to fetch CSV content, parse HTML, and insert it into a div
+                function fetchAndInsertHTMLFromCSV() {
+                  const csvURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDhmUGkHuMQ_Y6ltP1ukD18NK_tMQ1I5WwXlMKhrasMrGxiWVBTeTxsqlEbIGIsTAodrDII7Werhfg/pub?gid=0&single=true&output=csv'; // Replace with the actual URL
+              
+                  fetch(csvURL)
+                    .then(response => {
+                      if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                      }
+                      return response.text();
+                    })
+                    .then(csvData => {
+                      // Parse the CSV data to extract the HTML code
+                      const htmlCode = parseHTMLFromCSV(csvData);
+              
+                      // Insert the HTML code into the div with class "introduction"
+                      console.log(htmlCode);
+                      document.getElementsByClassName('introduction')[0].innerHTML = htmlCode.substring(1, htmlCode.length - 1);
+                    })
+                    .catch(error => console.error('Error fetching or inserting HTML from CSV:', error));
+                }
+              
+                // Function to parse HTML from CSV data (replace this with your parsing logic)
+                function parseHTMLFromCSV(csvData) {
+                  // Example: Extracting HTML from the first column of the first row
+                  const rows = csvData.split('\n');
+                  const columns = rows[0].split(',');
+                  return columns[0];
+                }
+              
+                // Call the function when the page loads
+                document.addEventListener('DOMContentLoaded', fetchAndInsertHTMLFromCSV);
+              </script>
         </div>
         <!------------------------------------------------------------------------------------------------------------------>
+        <script>
+            var vetPractitioners;
+            var desiredRegistrationId;
+            var foundPractitioner;
+            fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSXrsjkbK8DK1m9RdEERKwamJ97LZ34R08SSzfpsdYXTQEMVWts3Z48EiHrEb0kPQ/pub?gid=249554905&single=true&output=csv')
+            .then(response => response.text())
+            .then(csvData => {
+                Papa.parse(csvData, {
+                header: true,
+                dynamicTyping: true,
+                complete: function(results) {
+                    // Now 'results.data' contains the JSON representation of the CSV data
+                    vetPractitioners=results.data;
+                },
+                error: function(error) {
+                    console.error('Error parsing CSV:', error);
+                }
+                });
+            })
+            .catch(error => console.error('Error fetching CSV:', error));
+    
+    
+            function search_vet(){
+                // Replace 'desiredRegistrationId' with the registration ID you want to search for
+                //desiredRegistrationId="ASM-3331";
+                desiredRegistrationId = document.getElementById("regid").value;
+    
+                foundPractitioner = vetPractitioners.find(
+                (practitioner) => practitioner["REGISTRATION ID"] === desiredRegistrationId
+                );
+    
+                if (foundPractitioner) {
+                document.getElementById("vet_1").innerText=foundPractitioner["REGISTERED VETERINARY PRACTITIONER"];
+                document.getElementById("vet_2").innerText=foundPractitioner["NAME OF FATHER OR HUSBAND"];
+                document.getElementById("vet_4").innerText=foundPractitioner["REGISTRATION ID"];
+                document.getElementById("vet_8").innerText=foundPractitioner["REGISTRATION VALIDITY"];
+                    if(foundPractitioner["REGISTRATION VALIDITY"]>=2024){
+                        document.getElementById("vet_8").style.backgroundColor="#baffad";
+                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal up to date)"
+                    }
+                    else if(foundPractitioner["REGISTRATION VALIDITY"]<2024){
+                        document.getElementById("vet_8").style.backgroundColor="#ffadad";
+                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)"
+                    }
+                }
+                else 
+                {
+                    alert("Veterinary Practitioner not found");
+                }
+            }
+            
+            function display_vet_data_table(){
+                document.getElementById("vet_data_table").style.display="block";
+                document.getElementById("after_table_note").style.display="block";
+            }
+        </script>
         <div id="main-content-2">
-            <br>
+            <span>Quick Renewal Status Check</span>
+            <div style="width: auto; height: 10px;"></div>
+            <label for="regid" style="margin-left: 2%;">Registration ID: </label>
+            <input type="text" name="regid" id="regid" value="ASM-0000">
+            <button type="button" onclick="search_vet();display_vet_data_table();">Search</button>
+            <div style="width: auto; height: 7px;"></div>
+            <table id="vet_data_table">
+                <tr><td>Name of Veterinarian</td><td id="vet_1"></td></tr>
+                <tr><td>Father/Husband Name</td><td id="vet_2"></td></tr>
+                <tr><td>Registration ID</td><td id="vet_4"></td></tr>
+                <tr><td>Registration Validity</td><td id="vet_8"></td></tr>
+            </table>
+            <div style="font-style: italic;" id="after_table_note">** Please contact Assam Veterinary Council at <a style="text-decoration: none;" href="mailto:avcassam2016@gmail.com">avcassam2016@gmail.com</a> or call us at <a style="text-decoration: none;" href="tel:+918134919017">+918134919017</a> regarding renewal of registration and information update. **</div>
+            <div style="width: auto; height: 2em;"></div>
             <span>Doctor's Login / Registration Renewal</span>
-            <div class="under_span_text"><a href="https://assamveterinarycouncil.com/renewal/" style="color: blue; cursor: pointer; text-decoration: none;">&#129034; Click Here for Registration Renewal.</a></div>
+            <div class="under_span_text">
+                <!--<a href="https://assamveterinarycouncil.com/renewal/" style="color: blue; cursor: pointer; text-decoration: none;">&#129034; Click Here for Registration Renewal.</a>            --->
+                Online payment for renewal of registration is temporarily disabled.
+            </div>
             
             <br>
             <span>Introduction</span>
