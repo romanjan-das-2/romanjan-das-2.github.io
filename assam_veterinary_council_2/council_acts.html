@@ -11,7 +11,46 @@
 <body>
     <div class="left-div"></div>
     <div class="right-div"></div>
-    <div class="header"></div>
+    <div class="header">
+        <div class="main-header">
+            <div class="logo" onclick="window.location.href='index.html';"><img src="images/logo_avc.png" alt=""></div>
+            <div class="header-text">
+                <span class="header-text-span-1">ASSAM VETERINARY COUNCIL</span>
+                <span class="header-text-span-2">অসম পশুচিকিৎসা পৰিষদ</span> 
+            </div>
+            <div class="govt_logo"><img src="images/govt_logo.png" alt=""></div>
+        </div>
+        <div class="nav-menu">
+            <div onclick="expand_nav_menu();" class="portrait-nav-menu">MENU &nbsp;<img src="images/ham_menu.png" alt=""></div>
+            <div id="expanded-portrait-nav-menu">
+                <br><a href="#" id="web_link_1">Home</a>
+                <br><a href="#" id="web_link_2">Registration Renewal</a>
+                <br><a href="#" id="web_link_3">Trainings Orgainsed</a>
+                <br><a href="#" id="web_link_4">Registration, Renewal, Transfer Data</a>
+                <br><a href="#" id="web_link_5">Snapshots of Activities</a>
+                <br><a href="#" id="web_link_6">Council Acts</a>
+                <br><a href="#" id="web_link_7">Download Forms</a>
+                <br><a href="#" id="web_link_8">Guest House</a>
+                <br><a href="#" id="web_link_9">Contact Us</a>
+            </div>
+            <ul>
+                <li><a href="#" id="web_link_10">Home</a></li>
+                <li><a href="#" id="web_link_11">Registration Renewal</a></li>
+                <li>Council Activities
+                    <ul>
+                        <li><a href="#" id="web_link_12">Trainings Orgainsed</a></li>
+                        <li><a href="#" id="web_link_13">Registration, Renewal, Transfer Data</a></li>
+                        <li><a href="#" id="web_link_14">Snapshots of Activities</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" id="web_link_15">Council Acts</a></li>
+                <li><a href="#" id="web_link_16">Download Forms</a></li>
+                <li><a href="#" id="web_link_17">Guest House</a></li>
+                <li><a href="#" id="web_link_18">Contact Us</a></li>
+            </ul>
+        </div>
+        
+    </div>
     <div class="main-content">
         <div class="main-content-title">Council Acts</div>
         <div class="council_acts">
@@ -19,6 +58,48 @@
             <div>Indian Veterinary Council Act, 1984<span><a href="https://drive.google.com/file/d/1oFNUzRon23eKAlJkzvq_bwmzvM51P9UW/view?usp=drive_link">&rarr; Download</a></span></div>
         </div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+        <div>
+            Sitemap
+            <br><a href="#" id="web_link_19">Home</a>
+            <br><a href="#" id="web_link_20">Registration Renewal</a>
+            <br><a href="#" id="web_link_21">Trainings Orgainsed</a>
+            <br><a href="#" id="web_link_22">Registration, Renewal, Transfer Data</a>
+            <br><a href="#" id="web_link_23">Snapshots of Activities</a>
+            <br><a href="#" id="web_link_24">Council Acts</a>
+            <br><a href="#" id="web_link_25">Download Forms</a>
+            <br><a href="#" id="web_link_26">Guest House</a>
+            <br><a href="#" id="web_link_27">Contact Us</a>
+        </div>
+        
+        <div>
+            Contact:
+            <br>Phone: +91 81349 19017
+            <br>Email: avcassam2016@gmail.com
+            <br><br>Address: 
+            <br>Assam Veterinary Council
+            <br>A.H. & Vety. Deptt. Campus
+            <br>Chenikuthi, Guwahati-03
+            <br>Kamrup Metro, Assam
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Fetch the JSON file
+            fetch("links.json")
+                .then(response => response.json())
+                .then(data => {
+                    // Update links based on JSON data
+                    data.fetchedLinks.forEach(link => {
+                        const element = document.getElementById(link.id);
+                        if (element) {
+                            element.href = link.url;
+                            element.innerText = link.text;
+                        }
+                    });
+                })
+                .catch(error => console.error("Error fetching JSON:", error));
+        });
+    </script>
 </body>
 </html>
