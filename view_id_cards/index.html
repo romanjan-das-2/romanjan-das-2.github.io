@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application for Issuing of Identity Card</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Application for Issuing of Identity Card</h1>
+    <label for="timestampSelect">Application Date and Time:</label>
+    <select id="timestampSelect"></select>
+  </div>
+
+  <div class="details">
+    <table id="detailsTable">
+      <tbody>
+        <tr>
+          <td>Name:</td>
+          <td id="name"></td>
+        </tr>
+        <tr>
+          <td>Father's or Husband's Name:</td>
+          <td id="fathers_or_husbands_name"></td>
+        </tr>
+        <tr>
+          <td>Date of Birth (mm/dd/yyyy):</td>
+          <td id="date_of_birth"></td>
+        </tr>
+        <tr>
+          <td>Registration Number:</td>
+          <td id="registration_number"></td>
+        </tr>
+        <tr>
+          <td>Blood Group:</td>
+          <td id="blood_group"></td>
+        </tr>
+        <tr>
+          <td>Office Address:</td>
+          <td id="office_address"></td>
+        </tr>
+        <tr>
+          <td>Residential Address:</td>
+          <td id="residential_address"></td>
+        </tr>
+        <tr>
+          <td>Phone Number:</td>
+          <td id="phone_number"></td>
+        </tr>
+        <tr>
+          <td>Passport Size Photo:</td>
+          <td id="passport_photo"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
