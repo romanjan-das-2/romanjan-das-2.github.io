@@ -104,6 +104,9 @@
                 imgHoverStatus[1].addEventListener("mouseover",function(){document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "1";},false);
                 imgHoverStatus[1].addEventListener("mouseout",function(){document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "0.25";},false);
                 document.getElementsByClassName("css_helper")[0].style.display="none";
+                document.getElementById("slideshow-1-div").style.display="block";
+                document.getElementById("slideshow-1-div").style.backgroundColor="white";
+                document.getElementById("slideshow-1-div").style.minHeight="auto";
                 document.getElementsByClassName("css_loader")[0].style.display="none";
                 document.getElementsByClassName("image_slideshow")[0].style.display="block";
             }
@@ -264,13 +267,50 @@
                 box-sizing: border-box;
             }
             #news_loading{
-                animation: news_loading_colour 1s infinite;
+                background-color: gainsboro; 
+                width: 100%; height: 80%; min-height: 280px; 
+                display: flex; align-items: center; justify-content: center;
             }
-            @keyframes news_loading_colour {
-                0%{background-color: white;}
-                50%{background-color: gainsboro;}
-                100%{background-color: white;}
+
+            @keyframes animation_of_spinning_div_of_doom {
+            0% {
+                transform: rotate(0deg);
             }
+            100% {
+                transform: rotate(360deg);
+            }
+            }
+
+            #spinning_div_of_doom {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: animation_of_spinning_div_of_doom 800ms linear infinite;
+            }
+
+            #slideshow-1-div{
+                position: static;
+                width: 100%; padding: 0px; padding-top: 10px; 
+                margin: 0px; height: 100%; min-height: 280px;
+                background-color: gainsboro;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .css_helper{
+                font-weight: bold;
+            }
+            .css_loader{
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: animation_of_spinning_div_of_doom 800ms linear infinite;
+            }
+
     </style>
 </head>
 <body onload="slideshowInitialise();">
@@ -319,14 +359,14 @@
     <div class="main-content">
         <div class="slideshow-1-holder">        
             <div class="slideshow-1">
-            <div id="slideshow-1-div" style="position: static; width: 100%; padding: 0px; padding-top: 10px; margin: 0px;">
+            <div id="slideshow-1-div">
                     
             <!----------------------------------------------Slideshow------------------------------------------------------------------------->
             <!---Put the slideshow inside a div with predefined dimensions,slideshows dimensions depend on the parent width only-------------->
             <!---Only one slideshow can be added,and add the slideshowinitialise function to body onload-------------------------------------->
             <!---Copy the script to the head and place the icon images to the images folder--------------------------------------------------->
-            <div class="css_helper"></div>
             <div class="css_loader"></div>
+            <div class="css_helper">&nbsp;Loading slideshow.....</div>
             <div class="image_slideshow" style="display:none;">
                 <div class="slide_container">
                     <img class="slides" src="images/slides/slide(1).jpg" alt="">
@@ -351,7 +391,10 @@
         <!------------------------------------------------------------------------------------------------------------------>
             <div class="introduction">
                 <span>Latest News and Updates</span>
-                <div id="news_loading" style="width: 100%; height: 80%; min-height: 100px; display: flex; align-items: center; justify-content: center;">Loading News & Updates... Please Wait!</div>
+                <div id="news_loading">
+                    <div id="spinning_div_of_doom"></div>
+                    &nbsp;<span style="font-weight: bold;">Loading News & Updates...</span>
+                </div>
             </div>
             <script>
                 // Function to fetch CSV content, parse HTML, and insert it into a div

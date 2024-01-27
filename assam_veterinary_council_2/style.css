@@ -447,6 +447,9 @@ body{
     margin-left: 2%;
     margin-right: 2%;
 }
+#main-content-2>ul,ol{
+    padding-left: 2%;
+}
 .under_span_text{
     margin-top: 1%;
     margin-bottom: 3%;
