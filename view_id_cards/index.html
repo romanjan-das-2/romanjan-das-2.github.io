@@ -1,66 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Application for Issuing of Identity Card</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for Issuing of ID Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appl_head {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select {
+            padding: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="appl_head">
+        <h2>Application for Issuing of ID Card</h2>
+    </div>
+    <div class="container">
+        <label for="timestamp-select">Select Application Date and Time:</label>
+        <select id="timestamp-select"></select>
+        <div id="data-container"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const select = document.getElementById("timestamp-select");
+            const dataContainer = document.getElementById("data-container");
 
-<div class="container">
-  <div class="header">
-    <h1>Application for Issuing of Identity Card</h1>
-    <label for="timestampSelect">Application Date and Time:</label>
-    <select id="timestampSelect"></select>
-  </div>
+            // Fetch TSV data and populate dropdown
+            fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTP7uy73S54N6qh6vgMIVTOSRNDquVA_YgCwHHfJkcX8H4lQi1nQ4Rtl_CLsVXHYA24QzSSmzUps4KO/pub?gid=90653978&single=true&output=tsv")
+                .then(response => response.text())
+                .then(data => {
+                    const lines = data.split("\n");
+                    lines.shift(); // Remove header row
+                    lines.forEach((line, index) => {
+                        const parts = line.split("\t");
+                        const timestamp = parts[0];
+                        const option = document.createElement("option");
+                        option.textContent = timestamp;
+                        option.value = index; // Store index for easy retrieval of corresponding line
+                        select.appendChild(option);
+                    });
+                    // Display data for the first timestamp by default
+                    populateData(lines[0].split("\t"));
+                })
+                .catch(error => console.error("Error fetching data:", error));
 
-  <div class="details">
-    <table id="detailsTable">
-      <tbody>
-        <tr>
-          <td>Name:</td>
-          <td id="name"></td>
-        </tr>
-        <tr>
-          <td>Father's or Husband's Name:</td>
-          <td id="fathers_or_husbands_name"></td>
-        </tr>
-        <tr>
-          <td>Date of Birth (mm/dd/yyyy):</td>
-          <td id="date_of_birth"></td>
-        </tr>
-        <tr>
-          <td>Registration Number:</td>
-          <td id="registration_number"></td>
-        </tr>
-        <tr>
-          <td>Blood Group:</td>
-          <td id="blood_group"></td>
-        </tr>
-        <tr>
-          <td>Office Address:</td>
-          <td id="office_address"></td>
-        </tr>
-        <tr>
-          <td>Residential Address:</td>
-          <td id="residential_address"></td>
-        </tr>
-        <tr>
-          <td>Phone Number:</td>
-          <td id="phone_number"></td>
-        </tr>
-        <tr>
-          <td>Passport Size Photo:</td>
-          <td id="passport_photo"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+            // Populate data based on selected timestamp
+            select.addEventListener("change", function () {
+                const selectedIndex = select.value;
+                fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTP7uy73S54N6qh6vgMIVTOSRNDquVA_YgCwHHfJkcX8H4lQi1nQ4Rtl_CLsVXHYA24QzSSmzUps4KO/pub?gid=90653978&single=true&output=tsv")
+                    .then(response => response.text())
+                    .then(data => {
+                        const lines = data.split("\n");
+                        lines.shift(); // Remove header row
+                        populateData(lines[selectedIndex].split("\t"));
+                    })
+                    .catch(error => console.error("Error fetching data:", error));
+            });
 
-<script src="script.js"></script>
+            // Function to populate data container with given data
+            function populateData(data) {
+                dataContainer.innerHTML = ""; // Clear existing data
+                const ul = document.createElement("ul");
+                data.forEach((item, index) => {
+                    const li = document.createElement("li");
+                    if (index === 3) {
+                        item = `<a href="${item}" target="_blank">View Photo</a>`;
+                    }
+                    li.innerHTML = `<strong>${getHeader(index)}:</strong> ${item}`;
+                    ul.appendChild(li);
+                });
+                dataContainer.appendChild(ul);
+            }
 
+            // Function to get header based on index
+            function getHeader(index) {
+                const headers = [
+                    "Timestamp",
+                    "Name",
+                    "Father's or Husband's Name",
+                    "Passport Size Photo",
+                    "Date of Birth (mm/dd/yyyy)",
+                    "Registration Number",
+                    "Blood Group",
+                    "Office Address",
+                    "Residential Address",
+                    "Phone Number",
+                    "Remarks (if any)",
+                    "Declaration"
+                ];
+                return headers[index];
+            }
+        });
+
+    </script>
 </body>
+
 </html>
