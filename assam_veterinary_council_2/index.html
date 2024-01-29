@@ -433,6 +433,7 @@
         </div>
         <!------------------------------------------------------------------------------------------------------------------>
         <script>
+            const currentYear=new Date().getFullYear();
             var vetPractitioners;
             var desiredRegistrationId;
             var foundPractitioner;
@@ -457,8 +458,13 @@
             function search_vet(){
                 // Replace 'desiredRegistrationId' with the registration ID you want to search for
                 //desiredRegistrationId="ASM-3331";
-                desiredRegistrationId = document.getElementById("regid").value;
-    
+                desiredRegistrationId=document.getElementById("regid").value;
+                while (desiredRegistrationId.length < 4) {
+                desiredRegistrationId = '0' + desiredRegistrationId;
+                }
+                desiredRegistrationId = "ASM-"+desiredRegistrationId;
+                console.log(desiredRegistrationId);
+
                 foundPractitioner = vetPractitioners.find(
                 (practitioner) => practitioner["REGISTRATION ID"] === desiredRegistrationId
                 );
@@ -468,11 +474,11 @@
                 document.getElementById("vet_2").innerText=foundPractitioner["NAME OF FATHER OR HUSBAND"];
                 document.getElementById("vet_4").innerText=foundPractitioner["REGISTRATION ID"];
                 document.getElementById("vet_8").innerText=foundPractitioner["REGISTRATION VALIDITY"];
-                    if(foundPractitioner["REGISTRATION VALIDITY"]>=2024){
+                    if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
                         document.getElementById("vet_8").style.backgroundColor="#baffad";
                         document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal up to date)"
                     }
-                    else if(foundPractitioner["REGISTRATION VALIDITY"]<2024){
+                    else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
                         document.getElementById("vet_8").style.backgroundColor="#ffadad";
                         document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)"
                     }
@@ -491,8 +497,23 @@
         <div id="main-content-2">
             <span>Quick Renewal Status Check</span>
             <div style="width: auto; height: 10px;"></div>
-            <label for="regid" style="margin-left: 2%;">Registration ID: </label>
-            <input type="text" name="regid" id="regid" value="ASM-0000">
+            <label for="regid" style="margin-left: 2%;">Registration ID: ASM-</label>
+            <input type="text" name="regid" id="regid" placeholder="0000" oninput="validateInput(this)">
+            <script>
+                function validateInput(input) {
+                    // Remove any non-numeric characters
+                    input.value = input.value.replace(/\D/g, '');
+                    
+                    // Parse the input value to an integer
+                    let number = parseInt(input.value);
+
+                    // Check if the number is within the valid range
+                    if (isNaN(number) || number < 0 || number > 9999) {
+                        // If not, set the input value to an empty string
+                        input.value = '';
+                    }
+                }
+            </script>
             <button type="button" onclick="search_vet();display_vet_data_table();">Search</button>
             <div style="width: auto; height: 7px;"></div>
             <table id="vet_data_table">
@@ -514,6 +535,7 @@
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQTtd-I0rr33M95X1-_XYutHFWPWZ0NXDGmyr8gUmUNZmnAQ/viewform?usp=sf_link">
                     &rarr; Click here to apply for an Identity Card.
                 </a>
+                <div style="font-style: italic;">Note: After submitting this application, please contact Assam Veterinary Council via phone at +918134919017 or email us at avcassam2016@gmail.com to pay the fee of Rs. 100/- for issuing of Identity Card. Please keep the payment receipt with you for verification purpose.</div>
             </div>
             <span>Introduction</span>
             <div class="new_intro_section">
