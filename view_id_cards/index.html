@@ -116,6 +116,8 @@
 
         // Function to populate dropdown with timestamps
         function populateDropdown(data) {
+            // Reverse the order of the data array
+            data.reverse();
             data.forEach((line, index) => {
                 const timestamp = line[0];
                 const option = document.createElement("option");
