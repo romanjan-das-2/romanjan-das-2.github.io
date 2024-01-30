@@ -311,6 +311,20 @@
             animation: animation_of_spinning_div_of_doom 800ms linear infinite;
             }
 
+            #regid{
+                width: 6rem;
+                font-weight: bold;
+            }
+            #label_for_regid>span{
+                font-weight: bold;
+            }
+            #button_for_regid{
+                font-weight: bold;
+                background-color: #3498db;
+                color: white;
+                border-color:#3498db;
+                border-radius: 5%;
+            }
     </style>
 </head>
 <body onload="slideshowInitialise();">
@@ -497,7 +511,7 @@
         <div id="main-content-2">
             <span>Quick Renewal Status Check</span>
             <div style="width: auto; height: 10px;"></div>
-            <label for="regid" style="margin-left: 2%;">Registration ID: ASM-</label>
+            <label id="label_for_regid" for="regid" style="margin-left: 2%;">Registration ID: &nbsp;<span>ASM-</span></label>
             <input type="text" name="regid" id="regid" placeholder="0000" oninput="validateInput(this)">
             <script>
                 function validateInput(input) {
@@ -514,7 +528,7 @@
                     }
                 }
             </script>
-            <button type="button" onclick="search_vet();display_vet_data_table();">Search</button>
+            <button id="button_for_regid" type="button" onclick="search_vet();display_vet_data_table();">Search</button>
             <div style="width: auto; height: 7px;"></div>
             <table id="vet_data_table">
                 <tr><td>Name of Veterinarian</td><td id="vet_1"></td></tr>
