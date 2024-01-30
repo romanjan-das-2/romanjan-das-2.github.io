@@ -148,6 +148,11 @@
                 li.innerHTML = `<strong>${getHeader(index)}:</strong> ${item}`;
                 ul.appendChild(li);
             });
+            var slno=document.createElement("li");
+            slno.innerHTML="<strong>Sl No:</strong>";
+            var ivpr=document.createElement("li");
+            ivpr.innerHTML="<strong>IVPR number:</strong>";
+            ul.appendChild(slno); ul.appendChild(ivpr);
             dataContainer.appendChild(ul);
         }
 
