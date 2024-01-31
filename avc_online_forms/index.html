@@ -3,11 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Office of Assam Veterinary Council</title>
+    <title>Form of Provisional Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <ul>
-        <li><a href="/prov_reg.html">Provisional Registration</a></li>
-    </ul>
+    <div class="main-content">
+        <p style="text-align: center;">
+            Form “J”<br>
+            See Regulation 4A (1)<br>
+            (PROVISIONAL REGISTRATION)
+        </p>
+        <p>
+            To<br>
+            The Registrar<br>
+            Assam Veterinary Council<br>
+            Guwahati-781003
+        </p>
+        <p>        
+            Subject- Application for Provisional Registration.
+        </p>
+        Sir<br>
+        I the undersigned (Name in capital letter)<br>
+        <input class="data-input" type="text" name="" id="applicant_name" required>
+        daughter /son of (Name in capital letter) Shri/Dr. <br>
+        <input class="data-input" type="text" name="" id="applicant_father_name" required>
+        have passed final B.V. Sc. & A.H./ B.V.Sc. course from (name of the college)
+        <input class="data-input" type="text" name="" id="name_of_college" required>
+        affiliated to 
+        <input class="data-input" type="text" name="" id="name_of_board" required>
+        in the month and year of 
+        <input class="data-input" type="month" name="" id="month_of_passing_out" required> 
+        vide Roll No.
+        <input class="data-input" type="text" name="" id="roll_no" required> 
+        and university Enrolment No.
+        <input class="data-input" type="text" name="" id="uni_enroll_no" required> 
+        I, therefore, request the issue of provisional Registration Certificate for
+        undersigned “Internship Training” of Twelve months duration at fee Rs. 100.00
+        bearing No.
+        <input class="data-input" type="text" name="" id="bearing_no" required> 
+        dated
+        <input class="data-input" type="date" name="" id="date_of_pay" required> 
+        is enclosed. The
+        attested copies of my B.V.Sc. & A.H. course completion certificate issued by
+        the University /Institution
+        <input class="data-input" type="text" name="" id="name_of_uni_inst" required> 
+        (Name of the college).
+        <input class="data-input" type="text" name="" id="name_of_college_2" required>
+        <p>
+            indicating completion
+            of the course as specified in the Veterinary Council of India (minimum
+            standards of Veterinary Education) Degree Course ( B.V.Sc. & A.H.)
+            Regulations, 1993. Two passport size photograph are also enclosed for
+            consideration and further action at your end.
+        </p>
+        <p>
+            Yours faithfully,<br><br>
+            Signature ...............<br><br>
+            Name ....................<br><br>
+            Address .................<br><br>
+        </p>
+        <p>
+            Enclosures:
+            <ol>
+                <li>Two passport size photograph</li>
+                <li>Two attested copies of course Completion certificate</li>
+                <li>Rs. 100.00, Registration Fee IPO/DD</li>
+            </ol>
+        </p>
+    </div>
+    <div id="submit_print_button_container"><button id="submit_print" onclick="print_function();" type="button">Submit & Print</button></div>
 </body>
 </html>
