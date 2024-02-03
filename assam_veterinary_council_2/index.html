@@ -266,6 +266,18 @@
                 padding-right: 1em;
                 box-sizing: border-box;
             }
+            #renewal_fee_table_label,#renewal_fee_table{
+                display: none;
+            }
+            #renewal_fee_table{
+                margin-top: 0.7%;
+            }
+            #renewal_fee_table_label{
+                margin-left: 2%;
+                margin-top: 2%;
+                font-weight: bold;
+                text-decoration: underline;
+            }
             #news_loading{
                 background-color: gainsboro; 
                 width: 100%; height: 80%; min-height: 280px; 
@@ -427,7 +439,6 @@
                       const htmlCode = parseHTMLFromCSV(csvData);
               
                       // Insert the HTML code into the div with class "introduction"
-                      //console.log(htmlCode);
                       document.getElementsByClassName('introduction')[0].innerHTML = htmlCode.substring(1, htmlCode.length - 1);
                     })
                     .catch(error => console.error('Error fetching or inserting HTML from CSV:', error));
@@ -477,7 +488,6 @@
                 desiredRegistrationId = '0' + desiredRegistrationId;
                 }
                 desiredRegistrationId = "ASM-"+desiredRegistrationId;
-                console.log(desiredRegistrationId);
 
                 foundPractitioner = vetPractitioners.find(
                 (practitioner) => practitioner["REGISTRATION ID"] === desiredRegistrationId
@@ -488,13 +498,38 @@
                 document.getElementById("vet_2").innerText=foundPractitioner["NAME OF FATHER OR HUSBAND"];
                 document.getElementById("vet_4").innerText=foundPractitioner["REGISTRATION ID"];
                 document.getElementById("vet_8").innerText=foundPractitioner["REGISTRATION VALIDITY"];
-                    if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
-                        document.getElementById("vet_8").style.backgroundColor="#baffad";
-                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal up to date)"
+                    if(!isNaN(foundPractitioner["REGISTRATION VALIDITY"]) && foundPractitioner["REGISTRATION VALIDITY"]!=null){
+                        var temp_year=foundPractitioner["REGISTRATION VALIDITY"];
+                        document.getElementById("renewal_fee_table_label").style.display="block";
+                        document.getElementById("renewal_fee_table").style.display="block";
+                        if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
+                            document.getElementById("vet_8").style.backgroundColor="#baffad";
+                            document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal up to date)";
+                            temp_year=temp_year+5;
+                            document.getElementById("rft_1").innerHTML=temp_year;
+                            document.getElementById("rft_2").innerHTML=200;
+                            document.getElementById("rft_3").innerHTML=temp_year+5;
+                            document.getElementById("rft_4").innerHTML=400;
+                        }
+                        else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
+                            document.getElementById("vet_8").style.backgroundColor="#ffadad";
+                            document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
+                            var renewal_fine=0; var temp_renewal_fee=0;
+                            while(temp_year<currentYear){
+                                temp_year=temp_year+5;
+                                renewal_fine=renewal_fine+30;
+                                temp_renewal_fee=temp_renewal_fee+200;
+                            }
+                            document.getElementById("rft_1").innerHTML=temp_year;
+                            document.getElementById("rft_2").innerHTML=temp_renewal_fee+renewal_fine;
+                            document.getElementById("rft_3").innerHTML=temp_year+5;
+                            document.getElementById("rft_4").innerHTML=temp_renewal_fee+renewal_fine+200;
+                        }
                     }
-                    else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
-                        document.getElementById("vet_8").style.backgroundColor="#ffadad";
-                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)"
+                    else{
+                        document.getElementById("renewal_fee_table_label").style.display="none";
+                        document.getElementById("renewal_fee_table").style.display="none";
+                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
                     }
                 }
                 else 
@@ -535,6 +570,12 @@
                 <tr><td>Father/Husband Name</td><td id="vet_2"></td></tr>
                 <tr><td>Registration ID</td><td id="vet_4"></td></tr>
                 <tr><td>Registration Validity</td><td id="vet_8"></td></tr>
+            </table>
+            <div id="renewal_fee_table_label">Renewal fee</div>
+            <table id="renewal_fee_table">
+                <tr><td>Renewal Upto Year</td><td>Renewal Fee (Rs.)</td></tr>
+                <tr><td id="rft_1"></td><td id="rft_2"></td></tr>
+                <tr><td id="rft_3"></td><td id="rft_4"></td></tr>
             </table>
             <div style="font-style: italic;" id="after_table_note">** Please contact Assam Veterinary Council at <a style="text-decoration: none;" href="mailto:avcassam2016@gmail.com">avcassam2016@gmail.com</a> or call us at <a style="text-decoration: none;" href="tel:+918134919017">+918134919017</a> regarding renewal of registration and information update.</div>
             <div style="width: auto; height: 1.6em;"></div>
