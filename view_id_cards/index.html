@@ -208,6 +208,7 @@
     }
 
     function convertLinksToIframes() {
+    var iframe_index=0;
     var linkElements = document.querySelectorAll('a[href^="https://drive.google.com/open?id="]');
     if (linkElements.length > 0) {
         linkElements.forEach(function(linkElement) {
@@ -215,6 +216,8 @@
             var fileId = linkHref.split('id=')[1];
             var iframeSrc = 'https://drive.google.com/file/d/' + fileId + '/preview';
             console.log('New iframe link:', iframeSrc);
+            document.getElementById("iframe_"+iframe_index).src=iframeSrc;
+            iframe_index++;
         });
     } else {
         console.error('No links found with specified criteria.');
@@ -224,6 +227,11 @@
 
 
 </script>
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <iframe id="iframe_0" src="" frameborder="0" height="1200px" width="600px"></iframe>
+    <iframe id="iframe_1" src="" frameborder="0" height="1200px" width="600px"></iframe>
+</div>
+
 
 </body>
 
