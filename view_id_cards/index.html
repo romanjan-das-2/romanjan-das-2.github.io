@@ -158,6 +158,7 @@
             ul.appendChild(slno); ul.appendChild(ivpr);
             dataContainer.appendChild(ul);
             convertLinksToIframes();
+            hide_li_with_links();
         }
 
         // Function to get header based on index
@@ -222,7 +223,17 @@
     } else {
         console.error('No links found with specified criteria.');
     }
-}
+    }
+
+    function hide_li_with_links() {
+        var listItems = document.querySelectorAll('li');
+        listItems.forEach(function(item) {
+            var strongText = item.querySelector('strong');
+            if (strongText && (strongText.textContent === 'Passport Size Photo:' || strongText.textContent === 'Photo of Signature:')) {
+                item.style.display = 'none';
+            }
+        });
+    }
 
 
 
