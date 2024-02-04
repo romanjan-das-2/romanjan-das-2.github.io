@@ -157,6 +157,7 @@
             ivpr.innerHTML="<strong>IVPR number:</strong>";
             ul.appendChild(slno); ul.appendChild(ivpr);
             dataContainer.appendChild(ul);
+            convertLinksToIframes();
         }
 
         // Function to get header based on index
@@ -205,6 +206,23 @@
         document.getElementsByClassName("container")[0].style.boxShadow="0 0 10px rgba(0, 0, 0, 0.1)";
         document.getElementsByClassName("container")[0].style.border="1px solid #ddd";
     }
+
+    function convertLinksToIframes() {
+    var linkElements = document.querySelectorAll('a[href^="https://drive.google.com/open?id="]');
+    if (linkElements.length > 0) {
+        linkElements.forEach(function(linkElement) {
+            var linkHref = linkElement.getAttribute('href');
+            var fileId = linkHref.split('id=')[1];
+            var iframeSrc = 'https://drive.google.com/file/d/' + fileId + '/preview';
+            console.log('New iframe link:', iframeSrc);
+        });
+    } else {
+        console.error('No links found with specified criteria.');
+    }
+}
+
+
+
 </script>
 
 </body>
