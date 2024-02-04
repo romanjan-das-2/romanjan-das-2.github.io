@@ -398,6 +398,42 @@
                 margin-top: 4%; margin-bottom: 2%;
                 width: 90%; min-height: 2rem;
             }
+            #id_card_info_para{
+                font-style: italic; margin-left: 2%; margin-right: 1%;
+            }
+            @media(orientation:landscape){
+                #contact_council_for_payment_renewal,#id_card_form_fill_up_button,#contact_council_for_payment{
+                    background-image: none;
+                    background-color: white;
+                    color: #2a75bb;
+                    text-align: left;
+                    text-decoration: underline;
+                    border: none;
+                }
+                #after_table_note{
+                    padding-top: 0px;
+                    justify-content: flex-start;
+                }
+                .under_span_text{
+                    display: block;
+                    align-items: normal;
+                    padding-left: 0px;
+                    margin-top: 0px;
+                    margin-left: 4%;
+                }
+                #contact_council_for_payment_renewal{
+                    width: 23rem; height: 2rem; margin-top: 5px; margin-bottom: 0px; margin-left: 2%; padding-left: 0px;
+                }
+                #id_card_form_fill_up_button,#contact_council_for_payment{
+                    width: 50%; margin-right: 0px; margin-top: 0px; margin-bottom: 0px; padding: 0px;
+                }
+                #id_card_info_para{
+                    margin-left: 0px; margin-top: 0px;
+                }
+                #pop_up_contact_modal_inside{
+                    width: 33%;
+                }
+            }
     </style>
 </head>
 <body onload="slideshowInitialise();">
@@ -429,7 +465,7 @@
                 window.open("tel:+918134919017");
             }
             else if(param==3){
-                window.open("mailto:avcassam2016@gmail.com?subject="+encoded_contact_message_generated+"&body="+encoded_contact_message_generated);
+                window.open("mailto:avcassam2016@gmail.com?subject=REGARDING%20PAYMENT%20OF%20FEE"+"&body="+encoded_contact_message_generated);
             }
         }
     </script>
@@ -448,7 +484,7 @@
             <div onclick="expand_nav_menu();" class="portrait-nav-menu">MENU &nbsp;<img src="images/ham_menu.png" alt=""></div>
             <div id="expanded-portrait-nav-menu">
                 <br><a href="#" id="web_link_1">Home</a>
-                <br><a onclick="alert('Online Payment is currently disabled.');" href="#" id="web_link_2">Registration Renewal</a>
+                <br><a href="#" id="web_link_2">Registration Renewal</a>
                 <br><a href="#" id="web_link_3">Trainings Orgainsed</a>
                 <br><a href="#" id="web_link_4">Registration, Renewal, Transfer Data</a>
                 <br><a href="#" id="web_link_5">Snapshots of Activities</a>
@@ -459,7 +495,7 @@
             </div>
             <ul>
                 <li><a href="#" id="web_link_10">Home</a></li>
-                <li><a onclick="alert('Online Payment is currently disabled.');" href="#" id="web_link_11">Registration Renewal</a></li>
+                <li><a href="#" id="web_link_11">Registration Renewal</a></li>
                 <li>Council Activities
                     <ul>
                         <li><a href="#" id="web_link_12">Trainings Orgainsed</a></li>
@@ -628,6 +664,14 @@
                 }
                 else 
                 {
+                    document.getElementById("vet_1").innerText="";
+                    document.getElementById("vet_2").innerText="";
+                    document.getElementById("vet_4").innerText="";
+                    document.getElementById("vet_8").innerText="";
+                    document.getElementById("rft_1").innerHTML="_";
+                    document.getElementById("rft_2").innerHTML="_";
+                    document.getElementById("rft_3").innerHTML="_";
+                    document.getElementById("rft_4").innerHTML="_";
                     alert("Veterinary Practitioner not found");
                 }
             }
@@ -694,7 +738,7 @@
             <div class="under_span_text">
                 <button id="id_card_form_fill_up_button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfQTtd-I0rr33M95X1-_XYutHFWPWZ0NXDGmyr8gUmUNZmnAQ/viewform?usp=sf_link');">Click here to apply for an Identity Card</button>
                 <button id="contact_council_for_payment" onclick="url_encoding_for_contacts(1); show_popup_contact();">Contact Council for Payment after form fill-up</button>
-                <p style="font-style: italic; margin-left: 2%; margin-right: 1%;">Please keep the payment receipt with you for verification purpose.</p>
+                <p id="id_card_info_para">Please keep the payment receipt with you for verification purpose.</p>
             </div>
             <span>Introduction</span>
             <div class="new_intro_section">
@@ -768,7 +812,7 @@
         <div>
             Sitemap
             <br><a href="#" id="web_link_19">Home</a>
-            <br><a onclick="alert('Online Payment is currently disabled.');" href="#" id="web_link_20">Registration Renewal</a>
+            <br><a href="#" id="web_link_20">Registration Renewal</a>
             <br><a href="#" id="web_link_21">Trainings Orgainsed</a>
             <br><a href="#" id="web_link_22">Registration, Renewal, Transfer Data</a>
             <br><a href="#" id="web_link_23">Snapshots of Activities</a>
