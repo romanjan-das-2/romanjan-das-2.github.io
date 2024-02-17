@@ -221,17 +221,6 @@
         </script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <script>
-        var more_about_council="<ul><li>The Assam Veterinary Council in its 2nd meeting of the newly reconstituted council held on 10.05.2022, a Disciplinary Committee has been formed under the Section 31 (1) & (2) of VCI Act. 1984, as under to examine complaint received by the council against unethical veterinary practice. The new disciplinary committee already disposed total 10 (ten) complaints till today.<li>Members of Disciplinary Committee: <ul><li>Dr. Sankar Prasad Lahkar - President</li><li>Dr. B. Boral - Convener</li><li>Dr. M. K. Goswami - Member</li><li>Dr. A. Goswami - Member</li><li>Dr. Nurul Islam - Member</li></ul></li><li>Assam Veterinary Council will be able to renew their registration online. For more information visit us at <a href=\"https://assamveterinarycouncil.com\">www.assamveterinarycouncil.com</a></li><li>The State Veterinary Council has its own G+2 RCC building at the Veterinary Directorate campus at Chenikuthi, Guwahati-781003. The Council office and conference hall at the Ground Floor, the first floor and second floor are the Guest House to provide in house facility to a batch of 20 (twenty) nos. of trainees at a time including a VIP suit, Kitchen & dining etc. Other than trainees the veterinarians of the state and outside state are also allowed to accommodate at a minimum rental charges.</li></ul>";
-
-        function read_more_about_council(){
-            var cmc=0;
-            document.getElementById("more_about_council").innerHTML=more_about_council;
-            document.getElementsByClassName("read_more_about_council")[0].style.display="none";
-            cmc=document.getElementsByClassName("main-content")[0].clientHeight;
-            document.getElementsByClassName("main-content")[0].style.height=(cmc+110)+"px";
-        }
-    </script>
     <style>
         .new_intro_section{
             padding-left: 4%;
@@ -253,6 +242,7 @@
                 border: 1px solid #4c4c4c;
                 text-align: left;
                 padding: 0.1em;
+                padding-left: 1%;
                 word-wrap: break-word;
             }
             #vet_data_table{
@@ -260,11 +250,38 @@
             }
             #after_table_note{
                 display: none;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 width: 100%;
                 padding-top: 1em;
                 padding-left: 1em;
                 padding-right: 1em;
                 box-sizing: border-box;
+            }
+            #after_table_note>button{
+                width: 100%;
+                margin-top: 0.7rem;
+                background-image: linear-gradient(#42A1EC, #0070C9);
+                border: 1px solid #0077CC;
+                border-radius: 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                min-height: 2rem;
+                font-weight: bold;
+            }
+            #renewal_fee_table_label,#renewal_fee_table{
+                display: none;
+            }
+            #renewal_fee_table{
+                margin-top: 0.7%;
+            }
+            #renewal_fee_table_label{
+                margin-left: 2%;
+                margin-top: 2%;
+                font-weight: bold;
+                text-decoration: underline;
             }
             #news_loading{
                 background-color: gainsboro; 
@@ -312,6 +329,7 @@
             }
 
             #regid{
+                min-height: 2rem;
                 width: 6rem;
                 font-weight: bold;
             }
@@ -319,15 +337,85 @@
                 font-weight: bold;
             }
             #button_for_regid{
+                background-image: linear-gradient(#42A1EC, #0070C9);
+                border: 1px solid #0077CC;
+                border-radius: 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                min-height: 2rem;
+                min-width: 5rem;
                 font-weight: bold;
-                background-color: #3498db;
-                color: white;
-                border-color:#3498db;
-                border-radius: 5%;
+            }
+            #contact_council_for_payment{
+                background-image: linear-gradient(#42A1EC, #0070C9);
+                border: 1px solid #0077CC;
+                border-radius: 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                margin-top: 4%; margin-bottom: 2%;
+                width: 90%; min-height: 2rem;
+            }
+            #id_card_form_fill_up_button{
+                background-image: linear-gradient(#42A1EC, #0070C9);
+                border: 1px solid #0077CC;
+                border-radius: 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                margin-top: 1rem;
+                width: 100%;
+                min-height: 2rem;
+                font-weight: bold;
+            }
+            @media(orientation:landscape){
+                #after_table_note{
+                    padding-top: 0px;
+                    justify-content: flex-start;
+                }
+                .under_span_text{
+                    display: block;
+                    align-items: normal;
+                    padding-left: 0px;
+                    margin-top: 0px;
+                    margin-left: 4%;
+                }
+                #office_staff_table{
+                    width: 50%;
+                    box-sizing: border-box;
+                }
+            }
+            #office_staff_table{
+                margin-left: 4%;
+            }
+            #office_staff_table td{
+                border: 1px solid white;
+                width: 5rem;
+                padding: 0px;
             }
     </style>
 </head>
 <body onload="slideshowInitialise();">
+    <script>
+        var contact_message_generated="";
+        var encoded_contact_message_generated="";
+        function url_encoding_for_contacts(){
+                contact_message_generated="Hi, I, "+document.getElementById("vet_1").innerHTML+", bearing registration number: "+document.getElementById("vet_4").innerHTML+", would like to pay the fee for renewal of my registration";
+                encoded_contact_message_generated= encodeURIComponent(contact_message_generated);
+        }
+        function contact_avc_for_payment(param){
+            if(param==1){
+                window.open("https://wa.me/+918134919017"+"?text="+encoded_contact_message_generated);
+            }
+            else if(param==2){
+                window.open("tel:+918134919017");
+            }
+            else if(param==3){
+                window.open("mailto:avcassam2016@gmail.com?subject=REGARDING%20PAYMENT%20OF%20FEE"+"&body="+encoded_contact_message_generated);
+            }
+        }
+    </script>
     <div class="left-div"></div>
     <div class="right-div"></div>
     <div class="header">
@@ -343,7 +431,7 @@
             <div onclick="expand_nav_menu();" class="portrait-nav-menu">MENU &nbsp;<img src="images/ham_menu.png" alt=""></div>
             <div id="expanded-portrait-nav-menu">
                 <br><a href="#" id="web_link_1">Home</a>
-                <br><a onclick="alert('Online Payment is currently disabled.');" href="#" id="web_link_2">Registration Renewal</a>
+                <br><a href="#" id="web_link_2">Registration Renewal</a>
                 <br><a href="#" id="web_link_3">Trainings Orgainsed</a>
                 <br><a href="#" id="web_link_4">Registration, Renewal, Transfer Data</a>
                 <br><a href="#" id="web_link_5">Snapshots of Activities</a>
@@ -354,7 +442,7 @@
             </div>
             <ul>
                 <li><a href="#" id="web_link_10">Home</a></li>
-                <li><a onclick="alert('Online Payment is currently disabled.');" href="#" id="web_link_11">Registration Renewal</a></li>
+                <li><a href="#" id="web_link_11">Registration Renewal</a></li>
                 <li>Council Activities
                     <ul>
                         <li><a href="#" id="web_link_12">Trainings Orgainsed</a></li>
@@ -427,7 +515,6 @@
                       const htmlCode = parseHTMLFromCSV(csvData);
               
                       // Insert the HTML code into the div with class "introduction"
-                      //console.log(htmlCode);
                       document.getElementsByClassName('introduction')[0].innerHTML = htmlCode.substring(1, htmlCode.length - 1);
                     })
                     .catch(error => console.error('Error fetching or inserting HTML from CSV:', error));
@@ -477,7 +564,6 @@
                 desiredRegistrationId = '0' + desiredRegistrationId;
                 }
                 desiredRegistrationId = "ASM-"+desiredRegistrationId;
-                console.log(desiredRegistrationId);
 
                 foundPractitioner = vetPractitioners.find(
                 (practitioner) => practitioner["REGISTRATION ID"] === desiredRegistrationId
@@ -488,28 +574,62 @@
                 document.getElementById("vet_2").innerText=foundPractitioner["NAME OF FATHER OR HUSBAND"];
                 document.getElementById("vet_4").innerText=foundPractitioner["REGISTRATION ID"];
                 document.getElementById("vet_8").innerText=foundPractitioner["REGISTRATION VALIDITY"];
-                    if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
-                        document.getElementById("vet_8").style.backgroundColor="#baffad";
-                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal up to date)"
+                    if(!isNaN(foundPractitioner["REGISTRATION VALIDITY"]) && foundPractitioner["REGISTRATION VALIDITY"]!=null){
+                        var temp_year=foundPractitioner["REGISTRATION VALIDITY"];
+                        document.getElementById("renewal_fee_table_label").style.display="block";
+                        document.getElementById("renewal_fee_table").style.display="block";
+                        if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
+                            document.getElementById("vet_8").style.backgroundColor="#baffad";
+                            document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal up to date)";
+                            temp_year=temp_year+5;
+                            document.getElementById("rft_1").innerHTML=temp_year;
+                            document.getElementById("rft_2").innerHTML=200;
+                            document.getElementById("rft_3").innerHTML=temp_year+5;
+                            document.getElementById("rft_4").innerHTML=400;
+                        }
+                        else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
+                            document.getElementById("vet_8").style.backgroundColor="#ffadad";
+                            document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
+                            var renewal_fine=0; var temp_renewal_fee=0;
+                            while(temp_year<currentYear){
+                                temp_year=temp_year+5;
+                                renewal_fine=renewal_fine+30;
+                                temp_renewal_fee=temp_renewal_fee+200;
+                            }
+                            document.getElementById("rft_1").innerHTML=temp_year;
+                            document.getElementById("rft_2").innerHTML=temp_renewal_fee+renewal_fine;
+                            document.getElementById("rft_3").innerHTML=temp_year+5;
+                            document.getElementById("rft_4").innerHTML=temp_renewal_fee+renewal_fine+200;
+                        }
                     }
-                    else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
+                    else{
+                        document.getElementById("renewal_fee_table_label").style.display="none";
+                        document.getElementById("renewal_fee_table").style.display="none";
                         document.getElementById("vet_8").style.backgroundColor="#ffadad";
-                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)"
+                        document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
                     }
                 }
                 else 
                 {
+                    document.getElementById("vet_1").innerText="";
+                    document.getElementById("vet_2").innerText="";
+                    document.getElementById("vet_4").innerText="";
+                    document.getElementById("vet_8").innerText="";
+                    document.getElementById("rft_1").innerHTML="_";
+                    document.getElementById("rft_2").innerHTML="_";
+                    document.getElementById("rft_3").innerHTML="_";
+                    document.getElementById("rft_4").innerHTML="_";
                     alert("Veterinary Practitioner not found");
                 }
             }
             
             function display_vet_data_table(){
                 document.getElementById("vet_data_table").style.display="block";
-                document.getElementById("after_table_note").style.display="block";
+                document.getElementById("after_table_note").style.display="flex";
             }
         </script>
         <div id="main-content-2">
-            <span>Quick Renewal Status Check</span>
+            <span>Registration Renewal Status Check</span>
             <div style="width: auto; height: 10px;"></div>
             <label id="label_for_regid" for="regid" style="margin-left: 2%;">Registration ID: &nbsp;<span>ASM-</span></label>
             <input type="text" name="regid" id="regid" placeholder="0000" oninput="validateInput(this)">
@@ -536,20 +656,29 @@
                 <tr><td>Registration ID</td><td id="vet_4"></td></tr>
                 <tr><td>Registration Validity</td><td id="vet_8"></td></tr>
             </table>
-            <div style="font-style: italic;" id="after_table_note">** Please contact Assam Veterinary Council at <a style="text-decoration: none;" href="mailto:avcassam2016@gmail.com">avcassam2016@gmail.com</a> or call us at <a style="text-decoration: none;" href="tel:+918134919017">+918134919017</a> regarding renewal of registration and information update.</div>
-            <div style="width: auto; height: 1.6em;"></div>
+            <div id="renewal_fee_table_label">Renewal fee</div>
+            <table id="renewal_fee_table">
+                <tr><td>Renewal Upto Year</td><td>Renewal Fee (Rs.)</td></tr>
+                <tr><td id="rft_1"></td><td id="rft_2"></td></tr>
+                <tr><td id="rft_3"></td><td id="rft_4"></td></tr>
+            </table>
+            <div id="after_table_note">
+                <span style="font-weight: bold; font-style: italic; color: darkblue;">Note: Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via following ways:</span>
+                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(1);">Contact us via Whatsapp</button>
+                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(3);">Contact us via E-mail</button>
+                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(2);">Contact us via Phone</button>
+            </div>
+            <div style="width: auto; height: 2rem;"></div>
+            <!--
             <span>Doctor's Login / Registration Renewal</span>
             <div class="under_span_text">
-                <!--<a href="https://assamveterinarycouncil.com/renewal/" style="color: blue; cursor: pointer; text-decoration: none;">&#129034; Click Here for Registration Renewal.</a>            --->
+                <a href="https://assamveterinarycouncil.com/renewal/" style="color: blue; cursor: pointer; text-decoration: none;">&#129034; Click Here for Registration Renewal.</a>
                 Online payment for renewal of registration is temporarily disabled.
             </div>
-
+            ---->
             <span>Apply for Identity Card</span>
             <div class="under_span_text">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQTtd-I0rr33M95X1-_XYutHFWPWZ0NXDGmyr8gUmUNZmnAQ/viewform?usp=sf_link">
-                    &rarr; Click here to apply for an Identity Card.
-                </a>
-                <div style="font-style: italic;">Note: After submitting this application, please contact Assam Veterinary Council via phone at +918134919017 or email us at avcassam2016@gmail.com to pay the fee of Rs. 100/- for issuing of Identity Card. Please keep the payment receipt with you for verification purpose.</div>
+                <button id="id_card_form_fill_up_button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfQTtd-I0rr33M95X1-_XYutHFWPWZ0NXDGmyr8gUmUNZmnAQ/viewform?usp=sf_link');">Apply for an Identity Card</button>
             </div>
             <span>Introduction</span>
             <div class="new_intro_section">
@@ -603,17 +732,54 @@
                 <li>The Registrar : Dr. Biswajit Boral</li>
                 <li>The Council Members -
                     <ul>
-                    <li>Dr. Bibeka Nanda Saikia - Dean, CVSC Ex-officio member</li>
-                    <li>Director, Animal Husbandry & Vety Deptt. Ex-officio member</li>
-                    <li>Dr. Sankar Prasad Lahkar</li>
-                    <li>Dr. Manoj Kumar Goswami</li>
-                    <li>Dr. Apurba Goswami</li>
-                    <li>Dr. Utpal Barman</li>
-                    <li>Dr. Santanu Kr. Changmai</li>
-                    <li>Dr. Nurul Islam  <button class="read_more_about_council" onclick="read_more_about_council();">......Read more</button></li>
-                </ul></li>
+                        <li>Dr. Bibeka Nanda Saikia - Dean, CVSC Ex-officio member</li>
+                        <li>Director, Animal Husbandry & Vety Deptt. Ex-officio member</li>
+                        <li>Dr. Sankar Prasad Lahkar</li>
+                        <li>Dr. Manoj Kumar Goswami</li>
+                        <li>Dr. Apurba Goswami</li>
+                        <li>Dr. Utpal Barman</li>
+                        <li>Dr. Santanu Kr. Changmai</li>
+                        <li>Dr. Nurul Islam</li>
+                    </ul>
+                </li>
+                <li>The Assam Veterinary Council in its 2nd meeting of the newly reconstituted council held on 10.05.2022, 
+                    a Disciplinary Committee has been formed under the Section 31 (1) & (2) of VCI Act. 1984, as under to examine complaint received by 
+                    the council against unethical veterinary practice. The new disciplinary committee already disposed total 10 (ten) complaints till today.
+                </li>
+                <li>Members of Disciplinary Committee: 
+                    <ul>
+                        <li>Dr. Sankar Prasad Lahkar - President</li>
+                        <li>Dr. B. Boral - Convener</li>
+                        <li>Dr. M. K. Goswami - Member</li>
+                        <li>Dr. A. Goswami - Member</li>
+                        <li>Dr. Nurul Islam - Member</li>
+                    </ul>
+                </li>
+                <li>Assam Veterinary Council will be able to renew their registration online. For more information visit us at 
+                    <a href="https://assamveterinarycouncil.com">www.assamveterinarycouncil.com</a>
+                </li>
+                <li>The State Veterinary 
+                    Council has its own G+2 RCC building at the Veterinary Directorate campus at Chenikuthi, Guwahati-781003. 
+                    The Council office and conference hall at the Ground Floor, the first floor and second floor are the Guest 
+                    House to provide in house facility to a batch of 20 (twenty) nos. of trainees at a time including a VIP suit, 
+                    Kitchen & dining etc. Other than trainees the veterinarians of the state and outside state are also allowed to 
+                    accommodate at a minimum rental charges.
+                </li>
             </ul>
-            <div id="more_about_council"></div>
+            <br>
+            <span>Office Staff of Assam Veterinary Council</span>
+            <table id="office_staff_table">
+                <tr><td>Mr. Jatin Deka</td><td>Grade Three</td></tr>
+                <tr><td>Mr. Bashudev Sharma</td><td>Grade Three</td></tr>
+                <tr><td>Mr. Taslim Ali</td><td>Grade Three</td></tr>
+                <tr><td>Mrs. Rehana Begum</td><td>Grade Three</td></tr>
+                <tr><td>Mr. Girin Kalita</td><td>Grade Four</td></tr>
+                <tr><td>Mr. Romanjan Das</td><td>Grade Three</td></tr>
+                <tr><td>Mr. Kaustav Tyagi</td><td>Grade Three</td></tr>
+                <tr><td>Mr. Deepjyoti Thakuria</td><td>Grade Four</td></tr>
+                <tr><td>Mr. Jiten Basfor</td><td>Janitor</td></tr>
+            </table>
+            
         </div>
 
         
@@ -623,7 +789,7 @@
         <div>
             Sitemap
             <br><a href="#" id="web_link_19">Home</a>
-            <br><a onclick="alert('Online Payment is currently disabled.');" href="#" id="web_link_20">Registration Renewal</a>
+            <br><a href="#" id="web_link_20">Registration Renewal</a>
             <br><a href="#" id="web_link_21">Trainings Orgainsed</a>
             <br><a href="#" id="web_link_22">Registration, Renewal, Transfer Data</a>
             <br><a href="#" id="web_link_23">Snapshots of Activities</a>

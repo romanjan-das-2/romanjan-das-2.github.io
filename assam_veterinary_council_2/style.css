@@ -451,10 +451,16 @@ body{
     padding-left: 2%;
 }
 .under_span_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 1%;
     margin-bottom: 3%;
     margin-left: 2%;
     margin-right: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    box-sizing: border-box;
 }
 .slide_control_pointer_container{
     display: flex;

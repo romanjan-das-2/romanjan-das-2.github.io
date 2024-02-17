@@ -1,7 +1,7 @@
 {
   "fetchedLinks": [
     {"id": "web_link_1", "url": "https://assamveterinarycouncil.com/index.html", "text": "Home"},
-    {"id": "web_link_2", "url": "https://assamveterinarycouncil.com/renewal/", "text": "Registration Renewal"},
+    {"id": "web_link_2", "url": "https://assamveterinarycouncil.com/index.html#main-content-2", "text": "Registration Renewal"},
     {"id": "web_link_3", "url": "https://assamveterinarycouncil.com/trainings_organised.html", "text": "Trainings Orgainsed"},
     {"id": "web_link_4", "url": "https://assamveterinarycouncil.com/registration_renewal_transfer.html", "text": "Registration, Renewal, Transfer Data"},
     {"id": "web_link_5", "url": "https://assamveterinarycouncil.com/snapshots_of_activities.html", "text": "Snapshots of Activities"},
@@ -11,7 +11,7 @@
     {"id": "web_link_9", "url": "https://assamveterinarycouncil.com/contact.html", "text": "Contact Us"},
     
     {"id": "web_link_10", "url": "https://assamveterinarycouncil.com/index.html", "text": "Home"},
-    {"id": "web_link_11", "url": "https://assamveterinarycouncil.com/renewal/", "text": "Registration Renewal"},
+    {"id": "web_link_11", "url": "https://assamveterinarycouncil.com/index.html#main-content-2", "text": "Registration Renewal"},
     {"id": "web_link_12", "url": "https://assamveterinarycouncil.com/trainings_organised.html", "text": "Trainings Orgainsed"},
     {"id": "web_link_13", "url": "https://assamveterinarycouncil.com/registration_renewal_transfer.html", "text": "Registration, Renewal, Transfer Data"},
     {"id": "web_link_14", "url": "https://assamveterinarycouncil.com/snapshots_of_activities.html", "text": "Snapshots of Activities"},
@@ -21,7 +21,7 @@
     {"id": "web_link_18", "url": "https://assamveterinarycouncil.com/contact.html", "text": "Contact Us"},
     
     {"id": "web_link_19", "url": "https://assamveterinarycouncil.com/index.html", "text": "Home"},
-    {"id": "web_link_20", "url": "https://assamveterinarycouncil.com/renewal/", "text": "Registration Renewal"},
+    {"id": "web_link_20", "url": "https://assamveterinarycouncil.com/index.html#main-content-2", "text": "Registration Renewal"},
     {"id": "web_link_21", "url": "https://assamveterinarycouncil.com/trainings_organised.html", "text": "Trainings Orgainsed"},
     {"id": "web_link_22", "url": "https://assamveterinarycouncil.com/registration_renewal_transfer.html", "text": "Registration, Renewal, Transfer Data"},
     {"id": "web_link_23", "url": "https://assamveterinarycouncil.com/snapshots_of_activities.html", "text": "Snapshots of Activities"},
