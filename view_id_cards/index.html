@@ -77,6 +77,9 @@
             font-weight: bold;
             height: 2rem;
         }
+        #slno,#ivpr{
+            font-size: larger;
+        }
     </style>
 </head>
 
@@ -90,7 +93,7 @@
         <div id="data-container"></div>
     </div>
     <div class="button_container">
-        <button id="print_button" type="button" onclick="printFunction();">Print Application</button>
+        <button id="print_button" type="button" onclick="print_validation();">Print Application</button>
     </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -152,11 +155,13 @@
                 ul.appendChild(li);
             });
             var slno=document.createElement("li");
-            slno.innerHTML="<strong>Sl No:</strong>";
+            slno.innerHTML="<strong>Sl No:</strong>&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"slno\" id=\"slno\">";
             var ivpr=document.createElement("li");
-            ivpr.innerHTML="<strong>IVPR number:</strong>";
+            ivpr.innerHTML="<strong>IVPR number:</strong>&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"ivpr\" id=\"ivpr\">";
             ul.appendChild(slno); ul.appendChild(ivpr);
             dataContainer.appendChild(ul);
+            convertLinksToIframes();
+            hide_li_with_links();
         }
 
         // Function to get header based on index
@@ -180,6 +185,14 @@
         }
     });
 
+    function print_validation(){
+        if(document.getElementById("slno").value!="" && document.getElementById("ivpr").value!=""){
+            printFunction();
+        }
+        else{
+            alert("Fill up SLNO and IVPR NO");
+        }
+    }
     function printFunction(){
         // Get all the <li> elements
         var listItems = document.getElementsByTagName("li");
@@ -205,7 +218,42 @@
         document.getElementsByClassName("container")[0].style.boxShadow="0 0 10px rgba(0, 0, 0, 0.1)";
         document.getElementsByClassName("container")[0].style.border="1px solid #ddd";
     }
+
+    function convertLinksToIframes() {
+    var iframe_index=0;
+    var linkElements = document.querySelectorAll('a[href^="https://drive.google.com/open?id="]');
+    if (linkElements.length > 0) {
+        linkElements.forEach(function(linkElement) {
+            var linkHref = linkElement.getAttribute('href');
+            var fileId = linkHref.split('id=')[1];
+            var iframeSrc = 'https://drive.google.com/file/d/' + fileId + '/preview';
+            console.log('New iframe link:', iframeSrc);
+            document.getElementById("iframe_"+iframe_index).src=iframeSrc;
+            iframe_index++;
+        });
+    } else {
+        console.error('No links found with specified criteria.');
+    }
+    }
+
+    function hide_li_with_links() {
+        var listItems = document.querySelectorAll('li');
+        listItems.forEach(function(item) {
+            var strongText = item.querySelector('strong');
+            if (strongText && (strongText.textContent === 'Passport Size Photo:' || strongText.textContent === 'Photo of Signature:')) {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+
+
 </script>
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <iframe id="iframe_0" src="" frameborder="0" height="1000px" width="600px"></iframe>
+    <iframe id="iframe_1" src="" frameborder="0" height="1000px" width="600px"></iframe>
+</div>
+
 
 </body>
 
