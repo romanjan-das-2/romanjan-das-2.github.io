@@ -395,7 +395,6 @@
                     display: none;
                 }
                 #after_table_note_contact{
-                    margin-top: 1rem;
                     display: block;
                     width: 100%;
                     text-align: left;
@@ -620,7 +619,8 @@
                         if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
                             document.getElementById("vet_8").style.backgroundColor="#baffad";
                             document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (up to date)";
-                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration is valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", but you can still extend registration validity by contacting Assam Veterinary Council via the following ways:";
+                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration is valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", but you can still extend registration validity by paying additional fee. Please contact Assam Veterinary Council for the payment.";
+                            document.getElementById("after_table_note_contact").innerHTML="Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017";
                             temp_year=temp_year+5;
                             document.getElementById("rft_1").innerHTML=temp_year;
                             document.getElementById("rft_2").innerHTML=200;
@@ -631,6 +631,7 @@
                             document.getElementById("vet_8").style.backgroundColor="#ffadad";
                             document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
                             document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via the following ways:";
+                            document.getElementById("after_table_note_contact").innerHTML="Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017";
                             var renewal_fine=0; var temp_renewal_fee=0;
                             while(temp_year<currentYear){
                                 temp_year=temp_year+5;
@@ -660,6 +661,8 @@
                     document.getElementById("rft_2").innerHTML="_";
                     document.getElementById("rft_3").innerHTML="_";
                     document.getElementById("rft_4").innerHTML="_";
+                    document.getElementById("after_table_note_span").innerHTML="";
+                    document.getElementById("after_table_note_contact").innerHTML="";
                     alert("Veterinary Practitioner not found");
                 }
             }
@@ -705,7 +708,7 @@
             </table>
             <div id="after_table_note">
                 <span id="after_table_note_span">Note: Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via following ways:</span>
-                <span id="after_table_note_contact">Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone: +918134919017</span>
+                <span id="after_table_note_contact">Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017</span>
                 <button onclick="url_encoding_for_contacts();contact_avc_for_payment(1);">Contact us via Whatsapp</button>
                 <button onclick="url_encoding_for_contacts();contact_avc_for_payment(3);">Contact us via E-mail</button>
                 <button onclick="url_encoding_for_contacts();contact_avc_for_payment(2);">Contact us via Phone</button>
