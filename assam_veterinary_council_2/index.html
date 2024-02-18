@@ -259,6 +259,11 @@
                 padding-right: 1em;
                 box-sizing: border-box;
             }
+            #after_table_note_span{
+                font-weight: bold; 
+                font-style: italic; 
+                color: darkblue;
+            }
             #after_table_note>button{
                 width: 100%;
                 margin-top: 0.7rem;
@@ -270,6 +275,9 @@
                 cursor: pointer;
                 min-height: 2rem;
                 font-weight: bold;
+            }
+            #after_table_note_contact{
+                display: none;
             }
             #renewal_fee_table_label,#renewal_fee_table{
                 display: none;
@@ -369,10 +377,41 @@
                 min-height: 2rem;
                 font-weight: bold;
             }
+            #apply_for_id_card_text{
+                font-weight: bold; 
+                font-style: italic; 
+                color: darkblue; 
+                margin-top: 0.7rem;
+            }
             @media(orientation:landscape){
                 #after_table_note{
                     padding-top: 0px;
                     justify-content: flex-start;
+                }
+                #after_table_note_span{
+                    margin-top: 1rem;
+                }
+                #after_table_note>button{
+                    display: none;
+                }
+                #after_table_note_contact{
+                    margin-top: 1rem;
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                    font-weight: bold; 
+                    font-style: italic; 
+                    color: darkgreen;
+                    cursor: pointer;
+                }
+                #id_card_form_fill_up_button{
+                    width: fit-content;
+                    padding-left: 2rem;
+                    padding-right: 2rem;
+                }
+                #apply_for_id_card_text{
+                    margin-top: 1rem;
+                    display: inline-block;
                 }
                 .under_span_text{
                     display: block;
@@ -580,7 +619,8 @@
                         document.getElementById("renewal_fee_table").style.display="block";
                         if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
                             document.getElementById("vet_8").style.backgroundColor="#baffad";
-                            document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal up to date)";
+                            document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (up to date)";
+                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration is valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", but you can still extend registration validity by contacting Assam Veterinary Council via the following ways:";
                             temp_year=temp_year+5;
                             document.getElementById("rft_1").innerHTML=temp_year;
                             document.getElementById("rft_2").innerHTML=200;
@@ -590,6 +630,7 @@
                         else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
                             document.getElementById("vet_8").style.backgroundColor="#ffadad";
                             document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
+                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via the following ways:";
                             var renewal_fine=0; var temp_renewal_fee=0;
                             while(temp_year<currentYear){
                                 temp_year=temp_year+5;
@@ -663,7 +704,8 @@
                 <tr><td id="rft_3"></td><td id="rft_4"></td></tr>
             </table>
             <div id="after_table_note">
-                <span style="font-weight: bold; font-style: italic; color: darkblue;">Note: Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via following ways:</span>
+                <span id="after_table_note_span">Note: Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via following ways:</span>
+                <span id="after_table_note_contact">Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone: +918134919017</span>
                 <button onclick="url_encoding_for_contacts();contact_avc_for_payment(1);">Contact us via Whatsapp</button>
                 <button onclick="url_encoding_for_contacts();contact_avc_for_payment(3);">Contact us via E-mail</button>
                 <button onclick="url_encoding_for_contacts();contact_avc_for_payment(2);">Contact us via Phone</button>
@@ -679,6 +721,8 @@
             <span>Apply for Identity Card</span>
             <div class="under_span_text">
                 <button id="id_card_form_fill_up_button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfQTtd-I0rr33M95X1-_XYutHFWPWZ0NXDGmyr8gUmUNZmnAQ/viewform?usp=sf_link');">Apply for an Identity Card</button>
+                <span id="apply_for_id_card_text">Note: Upon Applying for Identity Card, please anticipate contact from our office regarding the payment of the Rs. 100/- fee for issuance. 
+                    Kindly note that the preparation of the identity card may take up to a week.</span>
             </div>
             <span>Introduction</span>
             <div class="new_intro_section">
