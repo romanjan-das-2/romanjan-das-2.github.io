@@ -145,6 +145,9 @@
             const ul = document.createElement("ul");
             data.forEach((item, index) => {
                 const li = document.createElement("li");
+                if (index === 5) { // Check if the item is a date field
+                    item = formatDate(item); // Format the date
+                }
                 if (index === 3) {
                     item = `<a href="${item}" target="_blank">View Photo</a>`;
                 }
@@ -164,6 +167,19 @@
             hide_li_with_links();
         }
 
+        // Function to format date to dd/mm/yyyy format
+        function formatDate(dateString) {
+            const dateParts = dateString.split('/');
+            if (dateParts.length === 3) {
+                const [month, day, year] = dateParts;
+                console.log(`${day}/${month}/${year}`,"processed");
+                return `${day}/${month}/${year}`;
+            } else {
+                console.log(dateString,"default");
+                return dateString; // Return the original string if it's not in the expected format
+            }
+        }
+
         // Function to get header based on index
         function getHeader(index) {
             const headers = [
@@ -172,17 +188,14 @@
                 "Father's or Husband's Name",
                 "Passport Size Photo",
                 "Photo of Signature",
-                "Date of Birth (mm/dd/yyyy)",
+                "Date of Birth",
                 "Registration Number",
                 "Blood Group",
                 "Office Address",
                 "Residential Address",
                 "Phone Number",
                 "Remarks (if any)",
-                "Declaration",
-                "Photo of Signature",
-                "sjdljgf",
-                "dsfhsdh"
+                "Declaration"
             ];
             return headers[index];
         }
