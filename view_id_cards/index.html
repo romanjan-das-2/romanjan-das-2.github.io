@@ -93,7 +93,7 @@
         <div id="data-container"></div>
     </div>
     <div class="button_container">
-        <button id="print_button" type="button" onclick="print_validation();">Print Application</button>
+        <button id="print_button" type="button" onclick="printFunction();">Print Application</button>
     </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -155,9 +155,9 @@
                 ul.appendChild(li);
             });
             var slno=document.createElement("li");
-            slno.innerHTML="<strong>Sl No:</strong>&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"slno\" id=\"slno\">";
+            slno.innerHTML="<strong>Sl No:</strong>";
             var ivpr=document.createElement("li");
-            ivpr.innerHTML="<strong>IVPR number:</strong>&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"ivpr\" id=\"ivpr\">";
+            ivpr.innerHTML="<strong>IVPR number:</strong>";
             ul.appendChild(slno); ul.appendChild(ivpr);
             dataContainer.appendChild(ul);
             convertLinksToIframes();
@@ -188,14 +188,6 @@
         }
     });
 
-    function print_validation(){
-        if(document.getElementById("slno").value!="" && document.getElementById("ivpr").value!=""){
-            printFunction();
-        }
-        else{
-            alert("Fill up SLNO and IVPR NO");
-        }
-    }
     function printFunction(){
         // Get all the <li> elements
         var listItems = document.getElementsByTagName("li");
