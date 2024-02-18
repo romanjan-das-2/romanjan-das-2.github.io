@@ -88,7 +88,7 @@
         <h2>Application for Issuing of ID Card</h2>
     </div>
     <div class="container">
-        <label id="timestamp-select-label" for="timestamp-select">Select Applicant-Date-Time:</label>
+        <label id="timestamp-select-label" for="timestamp-select">Select Applicant:</label>
         <select id="timestamp-select"></select>
         <div id="data-container"></div>
     </div>
@@ -125,7 +125,7 @@
                 const timestamp = line[0];
                 const name = line[1]; // Assuming name is the second element in each line
                 const option = document.createElement("option");
-                option.textContent = `${name} - ${timestamp}`;
+                option.textContent = `${name}`+" - "+extractDateTime(`${timestamp}`);
                 option.value = index; // Store index for easy retrieval of corresponding line
                 select.appendChild(option);
             });
