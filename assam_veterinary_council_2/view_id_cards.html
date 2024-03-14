@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for Issuing of ID Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            margin-bottom: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appl_head {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select {
+            padding: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .button_container{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #print_button{
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+            font-weight: bold;
+            height: 2rem;
+        }
+        #slno,#ivpr{
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="appl_head">
+        <h2>Application for Issuing of ID Card</h2>
+    </div>
+    <div class="container">
+        <label id="timestamp-select-label" for="timestamp-select">Select Applicant:</label>
+        <select id="timestamp-select"></select>
+        <div id="data-container"></div>
+    </div>
+    <div class="button_container">
+        <button id="print_button" type="button" onclick="printFunction();">Print Application</button>
+    </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const select = document.getElementById("timestamp-select");
+        const dataContainer = document.getElementById("data-container");
+        let allData = null;
+
+        // Fetch data only once when the page is loaded
+        fetchAndProcessData();
+
+        // Function to fetch data and populate dropdown
+        function fetchAndProcessData() {
+            fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSEeMyfiwbtLqI3LUXpPDXEA-NFYHu6oF9Icgb9GX-j_l4IeVxOSDXDV4wXJ7r9D5H3_MZdYy_8TxMr/pub?gid=1219214194&single=true&output=tsv")
+                .then(response => response.text())
+                .then(data => {
+                    const lines = data.split("\n");
+                    lines.shift(); // Remove header row
+                    allData = lines.map(line => line.split("\t"));
+                    populateDropdown(allData);
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        }
+
+        // Function to populate dropdown with timestamps and names
+        function populateDropdown(data) {
+            // Reverse the order of the data array
+            data.reverse();
+            data.forEach((line, index) => {
+                const timestamp = line[0];
+                const name = line[1]; // Assuming name is the second element in each line
+                const option = document.createElement("option");
+                option.textContent = `${name}`+" - "+extractDateTime(`${timestamp}`);
+                option.value = index; // Store index for easy retrieval of corresponding line
+                select.appendChild(option);
+            });
+            // Display data for the first timestamp by default
+            populateData(data[0]);
+        }
+
+        // Populate data based on selected timestamp
+        select.addEventListener("change", function () {
+            const selectedIndex = select.value;
+            populateData(allData[selectedIndex]);
+        });
+
+        // Function to populate data container with given data
+        function populateData(data) {
+            dataContainer.innerHTML = ""; // Clear existing data
+            const ul = document.createElement("ul");
+            data.forEach((item, index) => {
+                const li = document.createElement("li");
+                if (index === 0) {
+                    item = extractDateTime(item);
+                }
+                if (index === 5) { // Check if the item is a date field
+                    item = formatDate(item); // Format the date
+                }
+                if (index === 3) {
+                    item = `<a href="${item}" target="_blank">View Photo</a>`;
+                }
+                if (index === 4){
+                    item = `<a href="${item}" target="_blank">View Signature</a>`;
+                }
+                if (index === 1 || index === 2 || index === 8 || index === 9){
+                    item = item.toUpperCase();
+                }
+                if (index === 6){
+                    item = "ASM-" + item.replace(/\D/g, "");
+                }
+                li.innerHTML = `<strong>${getHeader(index)}:</strong> ${item}`;
+                ul.appendChild(li);
+            });
+            var slno=document.createElement("li");
+            slno.innerHTML="<strong>Sl No:</strong>";
+            var ivpr=document.createElement("li");
+            ivpr.innerHTML="<strong>IVPR number:</strong>";
+            ul.appendChild(slno); ul.appendChild(ivpr);
+            dataContainer.appendChild(ul);
+            convertLinksToIframes();
+            hide_li_with_links();
+        }
+
+        // Function to format date to dd/mm/yyyy format
+        function formatDate(dateString) {
+            const dateParts = dateString.split('/');
+            if (dateParts.length === 3) {
+                const [month, day, year] = dateParts;
+                console.log(`${day}/${month}/${year}`,"processed");
+                return `${day}/${month}/${year}`;
+            } else {
+                console.log(dateString,"default");
+                return dateString; // Return the original string if it's not in the expected format
+            }
+        }
+
+        // Function to get header based on index
+        function getHeader(index) {
+            const headers = [
+                "Application Date",
+                "Name",
+                "Father's or Husband's Name",
+                "Passport Size Photo",
+                "Photo of Signature",
+                "Date of Birth",
+                "Registration Number",
+                "Blood Group",
+                "Office Address",
+                "Residential Address",
+                "Phone Number",
+                "Email ID",
+                "Remarks (if any)",
+                "Declaration"
+            ];
+            return headers[index];
+        }
+    });
+
+    function printFunction(){
+        // Get all the <li> elements
+        var listItems = document.getElementsByTagName("li");
+        // Loop through each <li> element and set the bottom margin
+        for (var i = 0; i < listItems.length; i++) {
+            listItems[i].style.marginBottom = "30px"; // Change the bottom margin to 30px
+        }
+        document.body.style.backgroundColor="white";
+        document.getElementById("timestamp-select-label").style.display="none";
+        document.getElementById("timestamp-select").style.display="none";
+        document.getElementById("print_button").style.display="none";
+        document.getElementsByClassName("container")[0].style.boxShadow="0px 0px 0px #ffffff";
+        document.getElementsByClassName("container")[0].style.border="1px solid #ffffff";
+        window.print();
+        // Loop through each <li> element and set the bottom margin
+        for (var i = 0; i < listItems.length; i++) {
+            listItems[i].style.marginBottom = "15px"; // Change the bottom margin to 30px
+        }
+        document.body.style.backgroundColor="#f1f1f1";
+        document.getElementById("timestamp-select-label").style.display="block";
+        document.getElementById("timestamp-select").style.display="block";
+        document.getElementById("print_button").style.display="block";
+        document.getElementsByClassName("container")[0].style.boxShadow="0 0 10px rgba(0, 0, 0, 0.1)";
+        document.getElementsByClassName("container")[0].style.border="1px solid #ddd";
+    }
+
+    function convertLinksToIframes() {
+    var iframe_index=0;
+    var linkElements = document.querySelectorAll('a[href^="https://drive.google.com/open?id="]');
+    if (linkElements.length > 0) {
+        linkElements.forEach(function(linkElement) {
+            var linkHref = linkElement.getAttribute('href');
+            var fileId = linkHref.split('id=')[1];
+            var iframeSrc = 'https://drive.google.com/file/d/' + fileId + '/preview';
+            console.log('New iframe link:', iframeSrc);
+            document.getElementById("iframe_"+iframe_index).src=iframeSrc;
+            iframe_index++;
+        });
+    } else {
+        console.error('No links found with specified criteria.');
+    }
+    }
+
+    function hide_li_with_links() {
+        var listItems = document.querySelectorAll('li');
+        listItems.forEach(function(item) {
+            var strongText = item.querySelector('strong');
+            if (strongText && (strongText.textContent === 'Passport Size Photo:' || strongText.textContent === 'Photo of Signature:')) {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    function extractDateTime(text) {
+    // Regular expression to match date and time pattern
+    const regex = /(\d{1,2})\/(\d{1,2})\/(\d{4}) (\d{1,2}):(\d{1,2}):(\d{1,2})/;
+
+    // Executing the regular expression on the input string
+    const match = regex.exec(text);
+
+    if (match) {
+        // Extracting date and time from the matched groups
+        const month = match[1];
+        const day = match[2];
+        const year = match[3];
+        const hour = match[4];
+        const minute = match[5];
+        const second = match[6];
+
+        // Return the date and time in the desired format
+        return day+"/"+month+"/"+year;
+    } else {
+        return null;
+    }
+}
+
+
+
+</script>
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <iframe id="iframe_0" src="" frameborder="0" height="1000px" width="600px"></iframe>
+    <iframe id="iframe_1" src="" frameborder="0" height="1000px" width="600px"></iframe>
+</div>
+
+
+</body>
+
+</html>
