@@ -260,9 +260,9 @@
                 box-sizing: border-box;
             }
             #after_table_note_span{
-                font-weight: bold; 
+                font-weight: 500;
                 font-style: italic; 
-                color: darkblue;
+                /*color: darkblue;*/
             }
             #after_table_note>button{
                 width: 100%;
@@ -378,9 +378,9 @@
                 font-weight: bold;
             }
             #apply_for_id_card_text{
-                font-weight: bold; 
+                font-weight: 500;
                 font-style: italic; 
-                color: darkblue; 
+                /*color: darkblue;*/ 
                 margin-top: 0.7rem;
             }
             @media(orientation:landscape){
@@ -616,16 +616,16 @@
                         var temp_year=foundPractitioner["REGISTRATION VALIDITY"];
                         document.getElementById("renewal_fee_table_label").style.display="block";
                         document.getElementById("renewal_fee_table").style.display="block";
-                        if(foundPractitioner["REGISTRATION VALIDITY"]>=currentYear){
+                        if(foundPractitioner["REGISTRATION VALIDITY"]>currentYear){
                             document.getElementById("vet_8").style.backgroundColor="#baffad";
                             document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (up to date)";
-                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration is valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", but you can still extend registration validity by paying additional fee. Please contact Assam Veterinary Council for the payment.";
+                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration is valid upto "+foundPractitioner["REGISTRATION VALIDITY"];
                             document.getElementById("after_table_note_contact").innerHTML="Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017";
-                            temp_year=temp_year+5;
-                            document.getElementById("rft_1").innerHTML=temp_year;
-                            document.getElementById("rft_2").innerHTML=200;
-                            document.getElementById("rft_3").innerHTML=temp_year+5;
-                            document.getElementById("rft_4").innerHTML=400;
+                            //temp_year=temp_year+5;
+                            document.getElementById("rft_1").innerHTML="";
+                            document.getElementById("rft_2").innerHTML="";
+                            document.getElementById("renewal_fee_table_label").style.display="none";
+                            document.getElementById("renewal_fee_table").style.display="none";
                         }
                         else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
                             document.getElementById("vet_8").style.backgroundColor="#ffadad";
@@ -640,8 +640,18 @@
                             }
                             document.getElementById("rft_1").innerHTML=temp_year;
                             document.getElementById("rft_2").innerHTML=temp_renewal_fee+renewal_fine;
-                            document.getElementById("rft_3").innerHTML=temp_year+5;
-                            document.getElementById("rft_4").innerHTML=temp_renewal_fee+renewal_fine+200;
+                            document.getElementById("renewal_fee_table_label").style.display="block";
+                            document.getElementById("renewal_fee_table").style.display="block";
+                        }
+                        else if(foundPractitioner["REGISTRATION VALIDITY"]==currentYear){
+                            document.getElementById("vet_8").style.backgroundColor="#ffadad";
+                            document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
+                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via the following ways:";
+                            document.getElementById("after_table_note_contact").innerHTML="Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017";
+                            document.getElementById("rft_1").innerHTML=currentYear+5;
+                            document.getElementById("rft_2").innerHTML=200;
+                            document.getElementById("renewal_fee_table_label").style.display="block";
+                            document.getElementById("renewal_fee_table").style.display="block";
                         }
                     }
                     else{
@@ -659,8 +669,6 @@
                     document.getElementById("vet_8").innerText="";
                     document.getElementById("rft_1").innerHTML="_";
                     document.getElementById("rft_2").innerHTML="_";
-                    document.getElementById("rft_3").innerHTML="_";
-                    document.getElementById("rft_4").innerHTML="_";
                     document.getElementById("after_table_note_span").innerHTML="";
                     document.getElementById("after_table_note_contact").innerHTML="";
                     alert("Veterinary Practitioner not found");
@@ -704,14 +712,13 @@
             <table id="renewal_fee_table">
                 <tr><td>Renewal Upto Year</td><td>Renewal Fee (Rs.)</td></tr>
                 <tr><td id="rft_1"></td><td id="rft_2"></td></tr>
-                <tr><td id="rft_3"></td><td id="rft_4"></td></tr>
             </table>
             <div id="after_table_note">
                 <span id="after_table_note_span">Note: Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via following ways:</span>
                 <span id="after_table_note_contact">Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017</span>
-                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(1);">Contact us via Whatsapp</button>
-                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(3);">Contact us via E-mail</button>
-                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(2);">Contact us via Phone</button>
+                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(1);">Whatsapp</button>
+                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(3);">E-mail</button>
+                <button onclick="url_encoding_for_contacts();contact_avc_for_payment(2);">Phone</button>
             </div>
             <div style="width: auto; height: 2rem;"></div>
             <!--
