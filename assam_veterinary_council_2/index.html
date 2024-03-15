@@ -651,7 +651,7 @@
                         else if(foundPractitioner["REGISTRATION VALIDITY"]<currentYear){
                             document.getElementById("vet_8").style.backgroundColor="#ffadad";
                             document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
-                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via the following ways:";
+                            //document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via the following ways:";
                             document.getElementById("after_table_note_contact").innerHTML="Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017";
                             var renewal_fine=0; var temp_renewal_fee=0;
                             while(temp_year<currentYear){
@@ -670,19 +670,20 @@
                             document.getElementById("renewal_fee_table_label").style.display="block";
                             document.getElementById("renewal_fee_table").style.display="block";
                             document.getElementById("after_table_note_button_div").style.display="flex";
+                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Kindly pay Rs."+ document.getElementById("rft_2").innerHTML +", to renew registration up to "+ document.getElementById("rft_1").innerHTML +", for payment you can contact council via the following ways:";
 
                         }
                         else if(foundPractitioner["REGISTRATION VALIDITY"]==currentYear){
                             document.getElementById("vet_8").style.backgroundColor="#ffadad";
                             document.getElementById("vet_8").innerHTML=document.getElementById("vet_8").innerHTML+" (Renewal pending)";
-                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via the following ways:";
+                            //document.getElementById("after_table_note_span").innerHTML="Note: Your registration was valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via the following ways:";
                             document.getElementById("after_table_note_contact").innerHTML="Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017";
                             document.getElementById("rft_1").innerHTML=currentYear+5;
                             document.getElementById("rft_2").innerHTML=200;
                             document.getElementById("renewal_fee_table_label").style.display="block";
                             document.getElementById("renewal_fee_table").style.display="block";
                             document.getElementById("after_table_note_button_div").style.display="flex";
-
+                            document.getElementById("after_table_note_span").innerHTML="Note: Your registration is valid upto "+foundPractitioner["REGISTRATION VALIDITY"]+ ", Kindly pay Rs."+ document.getElementById("rft_2").innerHTML +", to renew registration up to "+ document.getElementById("rft_1").innerHTML +", for payment you can contact council via the following ways:";
                         }
                     }
                     else{
@@ -748,9 +749,9 @@
                 <span id="after_table_note_span">Note: Please contact Assam Veterinary Council for the payment of registration renewal fee. You can contact council via following ways:</span>
                 <span id="after_table_note_contact">Email: avcassam2016@gmail.com&nbsp;&nbsp;&nbsp;Phone: +918134919017</span>
                 <div id="after_table_note_button_div">
-                    <button onclick="url_encoding_for_contacts();contact_avc_for_payment(1);">Whatsapp</button>
+                    <button onclick="url_encoding_for_contacts();contact_avc_for_payment(2);">Call</button>
                     <button onclick="url_encoding_for_contacts();contact_avc_for_payment(3);">E-mail</button>
-                    <button onclick="url_encoding_for_contacts();contact_avc_for_payment(2);">Phone</button>
+                    <button onclick="url_encoding_for_contacts();contact_avc_for_payment(1);">Whatsapp</button>
                 </div>
             </div>
             <div style="width: auto; height: 2rem;"></div>
@@ -804,7 +805,7 @@
             </div>
 
             
-            <span>Present Status of Assam Veterinary Council</span><br>
+            <span>Present Status of the Council</span><br>
             <ol>
                 <li>Date of first constitution of the Council is 21st July, 1982.</li>
                 <li>Date of Last constitution of the council is 08.03.2022 (Govt. Notification at Annexure-A)</li>
@@ -812,7 +813,7 @@
                 <li>Total number of veterinary practitioners registered their name under Assam Veterinary Council till to-day on 10.07.2023 is 3336 numbers.</li>
             </ol>
 
-            <span>Present Body of Assam Veterinary Council</span>
+            <span>Present Body of the Council</span>
             <ul>
                 <li>The President : Dr. Dandeswar Deka</li>
                 <li>The Vice-President : Dr. Pranjit Baruah</li>
@@ -856,15 +857,15 @@
             <br>
             <span>Office Staff of Assam Veterinary Council</span>
             <table id="office_staff_table">
-                <tr><td>Mr. Jatin Deka</td><td>Grade Three</td></tr>
-                <tr><td>Mr. Bashudev Sharma</td><td>Grade Three</td></tr>
-                <tr><td>Mr. Taslim Ali</td><td>Grade Three</td></tr>
-                <tr><td>Mrs. Rehana Begum</td><td>Grade Three</td></tr>
-                <tr><td>Mr. Girin Kalita</td><td>Grade Four</td></tr>
-                <tr><td>Mr. Romanjan Das</td><td>Grade Three</td></tr>
-                <tr><td>Mr. Kaustav Tyagi</td><td>Grade Three</td></tr>
-                <tr><td>Mr. Deepjyoti Thakuria</td><td>Grade Four</td></tr>
-                <tr><td>Mr. Jiten Basfor</td><td>Janitor</td></tr>
+                <tr><td>Mr. Jatin Ch. Deka</td><td>Jr. Asstt.</td></tr>
+                <tr><td>Mr. Bashudev Sharma</td><td>Jr. Asstt.</td></tr>
+                <tr><td>Mr. Taslim Ali</td><td>Driver</td></tr>
+                <tr><td>Mrs. Rehina Begum</td><td>Jr. Asstt.</td></tr>
+                <tr><td>Mr. Girin Kalita</td><td>Peon</td></tr>
+                <tr><td>Mr. Romanjan Das</td><td>Jr. Asstt.</td></tr>
+                <tr><td>Mr. Kaustav Tyagi</td><td>Jr. Asstt.</td></tr>
+                <tr><td>Mr. Dipjyoti Thakuria</td><td>Peon</td></tr>
+                <tr><td>Mr. Dipak Basfor</td><td>Janitor</td></tr>
             </table>
             
         </div>
