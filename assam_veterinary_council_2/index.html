@@ -514,7 +514,7 @@
         var contact_message_generated = "";
         var encoded_contact_message_generated = "";
         function url_encoding_for_contacts() {
-            contact_message_generated = "Hi, I, " + document.getElementById("vet_1").innerHTML + ", bearing registration number: " + document.getElementById("vet_4").innerHTML + ", would like to pay the fee for renewal of my registration";
+            contact_message_generated = "Hi, I, " + document.getElementById("vet_1").innerHTML + ", bearing registration number: " + document.getElementById("vet_4").innerHTML + ", would like to pay the fee of Rs." + document.getElementById("rft_2").innerHTML + ", for renewal of my registration upto year "+document.getElementById("rft_1").innerHTML;
             encoded_contact_message_generated = encodeURIComponent(contact_message_generated);
         }
         function contact_avc_for_payment(param) {
@@ -525,7 +525,7 @@
                 window.open("tel:+918134919017");
             }
             else if (param == 3) {
-                window.open("mailto:avcassam2016@gmail.com?subject=REGARDING%20PAYMENT%20OF%20FEE" + "&body=" + encoded_contact_message_generated);
+                window.open("mailto:avcassam2016@gmail.com?subject=Regarding%20payment%20of%20renewal%20fee" + "&body=" + encoded_contact_message_generated);
             }
         }
     </script>
