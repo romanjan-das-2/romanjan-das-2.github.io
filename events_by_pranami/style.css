@@ -51,7 +51,7 @@ body{
 .front-page-image-text-over{
     position: absolute;
     z-index: 3;
-    top: 40%;
+    top: 55%;
     left: 50%;
     width: 80%;
     text-align: center;
@@ -153,7 +153,7 @@ body{
 }
 .footer-details{
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     display: flex;
     align-items: flex-start;
     background-color: #1b150d;
