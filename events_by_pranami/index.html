@@ -17,7 +17,8 @@
 
 <body class="quicksand-style">
     <div class="title-bar">
-        <div><a style="text-decoration: none; color: black;" href="#portrait-nav-menu">MENU</a></div>
+        <div onclick="show_portrait_nav_menu();"><a style="text-decoration: none; color: black;"
+                href="#portrait-nav-menu">MENU</a></div>
     </div>
     <div class="blank-top-bar">
         <div>
@@ -38,6 +39,10 @@
             experiences.</div>
         <div class="front-page-initial-text-1">BASED IN GUWAHATI</div>
     </div>
+    <img style="display:none;" src="images/squared/img_squared(11).jpeg" alt="">
+    <img style="display:none;" src="images/squared/img_squared(12).jpeg" alt="">
+    <img style="display:none;" src="images/squared/img_squared(6).jpeg" alt="">
+
     <div id="front-page-our-services" class="front-page-our-services">
         <div onclick="front_page_our_services_nav();" class="front-page-our-services-nav-left">&lt;</div>
         <div class="front-page-our-services-service">
@@ -73,23 +78,49 @@
             <h2>Celebrations 🎉</h2>
         </div>
         <div class="front-page-our-works-container">
-            <img src="images/squared/thumbnails/img_squared(1).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(2).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(3).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(4).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(5).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(6).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(7).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(8).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(9).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(10).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(11).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(12).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(13).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(14).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(15).jpeg" alt="">
-            <img src="images/squared/thumbnails/img_squared(16).jpeg" alt="">
+            <img id="img_squared(1)" onclick="front_page_our_works_img_modal_show(1);"
+                src="images/squared/thumbnails/img_squared(1).jpeg" alt="">
+            <img id="img_squared(2)" onclick="front_page_our_works_img_modal_show(2);"
+                src="images/squared/thumbnails/img_squared(2).jpeg" alt="">
+            <img id="img_squared(3)" onclick="front_page_our_works_img_modal_show(3);"
+                src="images/squared/thumbnails/img_squared(3).jpeg" alt="">
+            <img id="img_squared(4)" onclick="front_page_our_works_img_modal_show(4);"
+                src="images/squared/thumbnails/img_squared(4).jpeg" alt="">
+            <img id="img_squared(5)" onclick="front_page_our_works_img_modal_show(5);"
+                src="images/squared/thumbnails/img_squared(5).jpeg" alt="">
+            <img id="img_squared(6)" onclick="front_page_our_works_img_modal_show(6);"
+                src="images/squared/thumbnails/img_squared(6).jpeg" alt="">
+            <img id="img_squared(7)" onclick="front_page_our_works_img_modal_show(7);"
+                src="images/squared/thumbnails/img_squared(7).jpeg" alt="">
+            <img id="img_squared(8)" onclick="front_page_our_works_img_modal_show(8);"
+                src="images/squared/thumbnails/img_squared(8).jpeg" alt="">
+            <img id="img_squared(9)" onclick="front_page_our_works_img_modal_show(9);"
+                src="images/squared/thumbnails/img_squared(9).jpeg" alt="">
+            <img id="img_squared(10)" onclick="front_page_our_works_img_modal_show(10);"
+                src="images/squared/thumbnails/img_squared(10).jpeg" alt="">
+            <img id="img_squared(11)" onclick="front_page_our_works_img_modal_show(11);"
+                src="images/squared/thumbnails/img_squared(11).jpeg" alt="">
+            <img id="img_squared(12)" onclick="front_page_our_works_img_modal_show(12);"
+                src="images/squared/thumbnails/img_squared(12).jpeg" alt="">
+            <img id="img_squared(13)" onclick="front_page_our_works_img_modal_show(13);"
+                src="images/squared/thumbnails/img_squared(13).jpeg" alt="">
+            <img id="img_squared(14)" onclick="front_page_our_works_img_modal_show(14);"
+                src="images/squared/thumbnails/img_squared(14).jpeg" alt="">
+            <img id="img_squared(15)" onclick="front_page_our_works_img_modal_show(15);"
+                src="images/squared/thumbnails/img_squared(15).jpeg" alt="">
+            <img id="img_squared(16)" onclick="front_page_our_works_img_modal_show(16);"
+                src="images/squared/thumbnails/img_squared(16).jpeg" alt="">
         </div>
+    </div>
+    <div onclick="front_page_our_works_modal_close_button();" id="front-page-our-works-modal-close-button"
+        class="front-page-our-works-modal-close-button">Close ✕</div>
+    <div id="front-page-our-works-modal" class="front-page-our-works-modal">
+        <div onclick="front_page_our_works_modal_nav();" class="front-page-our-works-modal-nav-left">&lt;</div>
+        <div class="front-page-our-works-modal-img">
+            <img id="front-page-our-works-modal-img-img" src="images/squared/thumbnails/img_squared(1).jpeg" alt=""
+                srcset="">
+        </div>
+        <div onclick="front_page_our_works_modal_nav();" class="front-page-our-works-modal-nav-right">&gt;</div>
     </div>
     <div id="footer-details" class="footer-details">
         <div>
@@ -128,20 +159,25 @@
 
 
     <div id="portrait-nav-menu" class="portrait-nav-menu">
-        <ul>
-            <li>
-                <h2 onclick="location.href='#';">Events By Pranami</h2>
-            </li>
-            <li>
-                <h2 onclick="location.href='#front-page-our-services';">Our Services</h2>
-            </li>
-            <li>
-                <h2 onclick="location.href='#front-page-our-works';">Our Portfolio</h2>
-            </li>
-            <li>
-                <h2 onclick="location.href='#footer-details';">Contact Us</h2>
-            </li>
-        </ul>
+        <div>
+            <ul>
+                <li>
+                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#';">Events By Pranami</h2>
+                </li>
+                <li>
+                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-services';">
+                        Our Services</h2>
+                </li>
+                <li>
+                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-works';">Our
+                        Portfolio</h2>
+                </li>
+                <li>
+                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#footer-details';">Contact Us
+                    </h2>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 

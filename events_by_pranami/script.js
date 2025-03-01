@@ -46,3 +46,30 @@ function front_page_testimonial_nav(){
         testimonial_author.innerHTML="Catherine Sangma";
     }
 }
+
+function front_page_our_works_modal_close_button(){
+    document.getElementById("front-page-our-works-modal").style.display="none";
+    document.getElementById("front-page-our-works-modal-close-button").style.display="none";
+    document.getElementById("portrait-nav-menu").style.display="none";
+}
+
+var thumb_index=1;
+function front_page_our_works_img_modal_show(thumb_img_num){
+    thumb_index=thumb_img_num;
+    document.getElementById("front-page-our-works-modal").style.display="flex";
+    document.getElementById("front-page-our-works-modal-close-button").style.display="block";
+    document.getElementById("front-page-our-works-modal-img-img").src="images/squared/thumbnails/img_squared("+thumb_img_num+").jpeg";
+}
+
+function front_page_our_works_modal_nav(){
+    thumb_index++;
+    if(thumb_index>16){
+        thumb_index=1;
+    }
+    document.getElementById("front-page-our-works-modal-img-img").src="images/squared/thumbnails/img_squared("+thumb_index+").jpeg";
+}
+
+function show_portrait_nav_menu(){
+    document.getElementById("portrait-nav-menu").style.display="block";
+    document.getElementById("front-page-our-works-modal-close-button").style.display="block";
+}
