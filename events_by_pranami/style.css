@@ -120,10 +120,13 @@ body{
 }
 .front-page-testimonials{
     width: 100vw;
+    height: 70vh;
     display: flex;
     flex-direction: row;
+    align-items: center;
     background-color: rgb(242 237 234);
-    padding-top: 10%; padding-bottom: 15%;
+    padding-top: 10%;
+    padding-bottom: 15%;
     box-sizing: border-box;
     color: #301b05;
     text-align: center;
@@ -275,7 +278,7 @@ body{
     align-items: center;
     background-color: white;
     box-sizing: border-box;
-    padding: 2%;
+    padding: 1%;
     border: 1px solid gainsboro;
     border-radius: 3% 3% 3% 3%;
 }
