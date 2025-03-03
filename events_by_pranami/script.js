@@ -73,3 +73,9 @@ function show_portrait_nav_menu(){
     document.getElementById("portrait-nav-menu").style.display="block";
     document.getElementById("front-page-our-works-modal-close-button").style.display="block";
 }
+
+function front_page_our_works_click_more(){
+    document.getElementsByClassName("front-page-our-works-container")[0].style.marginBottom="22%";
+    document.getElementsByClassName("front-page-our-works-container")[0].style.height="auto";
+    document.getElementsByClassName("front-page-our-works-click-more")[0].style.display="none";
+}

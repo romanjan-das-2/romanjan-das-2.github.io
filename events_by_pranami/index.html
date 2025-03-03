@@ -33,11 +33,11 @@
     </div>
     <div class="front-page-initial-text">
         <div class="front-page-initial-text-2">Event planning for Birthday, Anniversary, Engagement, Naming ceremony,
-            Baby shower, Weddings</div>
-        <div class="front-page-initial-text-3">From made-to-measure weddings to grand celebrations that leave a lasting
-            impression, Events by Pranami specializes in transforming bespoke spaces into extraordinary, unforgettable
-            experiences.</div>
-        <div class="front-page-initial-text-1">BASED IN GUWAHATI</div>
+            Baby shower, Weddings and other Social and Corporate Events.</div>
+        <div id="our-reach" class="front-page-initial-text-3">From made-to-measure weddings to grand celebrations that
+            leave a lasting impression, Events by Pranami specializes in transforming bespoke spaces into extraordinary,
+            unforgettable experiences.</div>
+        <div class="front-page-initial-text-1">BASED IN GUWAHATI, BUT OUR REACH IS IN ALL OVER NORTH-EAST</div>
     </div>
     <img style="display:none;" src="images/squared/img_squared(11).jpeg" alt="">
     <img style="display:none;" src="images/squared/img_squared(12).jpeg" alt="">
@@ -75,7 +75,7 @@
     </div>
     <div id="front-page-our-works" class="front-page-our-works">
         <div class="front-page-our-works-title">
-            <h2>Celebrations 🎉</h2>
+            <h2>Our Portfolio 🎉</h2>
         </div>
         <div class="front-page-our-works-container">
             <img id="img_squared(1)" onclick="front_page_our_works_img_modal_show(1);"
@@ -111,6 +111,7 @@
             <img id="img_squared(16)" onclick="front_page_our_works_img_modal_show(16);"
                 src="images/squared/thumbnails/img_squared(16).jpeg" alt="">
         </div>
+        <div onclick="front_page_our_works_click_more();" class="front-page-our-works-click-more">↓ Click for more</div>
     </div>
     <div onclick="front_page_our_works_modal_close_button();" id="front-page-our-works-modal-close-button"
         class="front-page-our-works-modal-close-button">Close ✕</div>
@@ -122,22 +123,36 @@
         </div>
         <div onclick="front_page_our_works_modal_nav();" class="front-page-our-works-modal-nav-right">&gt;</div>
     </div>
+    <div id="front-page-about-pranami" class="front-page-about-pranami">
+        <div class="front-page-about-pranami-div-img">
+            <img src="images/about_pranami_2.jpeg" alt="">
+        </div>
+        <div class="front-page-about-pranami-text">
+            <h2>About Pranami</h2>
+            Events by Pranami is a premier event planning group in Guwahati,
+            led by freelance event planner Pranami Kakati. With over five years
+            of experience, Pranami has successfully orchestrated a diverse range
+            of events, from anniversaries and engagements to charity fundraisers.
+            Known for her creativity and meticulous coordination, she consistently
+            exceeds client expectations, ensuring seamless execution and unforgettable
+            experiences. Her passion lies in crafting immersive events that leave a lasting impression.
+        </div>
+    </div>
+    <div onclick="location.href='https:/\/\wa.me/9101626486';" class="contact-whatsapp"><img
+            src="images/contact-whatsapp.png" alt="">&nbsp;Message Us</div>
+
     <div id="footer-details" class="footer-details">
         <div>
             <h3>Quick Links</h3>
             <ul>
-                <li>Events By Pranami</li>
-                <li>Our Services</li>
-                <li>Our Portfolio</li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>Contact</h3>
-            <ul>
-                <li>Phone/Whatsapp: 91016-26486</li>
-                <li>E-mail: pranamikakati79@gmail.com</li>
-                <li>Address: Noonmati, Guwahati-20</li>
+                <li onclick="front_page_our_works_modal_close_button(); location.href='#';">↑ Back to top</li>
+                <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-services';">Our
+                    Services</li>
+                <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-works';">Our
+                    Portfolio</li>
+                <li onclick="front_page_our_works_modal_close_button(); location.href='#our-reach';">Our Reach</li>
+                <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-about-pranami';">
+                    About Pranami</li>
             </ul>
         </div>
 
@@ -150,10 +165,20 @@
             </ul>
         </div>
 
+        <div>
+            <h3>Contact</h3>
+            <ul>
+                <li>Phone/Whatsapp: 91016-26486</li>
+                <li>E-mail: pranamikakati79@gmail.com</li>
+                <li>Address: Noonmati, Guwahati-20</li>
+            </ul>
+        </div>
+
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3580.179830490065!2d91.80701167320943!3d26.190827781628606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1740638400503!5m2!1sen!2sin"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     </div>
 
 
@@ -162,7 +187,7 @@
         <div>
             <ul>
                 <li>
-                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#';">Events By Pranami</h2>
+                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#';">↑ Back to top</h2>
                 </li>
                 <li>
                     <h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-services';">
@@ -171,6 +196,13 @@
                 <li>
                     <h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-works';">Our
                         Portfolio</h2>
+                </li>
+                <li>
+                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#our-reach';">Our Reach</h2>
+                </li>
+                <li>
+                    <h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-about-pranami';">
+                        About Pranami</h2>
                 </li>
                 <li>
                     <h2 onclick="front_page_our_works_modal_close_button(); location.href='#footer-details';">Contact Us
