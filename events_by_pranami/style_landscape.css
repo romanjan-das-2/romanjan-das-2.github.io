@@ -1,9 +1,10 @@
-@media (orientation: portrait) {
+@media (orientation: landscape) {
     html{
         scroll-behavior: smooth;
     }
     body{
         margin: 0px;
+        overflow-x: hidden;
     }
     .title-bar{
         position: fixed;
@@ -21,9 +22,14 @@
     .title-bar>div{
         background-color: white;
         box-sizing: border-box;
-        padding: 2%;
+        padding: 15px;
+        margin-right: 15px;
     }
     .blank-top-bar{
+        position: absolute;
+        font-size: x-large;
+        color: white;
+        text-shadow: 2px 2px 5px darkolivegreen;
         height: 60px;
         display: flex;
         align-items: center;
@@ -56,10 +62,10 @@
         list-style-type: none;
     }
     #front-page-image-portrait{
-        display: block;
+        display: none;
     }
     #front-page-image-landscape{
-        display: none;
+        display: block;
     }
     .front-page-image{
         width: 100vw;
@@ -70,19 +76,24 @@
     .front-page-image-text-over{
         position: absolute;
         z-index: 3;
-        top: 55%;
+        top: 85%;
         left: 50%;
         width: 80%;
         text-align: center;
         transform: translate(-50%, -50%);
         color: white;
-        font-size: 1.9em;
+        font-size: 3em;
         text-shadow: 2px 2px 5px darkolivegreen;
     }
     .front-page-initial-text{
         text-align: center;
         box-sizing: border-box;
         padding: 10px;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
     .front-page-initial-text>div{
         margin-top: 30px;
@@ -92,7 +103,7 @@
         box-sizing: border-box;
     }
     .front-page-initial-text-1{
-        font-size: 1.3em;
+        font-size: 1.8em;
         letter-spacing: 3px;
     }
     .front-page-initial-text-2{
@@ -100,14 +111,18 @@
         color: darkolivegreen;
     }
     .front-page-initial-text-3{
-        font-size: 1.2em;
+        font-size: 1.8em;
     }
     .front-page-our-services{
         width: 100vw;
+        height: 100vh;
+        padding-top: 20vh;
+        padding-bottom: 20vh;
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
         background-color: rgb(163, 159, 116);
-        padding-top: 10%; padding-bottom: 15%;
         box-sizing: border-box;
         color: white;
         text-align: center;
@@ -115,25 +130,37 @@
     .front-page-our-services-nav-left, .front-page-our-services-nav-right{
         width: 10%;
         display: flex;
-        font-size: 2em;
+        font-size: 3em;
         justify-content: center;
         align-items: center;
-    }
-    #front-page-our-services-service-heading{
-        display: block;
-    }
-    #front-page-our-services-service-heading-landscape{
-        display: none;
+        cursor: pointer;
     }
     .front-page-our-services-service{
-        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
     .front-page-our-services-service>div>img{
-        width: 100%;
+        width: 80vh;
+        height: 80vh;
+    }
+    #front-page-our-services-service-heading{
+        display: none;
+    }
+    #front-page-our-services-service-heading-landscape{
+        display: block;
+    }
+    #front-page-our-services-service-description{
+        margin-left: 4%;
+        margin-right: 2%;
+        font-size: 1.4em;
+        text-align: start;
     }
     .front-page-testimonials{
         width: 100vw;
-        height: 65vh;
+        height: 100vh;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -143,9 +170,10 @@
         box-sizing: border-box;
         color: #301b05;
         text-align: center;
+        font-size: 1.4em;
     }
     #front-page-testimonial-item{
-        line-height: 1.4em;
+        line-height: 2.1em;
     }
     .front-page-testimonials-nav-left, .front-page-testimonials-nav-right{
         width: 10%;
@@ -153,6 +181,7 @@
         font-size: 2em;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
     .front-page-testimonials-testimonial{
         width: 80%;
@@ -163,7 +192,7 @@
     .front-page-our-works-container{
         display: flex;
         width: 100%;
-        height: 60vh;
+        height: auto;
         overflow-y: hidden;
         padding: 5% 1% 0% 1%;
         margin-bottom: 4%;
@@ -172,8 +201,9 @@
         justify-content: center;
     }
     .front-page-our-works-container>img{
-        width: 47%;
+        width: 15%;
         margin: 1%;
+        cursor: pointer;
     }
     .front-page-our-works-title{
         padding-top: 2em;
@@ -192,7 +222,7 @@
         align-items: flex-start;
         background-color: #1b150d;
         color: white;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: flex-start;
         box-sizing: border-box;
         padding-left: 5%;
@@ -200,9 +230,12 @@
         padding-top: 10%;
         padding-bottom: 10%;
     }
+    .footer-details>div{
+        width: 20%;
+    }
     .footer-details iframe{
-        margin-top: 10%;
-        width: 100%;
+        margin-left: 5%;
+        width: 40%;
     }
     .footer-details ul{
         list-style-type: none;
@@ -211,15 +244,16 @@
     }
     .footer-details li{
         margin-bottom: 1em;
+        cursor: pointer;
     }
-
+    
     .quicksand-style{
         font-family: "Quicksand", serif;
         font-optical-sizing: auto;
         font-weight: normal;
         font-style: normal;
     }
-
+    
     .front-page-our-works-modal{
         position: fixed;
         z-index: 4;
@@ -231,18 +265,17 @@
         display: none;
         flex-direction: row;
         align-items: center;
+        justify-content: center;
         color: white;
         font-size: 2em;
     }
     .front-page-our-works-modal-nav-left,.front-page-our-works-modal-nav-right{
         width: 15%;
         text-align: center;
-    }
-    .front-page-our-works-modal-img{
-        width: 100%;
+        cursor: pointer;
     }
     .front-page-our-works-modal-img>img{
-        width: 100%;
+        height: 80vh;
     }
     .front-page-our-works-modal-close-button{
         position: fixed;
@@ -261,22 +294,25 @@
         border-radius: 8px 8px 8px 8px;
     }
     .front-page-about-pranami{
-        width: 100vw;
+        margin-top: 20vh;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
     .front-page-about-pranami-div-img{
         width: inherit;
     }
     .front-page-about-pranami-div-img>img{
-        width: inherit;
+        width: 100%;
     }
     .front-page-about-pranami-text{
+        font-size: 1.3em;
+        line-height: 2em;
         width: inherit;
         box-sizing: border-box;
         padding: 0% 5% 12% 5%;
     }
     .front-page-our-works-click-more{
+        display: none;
         width: 100vw;
         text-align: center;
         margin-bottom: 20%;

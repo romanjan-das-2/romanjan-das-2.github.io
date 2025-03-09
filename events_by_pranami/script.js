@@ -2,6 +2,7 @@ var service_slide_index=1;
 function front_page_our_services_nav(){
     var img = document.getElementById("front-page-our-services-service-img");
     var heading = document.getElementById("front-page-our-services-service-heading");
+    var heading_land = document.getElementById("front-page-our-services-service-heading-landscape");
     var description = document.getElementById("front-page-our-services-service-description");
     var container = document.getElementById("front-page-our-services");
     service_slide_index++;
@@ -11,16 +12,19 @@ function front_page_our_services_nav(){
     if(service_slide_index==1){
         img.src="images/squared/img_squared(11).jpeg";
         heading.innerHTML="Wedding";
+        heading_land.innerHTML="Wedding";
         container.style.backgroundColor="rgb(163, 159, 116)";
     }
     if(service_slide_index==2){
         img.src="images/squared/img_squared(12).jpeg";
         heading.innerHTML="Birthday";
+        heading_land.innerHTML="Birthday";
         container.style.backgroundColor="rgb(163 116 153)";
     }
     if(service_slide_index==3){
         img.src="images/squared/img_squared(6).jpeg";
         heading.innerHTML="Baby Shower";
+        heading_land.innerHTML="Baby Shower";
         container.style.backgroundColor="rgb(116 163 126)";
     }
 }
