@@ -53,13 +53,13 @@
         display: flex;
         align-items: center;
         right: 5px;
-        top: 5px;
-        height: 100%;
-        width: 90vw;
+        height: 100vh;
+        width: 20vw;
         background-color: #040404;
     }
     .portrait-nav-menu>div>ul>li{
         list-style-type: none;
+        cursor: pointer;
     }
     #front-page-image-portrait{
         display: none;
@@ -201,11 +201,12 @@
         justify-content: center;
     }
     .front-page-our-works-container>img{
-        width: 15%;
-        margin: 1%;
+        width: 12%;
+        margin: 0.7%;
         cursor: pointer;
     }
     .front-page-our-works-title{
+        font-size: 1.4em;
         padding-top: 2em;
         text-align: center;
     }
@@ -292,6 +293,7 @@
         font-size: larger;
         font-weight: bold;
         border-radius: 8px 8px 8px 8px;
+        cursor: pointer;
     }
     .front-page-about-pranami{
         margin-top: 20vh;
@@ -310,6 +312,10 @@
         width: inherit;
         box-sizing: border-box;
         padding: 0% 5% 12% 5%;
+        background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .front-page-our-works-click-more{
         display: none;
@@ -326,18 +332,21 @@
         left: 50vw;
         transform: translateX(-50%);
         */
-        height: 35px;
+        height: 45px;
         display: flex;
         align-items: center;
         background-color: white;
         box-sizing: border-box;
-        padding: 1%;
+        padding: 1.5%;
         border: 1px solid gainsboro;
         border-radius: 5% 5% 5% 5%;
         text-decoration: none;
-        color: black;
+        font-size: larger;
+        font-weight: bold;
+        color: #189d0e;
     }
     .contact-whatsapp>img{
-        height: 100%;
+        width: 35px;
+        height: 35px;
     }
 }

@@ -299,7 +299,8 @@
         border: 1px solid gainsboro;
         border-radius: 5% 5% 5% 5%;
         text-decoration: none;
-        color: black;
+        color: #189d0e;
+        font-weight: bold;
     }
     .contact-whatsapp>img{
         height: 100%;
