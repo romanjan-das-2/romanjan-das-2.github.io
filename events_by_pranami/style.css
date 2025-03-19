@@ -77,7 +77,8 @@
         transform: translate(-50%, -50%);
         color: white;
         font-size: 1.9em;
-        text-shadow: 2px 2px 5px darkolivegreen;
+        text-shadow: 5px 5px 4px #ff3434;
+
     }
     .front-page-initial-text{
         text-align: center;

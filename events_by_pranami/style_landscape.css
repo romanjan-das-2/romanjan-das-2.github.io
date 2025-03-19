@@ -13,7 +13,7 @@
         left: 0px;
         box-sizing: border-box;
         padding: 15px;
-        width: 100vw;
+        width: 80vw;
         height: 60px;
         display: flex;
         align-items: center;
@@ -25,25 +25,28 @@
         padding: 15px;
         margin-right: 15px;
     }
+    .show_portrait_nav_menu{
+        display: none;
+    }
     .blank-top-bar{
         position: absolute;
-        font-size: x-large;
         color: white;
-        text-shadow: 2px 2px 5px darkolivegreen;
+        text-shadow: 5px 5px 5px #3145ff;
         height: 60px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         box-sizing: border-box;
         padding: 15px;
+        font-size: 2em;
     }
     .portrait-nav-menu{
         position: fixed;
-        display: none;
+        display: block;
         z-index: 5;
         top: 0px;
-        left: 0px;
-        width: 100vw;
+        right: 0px;
+        width: 19.5vw;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.7);
         color: white;
@@ -52,9 +55,9 @@
         position: absolute;
         display: flex;
         align-items: center;
-        right: 5px;
+        right: 0px;
         height: 100vh;
-        width: 20vw;
+        width: 19.5vw;
         background-color: #040404;
     }
     .portrait-nav-menu>div>ul>li{
@@ -68,27 +71,28 @@
         display: block;
     }
     .front-page-image{
-        width: 100vw;
+        width: 80vw;
     }
     .front-page-image>img{
-        width: 100vw;
+        width: 80vw;
     }
     .front-page-image-text-over{
         position: absolute;
         z-index: 3;
-        top: 85%;
-        left: 50%;
+        top: 75%;
+        left: 40%;
         width: 80%;
         text-align: center;
         transform: translate(-50%, -50%);
-        color: white;
-        font-size: 3em;
-        text-shadow: 2px 2px 5px darkolivegreen;
+        color: #ffffff;
+        font-size: 5em;
+        text-shadow: 5px 5px 4px #ff3434;
     }
     .front-page-initial-text{
         text-align: center;
         box-sizing: border-box;
         padding: 10px;
+        width: 80vw;
         height: 100vh;
         display: flex;
         align-items: center;
@@ -114,7 +118,7 @@
         font-size: 1.8em;
     }
     .front-page-our-services{
-        width: 100vw;
+        width: 80vw;
         height: 100vh;
         padding-top: 20vh;
         padding-bottom: 20vh;
@@ -159,7 +163,7 @@
         text-align: start;
     }
     .front-page-testimonials{
-        width: 100vw;
+        width: 80vw;
         height: 100vh;
         display: flex;
         flex-direction: row;
@@ -187,7 +191,7 @@
         width: 80%;
     }
     .front-page-our-works{
-        width: 100vw;
+        width: 80vw;
     }
     .front-page-our-works-container{
         display: flex;
@@ -217,8 +221,8 @@
         font-style: normal;
     }
     .footer-details{
-        width: 100vw;
-        height: auto;
+        width: 80vw;
+        height: 100vh;
         display: flex;
         align-items: flex-start;
         background-color: #1b150d;
@@ -232,16 +236,20 @@
         padding-bottom: 10%;
     }
     .footer-details>div{
-        width: 20%;
+        width: 30%;
     }
     .footer-details iframe{
         margin-left: 5%;
         width: 40%;
     }
+    .footer-details h3{
+        font-size: 1.3em;
+    }
     .footer-details ul{
         list-style-type: none;
         margin-block-start: 0em;
         margin-inline-start: -2em;
+        font-size: 1.3em;
     }
     .footer-details li{
         margin-bottom: 1em;
@@ -257,7 +265,7 @@
     
     .front-page-our-works-modal{
         position: fixed;
-        z-index: 4;
+        z-index: 7;
         top: 0px;
         left: 0px;
         width: 100%;
@@ -268,7 +276,7 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 2em;
+        font-size: 5em;
     }
     .front-page-our-works-modal-nav-left,.front-page-our-works-modal-nav-right{
         width: 15%;
@@ -280,13 +288,12 @@
     }
     .front-page-our-works-modal-close-button{
         position: fixed;
-        z-index: 6;
-        top: 10px;
-        right: 10px;
+        z-index: 8;
+        top: 20px;
+        right: 20px;
         width: fit-content;
         height: fit-content;
         padding: 5px;
-        border: 2px solid black;
         background-color: transparent;
         color: white;
         display: none;
@@ -294,8 +301,10 @@
         font-weight: bold;
         border-radius: 8px 8px 8px 8px;
         cursor: pointer;
+        font-size: 2em;
     }
     .front-page-about-pranami{
+        width: 80vw;
         margin-top: 20vh;
         display: flex;
         flex-direction: row;
@@ -319,15 +328,15 @@
     }
     .front-page-our-works-click-more{
         display: none;
-        width: 100vw;
+        width: 80vw;
         text-align: center;
         margin-bottom: 20%;
     }
     .contact-whatsapp{
         position: fixed;
         z-index: 3;
-        bottom: 20px;
-        right: 15px;
+        bottom: 30px;
+        right: 22vw;
         /*
         left: 50vw;
         transform: translateX(-50%);
@@ -348,5 +357,8 @@
     .contact-whatsapp>img{
         width: 35px;
         height: 35px;
+    }
+    .footer_quick_links{
+        display: none;
     }
 }

@@ -3,19 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events By Pranami</title>
-    <link rel="stylesheet" href="style.css?ver=8">
-<link rel="stylesheet" href="style_landscape.css?ver=8">
+    <link rel="stylesheet" href="style.css?ver=10">
+<link rel="stylesheet" href="style_landscape.css?ver=10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Playwrite+TZ:wght@100..400&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&amp;display=swap" rel="stylesheet">
 
-<script src="script.js?ver=8"></script>
+<script src="script.js?ver=10"></script>
 
 </head>
 <body class="quicksand-style">
     <div class="title-bar">
-    <div onclick="show_portrait_nav_menu();"><a style="text-decoration: none; color: black;" href="#portrait-nav-menu">MENU</a></div>
+    <div class="show_portrait_nav_menu" onclick="show_portrait_nav_menu();"><a style="text-decoration: none; color: black;" href="#portrait-nav-menu">MENU</a></div>
 </div>
 <div class="blank-top-bar">
     <div><h2>Events by Pranami</h2></div>
@@ -23,12 +23,12 @@
 
     <div class="front-page-image">
         <img id="front-page-image-portrait" src="images/img(22)_a.jpeg" alt="">
-        <img id="front-page-image-landscape" src="images/img(23)_a.jpeg" alt="">
+        <img id="front-page-image-landscape" src="images/img(23)_b.jpeg" alt="">
         <div class="front-page-image-text-over"><span class="playwrite-tz-span">Events that leave a lasting impression</span></div>
     </div>
-    <div class="front-page-initial-text">
+    <div id="our-reach" class="front-page-initial-text">
         <div class="front-page-initial-text-2">Event planning for Birthday, Anniversary, Engagement, Naming ceremony, Baby shower, Weddings and other Social and Corporate Events.</div>
-        <div id="our-reach" class="front-page-initial-text-3">From made-to-measure weddings to grand celebrations that leave a lasting impression, Events by Pranami specializes in transforming bespoke spaces into extraordinary, unforgettable experiences.</div>
+        <div class="front-page-initial-text-3">From made-to-measure weddings to grand celebrations that leave a lasting impression, Events by Pranami specializes in transforming bespoke spaces into extraordinary, unforgettable experiences.</div>
         <div class="front-page-initial-text-1">BASED  IN GUWAHATI, BUT OUR REACH IS IN ALL OVER NORTH-EAST</div>
     </div>
     <img style="display:none;" src="images/squared/img_squared(11).jpeg" alt="">
@@ -75,11 +75,11 @@
         </div>
         <div onclick="front_page_our_works_click_more();" class="front-page-our-works-click-more">↓ Click for more</div>
     </div>
-    <div onclick="front_page_our_works_modal_close_button();" id="front-page-our-works-modal-close-button" class="front-page-our-works-modal-close-button">Close ✕</div>
-    <div id="front-page-our-works-modal" class="front-page-our-works-modal">
+    <div onclick="front_page_our_works_modal_close_button();" id="front-page-our-works-modal-close-button" class="front-page-our-works-modal-close-button" style="display: none;">Close ✕</div>
+    <div id="front-page-our-works-modal" class="front-page-our-works-modal" style="display: none;">
         <div onclick="front_page_our_works_modal_nav();" class="front-page-our-works-modal-nav-left">&lt;</div>
         <div class="front-page-our-works-modal-img">
-            <img id="front-page-our-works-modal-img-img" src="images/squared/thumbnails/img_squared(1).jpeg" alt="" srcset="">
+            <img id="front-page-our-works-modal-img-img" src="images/squared/big_thumbnails/img_squared(2).jpeg" alt="" srcset="">
         </div>
         <div onclick="front_page_our_works_modal_nav();" class="front-page-our-works-modal-nav-right">&gt;</div>
     </div>
@@ -101,13 +101,14 @@
     <a href="https://wa.me/+919101626486"><div class="contact-whatsapp"><img src="images/contact-whatsapp-2.png" alt="">&nbsp;Message Us</div></a>
 
 <div id="footer-details" class="footer-details">
-    <div>
+    <div class="footer_quick_links">
         <h3>Quick Links</h3>
         <ul>
             <li onclick="front_page_our_works_modal_close_button(); location.href='#';">↑ Back to top</li>
-            <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-services';">Our Services</li>
-            <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-works';">Our Portfolio</li>
             <li onclick="front_page_our_works_modal_close_button(); location.href='#our-reach';">Our Reach</li>
+            <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-services';">Our Services</li>
+            <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-testimonials';">Testimonials</li>
+            <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-works';">Our Portfolio</li>
             <li onclick="front_page_our_works_modal_close_button(); location.href='#front-page-about-pranami';">About Pranami</li>
         </ul>
     </div>
@@ -139,9 +140,10 @@
     <div>
         <ul>
             <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#';">↑ Back to top</h2></li>
-            <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-services';">Our Services</h2></li>
-            <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-works';">Our Portfolio</h2></li>
             <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#our-reach';">Our Reach</h2></li>
+            <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-services';">Our Services</h2></li>
+            <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-testimonials';">Testimonials</h2></li>
+            <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-our-works';">Our Portfolio</h2></li>
             <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#front-page-about-pranami';">About Pranami</h2></li>
             <li><h2 onclick="front_page_our_works_modal_close_button(); location.href='#footer-details';">Contact Us</h2></li>
         </ul>
